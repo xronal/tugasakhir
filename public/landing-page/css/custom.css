@@ -1,0 +1,93 @@
+.sliderpr{
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    margin: auto;
+    box-shadow: 10px 20px 30px;
+}
+
+.wrapper {
+    width: 100%;
+    display: flex;
+    animation: slide 30s infinite;
+}
+
+.wrapper img {
+    width: 100%;
+}
+
+.class_box i img{
+    height: 10rem !important;
+    object-fit: contain;
+}
+
+.class_box{
+    padding-bottom: 40px !important;
+}
+
+.about_img figure img{
+    margin-bottom: 1rem !important;
+}
+
+.about{
+    margin-bottom: 5rem !important;
+}
+
+.navigation.navbar-dark .navbar-nav .nav-link{
+    padding: 15px 20px !important;
+}
+
+.txt-login{
+    font-size: 17px;
+    margin-left: 0.5rem;
+}
+
+.logo a img{
+    width: 5rem;
+}
+
+.logo {
+    text-align: center;
+}
+
+.bunder li {
+    list-style: circle !important;
+}
+
+@keyframes slide {
+    0%{
+         transform: translateX(0);
+    }
+
+    12.5% {
+         transform: translateX(-100%);
+    }
+
+    25%{
+         transform: translateX(-200%);
+    }
+
+    35.5%{
+         transform: translateX(-300%);
+    }
+
+    50%{
+         transform: translateX(-400%);
+    }
+
+    62.5%{
+         transform: translateX(-500%);
+    }
+
+    75%{
+         transform: translateX(-600%);
+    }
+
+    87.5% {
+         transform: translateX(-600%);
+    }
+
+    100%{
+         transform: translateX(0);
+    }
+}

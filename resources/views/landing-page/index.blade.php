@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="{{ asset('landing-page/css/bootstrap.min.css') }}">
     <!-- style css -->
     <link rel="stylesheet" href="{{ asset('landing-page/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('landing-page/css/custom.css') }}">
     <!-- Responsive-->
     <link rel="stylesheet" href="{{ asset('landing-page/css/responsive.css') }}">
     <!-- fevicon -->
@@ -43,7 +44,7 @@
                     <div class="full">
                         <div class="center-desk">
                             <div class="logo">
-                                <a href="index.html"><img src="{{ asset('landing-page/images/logo.png') }}"
+                                <a href="index.html"><img src="{{ asset('landing-page/images/logo.webp') }}"
                                         alt="#" /></a>
                             </div>
                         </div>
@@ -74,7 +75,7 @@
                                     <a class="nav-link" href="contact.html">FAQ</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link:link" href="#">Kontak Kamu</a>
+                                    <a class="nav-link" href="#">Kontak Kami</a>
                                 </li>
                             </ul>
                         </div>
@@ -83,9 +84,7 @@
                 <div class="col-md-2">
                     <ul class="email text_align_right">
                         <li class="d_none"><a href="Javascript:void(0)"><i class="fa fa-user"
-                                    aria-hidden="true"></i></a></li>
-                        <li class="d_none"> <a href="Javascript:void(0)"><i class="fa fa-search"
-                                    style="cursor: pointer;" aria-hidden="true"></i></a> </li>
+                                    aria-hidden="true"></i><span class="txt-login">Login</span></a></li>
                     </ul>
                 </div>
             </div>
@@ -103,8 +102,6 @@
                         <div id="carouselExampleIndicators" class="carousel slide">
                             <ol class="carousel-indicators">
                                 <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
                             </ol>
                             <div class="carousel-inner">
                                 <!-- first slide -->
@@ -113,68 +110,11 @@
                                         <div class="row d_flex">
                                             <div class="col-md-5">
                                                 <div class="board">
-                                                    <i><img src="{{ asset('landing-page/images/top_icon.png') }}"
-                                                            alt="#" /></i>
                                                     <h3>
-                                                        Skating<br> Board<br> School
+                                                        Taman Pinus Campervan park
                                                     </h3>
                                                     <div class="link_btn">
-                                                        <a class="read_more" href="Javascript:void(0)">Read More
-                                                            <span></span></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-7">
-                                                <div class="banner_img">
-                                                    <figure><img class="img_responsive"
-                                                            src="{{ asset('landing-page/images/banner_img.png') }}">
-                                                    </figure>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- second slide -->
-                                <div class="carousel-item">
-                                    <div class="carousel-caption relative">
-                                        <div class="row d_flex">
-                                            <div class="col-md-5">
-                                                <div class="board">
-                                                    <i><img src="{{ asset('landing-page/images/top_icon.png') }}"
-                                                            alt="#" /></i>
-                                                    <h3>
-                                                        Skating<br> Board<br> School
-                                                    </h3>
-                                                    <div class="link_btn">
-                                                        <a class="read_more" href="Javascript:void(0)">Read More
-                                                            <span></span></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-7">
-                                                <div class="banner_img">
-                                                    <figure><img class="img_responsive"
-                                                            src="{{ asset('landing-page/images/banner_img.png') }}">
-                                                    </figure>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- third slide-->
-                                <div class="carousel-item">
-                                    <div class="carousel-caption relative">
-                                        <div class="row d_flex">
-                                            <div class="col-md-5">
-                                                <div class="board">
-                                                    <i><img src="{{ asset('landing-page/images/top_icon.png') }}"
-                                                            alt="#" /></i>
-                                                    <h3>
-                                                        Skating<br> Board<br> School
-                                                    </h3>
-                                                    <div class="link_btn">
-                                                        <a class="read_more" href="Javascript:void(0)">Read More
-                                                            <span></span></a>
+                                                        <a class="btn btn-primary" href="Javascript:void(0)">Reservasi Disini</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -189,271 +129,297 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- controls -->
-                            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button"
-                                data-slide="prev">
-                                <i class="fa fa-arrow-left" aria-hidden="true"></i>
-                                <span class="sr-only">Previous</span>
-                            </a>
-                            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button"
-                                data-slide="next">
-                                <i class="fa fa-arrow-right" aria-hidden="true"></i>
-                                <span class="sr-only">Next</span>
-                            </a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- end banner -->
-    <!-- our class -->
-    <div class="class">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="titlepage text_align_center" id="fasilitas">
-                        <h2>Fasilitas yang bisa dinikmati</h2>
-                        <p>Wisata camping campervan di Batu semakin seru dengan fasilitas lengkap di Taman Pinus Campervan Park! Kami menyediakan semua yang anda butuhkan untuk pengalaman camping yang menyenangkan dan nyaman. Nikmati momen berharga orang terdekat dikelilingi oleh keindahan alam yang menyejukkan jiwa!</p>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-4 margi_bottom">
-                    <div class="class_box text_align_center" data-aos="zoom-in" data-aos-duration="1000">
-                        <i><img src="{{ asset ('frontend/images/class1.webp')}}" alt="gambar1" /></i>
-                        <h3>Free WIFI</h3>
-                    </div>
-                </div>
-                <div class="col-md-4 margi_bottom">
-                    <div class="class_box text_align_center" data-aos="zoom-in" data-aos-duration="1000">
-                        <i><img src="{{ asset ('frontend/images/class2.webp')}}" alt="gambar2" /></i>
-                        <h3>Mushola</h3>
-                    </div>
-                </div>
-                <div class="col-md-4 margi_bottom">
-                    <div class="class_box text_align_center" data-aos="zoom-in" data-aos-duration="1000">
-                        <i><img src="{{ asset ('frontend/images/class3.webp')}}" alt="gambar3" /></i>
-                        <h3>Toilet</h3>
-                    </div>
-                </div>
-                <div class="col-md-4 margi_bottom">
-                    <div class="class_box text_align_center" data-aos="zoom-in" data-aos-duration="1000">
-                        <i><img src="{{ asset ('frontend/images/class4.webp')}}" alt="gambar4" /></i>
-                        <h3>Wastafel</h3>
-                    </div>
-                </div>
-                <div class="col-md-4 margi_bottom">
-                    <div class="class_box text_align_center" data-aos="zoom-in" data-aos-duration="1000">
-                        <i><img src="{{ asset ('frontend/images/class5.webp')}}" alt="gambar5" /></i>
-                        <h3>Dapur Umum</h3>
-                    </div>
-                </div>
-                <div class="col-md-4 margi_bottom">
-                    <div class="class_box text_align_center" data-aos="zoom-in" data-aos-duration="1000">
-                        <i><img src="{{ asset ('frontend/images/class6.webp')}}" alt="gambar6" /></i>
-                        <h3>Cafe Taman Pinus</h3>
-                    </div>
-                </div>
-                <div class="col-md-4 margi_bottom">
-                    <div class="class_box text_align_center" data-aos="zoom-in" data-aos-duration="1000">
-                        <i><img src="{{ asset ('frontend/images/class7.webp')}}" alt="gambar7" /></i>
-                        <h3>Tempat Kemah</h3>
-                    </div>
-                </div>
-                <div class="col-md-4 margi_bottom">
-                    <div class="class_box text_align_center" data-aos="zoom-in" data-aos-duration="1000">
-                        <i><img src="{{ asset ('frontend/images/class8.webp')}}" alt="gambar8" /></i>
-                        <h3>Tempat Penyewaan</h3>
-                    </div>
-                </div>
-                <div class="col-md-4 margi_bottom">
-                    <div class="class_box text_align_center" data-aos="zoom-in" data-aos-duration="1000">
-                        <i><img src="{{ asset ('frontend/images/class9.webp')}}" alt="gambar9" /></i>
-                        <h3>Tempat Hall</h3>
-                    </div>
-                </div>
-            </div>
-            <!-- end our class -->
-            <!-- about -->
-            <div class="about" data-aos="fade-right"
-                data-aos-offset="300"
-                data-aos-easing="ease-in-sine">
-                <div class="container-fluid">
-                    <div class="row d_flex">
-                        <div class="col-md-6">
-                            <div class="titlepage text_align_left" id="about">
-                                <h2>Tentang <br> Taman Pinus Campervan Park</h2>
-                                <p>Wisata camping campervan terbaik di Kota Batu ada di Taman Pinus Campervan Park! Bosan dengan liburan yang itu-itu saja? Jadi, saatnya mencoba pengalaman camping yang berbeda dikelilingi hutan pinus yang memukau dan udara segar yang bikin betah. Selain itu, di sini anda bisa menikmati pengalaman camping seru di alam terbuka dengan campervan, motorhome, atau kendaraan pribadi. Anda dapat membawa tenda sendiri atau sewa tenda anti ribet yang sudah disiapkan oleh tim kami. Dengan kuota campsite yang terbatas, pastikan reservasi lebih awal untuk mendapatkan spot camping terbaik. </p>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="about_img text_align_center">
-                                <figure><img src="{{ asset ('frontend/images/about.webp')}}" alt="foto1" /></figure>
-                            </div>
+        <!-- end banner -->
+        <!-- our class -->
+        <div class="class">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="titlepage text_align_center" id="fasilitas">
+                            <h2>Fasilitas yang bisa dinikmati</h2>
+                            <p>Wisata camping campervan di Batu semakin seru dengan fasilitas lengkap di Taman Pinus Campervan Park! Kami menyediakan semua yang anda butuhkan untuk pengalaman camping yang menyenangkan dan nyaman. Nikmati momen berharga orang terdekat dikelilingi oleh keindahan alam yang menyejukkan jiwa!</p>
                         </div>
                     </div>
                 </div>
-            </div>
-            <!-- end about -->
-            <!-- skating -->
-            <div class="price-list">
-                <div class="titlepage text_align_center" id="price">
-                    <h2>Pricelist Camping</h2>
-                    <p>Lihat daftar harga layanan Taman Pinus Campervan Park di sini! Kami menyediakan layanan sewa perlengkapan camping lengkap, sehingga Anda tidak perlu membeli peralatan sendiri. Selain itu, kami juga menawarkan Paket Outbond Fun Games dan Paket Outbond Motivasi Team Building yang cocok untuk gathering keluarga, outing sekolah/kampus, serta acara pemerintahan.</p>
-                </div>
-                <div class="sliderpr">
-                    <div class="wrapper">
-                        <img src="{{ asset ('frontend/images/sakt1.webp')}}">
-                        <img src="{{ asset ('frontend/images/sak2.webp')}}">
-                        <img src="{{ asset ('frontend/images/sakt3.webp')}}">
-                        <img src="{{ asset ('frontend/images/sakt4.webp')}}">
-                        <img src="{{ asset ('frontend/images/sakt5.webp')}}">
-                        <img src="{{ asset ('frontend/images/sakt6.webp')}}">
-                        <img src="{{ asset ('frontend/images/sakt7.webp')}}">
-                        <img src="{{ asset ('frontend/images/sakt8.webp')}}">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="class_box text_align_center" data-aos="zoom-in" data-aos-duration="1000">
+                            <i><img src="{{ asset ('landing-page/images/class1.webp')}}" alt="gambar1" /></i>
+                            <h3>Free WIFI</h3>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <!-- end skating -->
-            <!-- shop -->
-            <div class="shop">
-                <div class="container-fluid">
-                    <div class="row d_flex d_grid">
-                        <div class="col-md-7">
-                            <div class="shop_img text_align_center" data-aos="fade-right">
-                                <figure><img class="img_responsive" src="{{ asset('landing-page/images/shop.png') }}"
-                                        alt="#" />
-                                </figure>
-                            </div>
+                    <div class="col-md-4">
+                        <div class="class_box text_align_center" data-aos="zoom-in" data-aos-duration="1000">
+                            <i><img src="{{ asset ('landing-page/images/class2.webp')}}" alt="gambar2" /></i>
+                            <h3>Mushola</h3>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="class_box text_align_center" data-aos="zoom-in" data-aos-duration="1000">
+                            <i><img src="{{ asset ('landing-page/images/class3.webp')}}" alt="gambar3" /></i>
+                            <h3>Toilet</h3>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="class_box text_align_center" data-aos="zoom-in" data-aos-duration="1000">
+                            <i><img src="{{ asset ('landing-page/images/class4.webp')}}" alt="gambar4" /></i>
+                            <h3>Wastafel</h3>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="class_box text_align_center" data-aos="zoom-in" data-aos-duration="1000">
+                            <i><img src="{{ asset ('landing-page/images/class5.webp')}}" alt="gambar5" /></i>
+                            <h3>Dapur Umum</h3>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="class_box text_align_center" data-aos="zoom-in" data-aos-duration="1000">
+                            <i><img src="{{ asset ('landing-page/images/class6.webp')}}" alt="gambar6" /></i>
+                            <h3>Cafe Taman Pinus</h3>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="class_box text_align_center" data-aos="zoom-in" data-aos-duration="1000">
+                            <i><img src="{{ asset ('Landing-page/images/class7.webp')}}" alt="gambar7" /></i>
+                            <h3>Tempat Kemah</h3>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="class_box text_align_center" data-aos="zoom-in" data-aos-duration="1000">
+                            <i><img src="{{ asset ('Landing-page/images/class8.webp')}}" alt="gambar8" /></i>
+                            <h3>Tempat Penyewaan</h3>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="class_box text_align_center" data-aos="zoom-in" data-aos-duration="1000">
+                            <i><img src="{{ asset ('landing-page/images/class9.webp')}}" alt="gambar9" /></i>
+                            <h3>Tempat Hall</h3>
                         </div>
                     </div>
                 </div>
-            </div>
-            <!-- end shop -->
-            <!-- testimonial -->
-            <div class="testimonial">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <div class="titlepage text_align_center">
-                                <h2>FAQ</h2>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion" id="accordionExample">
-                        <div class="card">
-                            <div class="card-header" id="headingOne">
-                                <h2 class="mb-0">
-                                    <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse"
-                                        data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                        Collapsible Group Item #1
-                                    </button>
-                                </h2>
-                            </div>
-                            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
-                                data-parent="#accordionExample">
-                                <div class="card-body">
-                                    Some placeholder content for the first accordion panel. This panel is shown by default,
-                                    thanks to the <code>.show</code> class.
+                <!-- end our class -->
+                <!-- about -->
+                <div class="about" data-aos="fade-right"
+                    data-aos-offset="300"
+                    data-aos-easing="ease-in-sine">
+                    <div class="container-fluid">
+                        <div class="row d_flex">
+                            <div class="col-md-6">
+                                <div class="titlepage text_align_left" id="about">
+                                    <h2>Tentang <br> Taman Pinus Campervan Park</h2>
+                                    <p>Wisata camping campervan terbaik di Kota Batu ada di Taman Pinus Campervan Park! Bosan dengan liburan yang itu-itu saja? Jadi, saatnya mencoba pengalaman camping yang berbeda dikelilingi hutan pinus yang memukau dan udara segar yang bikin betah. Selain itu, di sini anda bisa menikmati pengalaman camping seru di alam terbuka dengan campervan, motorhome, atau kendaraan pribadi. Anda dapat membawa tenda sendiri atau sewa tenda anti ribet yang sudah disiapkan oleh tim kami. Dengan kuota campsite yang terbatas, pastikan reservasi lebih awal untuk mendapatkan spot camping terbaik. </p>
                                 </div>
                             </div>
-                        </div>
-                        <div class="card">
-                            <div class="card-header" id="headingTwo">
-                                <h2 class="mb-0">
-                                    <button class="btn btn-link btn-block text-left collapsed" type="button"
-                                        data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false"
-                                        aria-controls="collapseTwo">
-                                        Collapsible Group Item #2
-                                    </button>
-                                </h2>
-                            </div>
-                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
-                                data-parent="#accordionExample">
-                                <div class="card-body">
-                                    Some placeholder content for the second accordion panel. This panel is hidden by default.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="card-header" id="headingThree">
-                                <h2 class="mb-0">
-                                    <button class="btn btn-link btn-block text-left collapsed" type="button"
-                                        data-toggle="collapse" data-target="#collapseThree" aria-expanded="false"
-                                        aria-controls="collapseThree">
-                                        Collapsible Group Item #3
-                                    </button>
-                                </h2>
-                            </div>
-                            <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
-                                data-parent="#accordionExample">
-                                <div class="card-body">
-                                    And lastly, the placeholder content for the third and final accordion panel. This panel is
-                                    hidden by default.
+                            <div class="col-md-6">
+                                <div class="about_img text_align_center">
+                                    <figure><img src="{{ asset ('Landing-page/images/about.webp')}}" alt="foto1" /></figure>
                                 </div>
                             </div>
                         </div>
                     </div>
-
                 </div>
-            </div>
-            <!-- end testimonial -->
-            <!--  footer -->
-            <footer>
-                <div class="footer">
-                    <hr class="ke1">
+                <!-- end about -->
+                <!-- skating -->
+                <div class="price-list">
+                    <div class="titlepage text_align_center" id="price">
+                        <h2>Pricelist Camping</h2>
+                        <p>Lihat daftar harga layanan Taman Pinus Campervan Park di sini! Kami menyediakan layanan sewa perlengkapan camping lengkap, sehingga Anda tidak perlu membeli peralatan sendiri. Selain itu, kami juga menawarkan Paket Outbond Fun Games dan Paket Outbond Motivasi Team Building yang cocok untuk gathering keluarga, outing sekolah/kampus, serta acara pemerintahan.</p>
+                    </div>
+                    <div class="sliderpr">
+                        <div class="wrapper">
+                            <img src="{{ asset ('landing-page/images/sakt1.webp')}}">
+                            <img src="{{ asset ('landing-page/images/sak2.webp')}}">
+                            <img src="{{ asset ('landing-page/images/sakt3.webp')}}">
+                            <img src="{{ asset ('landing-page/images/sakt4.webp')}}">
+                            <img src="{{ asset ('landing-page/images/sakt5.webp')}}">
+                            <img src="{{ asset ('landing-page/images/sakt6.webp')}}">
+                            <img src="{{ asset ('landing-page/images/sakt7.webp')}}">
+                            <img src="{{ asset ('landing-page/images/sakt8.webp')}}">
+                        </div>
+                    </div>
+                </div>
+                <!-- end skating -->
+                <!-- testimonial -->
+                <div class="testimonial">
                     <div class="container">
                         <div class="row">
-                            <div class="col-md-4 ">
-                                <div class="infoma" id="kontak">
-                                    <h3>Contact Us</h3>
-                                    <ul class="conta">
-                                        <li><i class="fa fa-map-marker" aria-hidden="true"></i><a href="https://www.google.com/maps/place/Taman+Pinus+Campervan+Park/@-7.904017,112.5220532,15z/data=!4m6!3m5!1s0x2e7887e3735eaca9:0xa6b9aff595e38f88!8m2!3d-7.904017!4d112.5220532!16s%2Fg%2F11qnk0jdms?entry=ttu&g_ep=EgoyMDI1MDIxMi4wIKXMDSoASAFQAw%3D%3D">Location</a>
-                                        </li>
-                                        <li><i class="fa fa-phone" aria-hidden="true"></i><a href="https://api.whatsapp.com/send/?phone=6281334234368&text&type=phone_number&app_absent=0">+62 813-3423-4368 (Whatsapp)</a></li>
-                                        <li> <i class="fa fa-envelope" aria-hidden="true"></i>tamanpinusbatu@gmail.com</li>
-                                    </ul>
-                                </div>
-                                <div class="infoma">
-                                    <ul class="social_icon">
-                                        <li><a href="https://www.facebook.com/campinggroundbatu"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                                        <li><a href="https://www.tiktok.com/@tamanpinusbatu?is_from_webapp=1&sender_device=pc"><i class="fa fa-tumblr" aria-hidden="true"></i></a></li>
-                                        <li><a href="https://www.instagram.com/tamanpinuscamperpark/"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-                                    </ul>
+                            <div class="col-sm-12">
+                                <div class="titlepage text_align_center">
+                                    <h2>FAQ</h2>
                                 </div>
                             </div>
-                            <div class="col-md-8">
-                                <div class="row border_left">
+                        </div>
+                        <div class="accordion" id="accordionExample">
+                            <div class="card">
+                                <div class="card-header" id="headingOne">
+                                    <h2 class="mb-0">
+                                        <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse"
+                                            data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                            Campsite itu apa ?
+                                        </button>
+                                    </h2>
+                                </div>
+                                <div id="collapseOne" class="collapse" aria-labelledby="headingOne"
+                                    data-parent="#accordionExample">
+                                    <div class="card-body">
+                                        Campsite adalah sebuah tempat campingnya di Campervan Park. Ada beberapa tipe Campsite disesuaikan dengan jenis kendaraan dan jumlahnya.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingTwo">
+                                    <h2 class="mb-0">
+                                        <button class="btn btn-link btn-block text-left collapsed" type="button"
+                                            data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false"
+                                            aria-controls="collapseTwo">
+                                            Kalau saya mau camping cuma sewa tendanya saja tanpa sewa Campsite bisa nggak ?
+                                        </button>
+                                    </h2>
+                                </div>
+                                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
+                                    data-parent="#accordionExample">
+                                    <div class="card-body">
+                                        Tidak Bisa, kalau mau sewa tenda dan camping di Taman Pinus Campervan Park harus bayar :
+                                        <ul class="bunder">
+                                            <li>Tiket 10k/Orang</li>
+                                            <li>Sewa Campsitenya (Lihat di Pricelist Campsite Rate) , dan</li>
+                                            <li>Sewa tendanya (Lihat Pricelist Rent a Tent)</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingThree">
+                                    <h2 class="mb-0">
+                                        <button class="btn btn-link btn-block text-left collapsed" type="button"
+                                            data-toggle="collapse" data-target="#collapseThree" aria-expanded="false"
+                                            aria-controls="collapseThree">
+                                            Apa beda Junior Campsite dengan Standar Campsite ?
+                                        </button>
+                                    </h2>
+                                </div>
+                                <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
+                                    data-parent="#accordionExample">
+                                    <div class="card-body">
+                                        Beda luasan campsitenya. Junior Campsite Car itu untuk mobil kecil (City car) seperti Ayla, Jazz, atau sedan. Standar Campsite ukuran campsitenya lebih luas daripada junior campsite car.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingOne">
+                                    <h2 class="mb-0">
+                                        <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse"
+                                            data-target="#collapseFour" aria-expanded="true" aria-controls="collapseOne">
+                                            Kalau saya bawa mobil City Car (Ayla) mau pesan Standar Campsite atau Deluxe Campsite boleh apa tidak ?
+                                        </button>
+                                    </h2>
+                                </div>
+                                <div id="collapseFour" class="collapse" aria-labelledby="headingOne"
+                                    data-parent="#accordionExample">
+                                    <div class="card-body">
+                                        Boleh, Bebas saja kalau ingin mendapatkan area camping yang lebih lega.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingTwo">
+                                    <h2 class="mb-0">
+                                        <button class="btn btn-link btn-block text-left collapsed" type="button"
+                                            data-toggle="collapse" data-target="#collapseFive" aria-expanded="false"
+                                            aria-controls="collapseFive">
+                                            Apa bedanya Tenda Standar, Tenda Sultan, dan Tenda Sultan Plus ?
+                                        </button>
+                                    </h2>
+                                </div>
+                                <div id="collapseFive" class="collapse" aria-labelledby="headingTwo"
+                                    data-parent="#accordionExample">
+                                    <div class="card-body">
+                                        Semua Tenda di Taman Pinus Campervan Park sama model Dome Seperti ini. Tenda Standar di dalamnya memakai matras dan sleeping bag. Sedangkan Tenda Sulta di dalamnya memakai kasur, bantal, dan bed cover seperti ini. Lalu unutk Tenda Sultan Plus sama seperti tenda Sultan biasa tapi sudah termasuk Breakfast untuk 4 orang.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingThree">
+                                    <h2 class="mb-0">
+                                        <button class="btn btn-link btn-block text-left collapsed" type="button"
+                                            data-toggle="collapse" data-target="#collapseSix" aria-expanded="false"
+                                            aria-controls="collapseSix">
+                                            Toiletnya bersih nggak ? Ada Fotonya ?
+                                        </button>
+                                    </h2>
+                                </div>
+                                <div id="collapseSix" class="collapse" aria-labelledby="headingThree"
+                                    data-parent="#accordionExample">
+                                    <div class="card-body">
+                                        Toilet max setiap 2 jam sekali pasti dibersihkan. Ada pilihan toilet jongkok maupun toilet duduk.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- end testimonial -->
+                <!--  footer -->
+                <footer>
+                    <div class="footer">
+                        <hr class="ke1">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-4 ">
+                                    <div class="infoma" id="kontak">
+                                        <h3>Contact Us</h3>
+                                        <ul class="conta">
+                                            <li><i class="fa fa-map-marker" aria-hidden="true"></i><a href="https://www.google.com/maps/place/Taman+Pinus+Campervan+Park/@-7.904017,112.5220532,15z/data=!4m6!3m5!1s0x2e7887e3735eaca9:0xa6b9aff595e38f88!8m2!3d-7.904017!4d112.5220532!16s%2Fg%2F11qnk0jdms?entry=ttu&g_ep=EgoyMDI1MDIxMi4wIKXMDSoASAFQAw%3D%3D">Location</a>
+                                            </li>
+                                            <li><i class="fa fa-phone" aria-hidden="true"></i><a href="https://api.whatsapp.com/send/?phone=6281334234368&text&type=phone_number&app_absent=0">+62 813-3423-4368 (Whatsapp)</a></li>
+                                            <li> <i class="fa fa-envelope" aria-hidden="true"></i>tamanpinusbatu@gmail.com</li>
+                                        </ul>
+                                    </div>
+                                    <div class="infoma">
+                                        <ul class="social_icon">
+                                            <li><a href="https://www.facebook.com/campinggroundbatu"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                            <li><a href="https://www.tiktok.com/@tamanpinusbatu?is_from_webapp=1&sender_device=pc"><i class="fa fa-tumblr" aria-hidden="true"></i></a></li>
+                                            <li><a href="https://www.instagram.com/tamanpinuscamperpark/"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="row border_left">
+                                        <div class="col-md-12">
+                                            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15807.6573856854!2d112.5220532!3d-7.904017!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7887e3735eaca9%3A0xa6b9aff595e38f88!2sTaman%20Pinus%20Campervan%20Park!5e0!3m2!1sen!2sid!4v1739683363698!5m2!1sen!2sid" width="600" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="ke1">
+                        <div class="copyright">
+                            <div class="container">
+                                <div class="row">
                                     <div class="col-md-12">
-                                        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15807.6573856854!2d112.5220532!3d-7.904017!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7887e3735eaca9%3A0xa6b9aff595e38f88!2sTaman%20Pinus%20Campervan%20Park!5e0!3m2!1sen!2sid!4v1739683363698!5m2!1sen!2sid" width="600" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                        <p>Created by Ronal Anggara</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <hr class="ke1">
-                    <div class="copyright">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <p>Created by Ronal Anggara</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </footer>
-            <!-- end footer -->
-            <!-- Javascript files-->
-            <script src="{{ asset('landing-page/js/jquery.min.js') }}"></script>
-            <script src="{{ asset('landing-page/js/bootstrap.bundle.min.js') }}"></script>
-            <script src="{{ asset('landing-page/js/jquery-3.0.0.min.js') }}"></script>
-            <!-- sidebar -->
-            <script src="{{ asset('landing-page/js/custom.js') }}"></script>
-            <script>
-                AOS.init();
-            </script>
+                </footer>
+                <!-- end footer -->
+                <!-- Javascript files-->
+                <script src="{{ asset('landing-page/js/jquery.min.js') }}"></script>
+                <script src="{{ asset('landing-page/js/bootstrap.bundle.min.js') }}"></script>
+                <script src="{{ asset('landing-page/js/jquery-3.0.0.min.js') }}"></script>
+                <!-- sidebar -->
+                <script src="{{ asset('landing-page/js/custom.js') }}"></script>
+                <script>
+                    AOS.init();
+                </script>
 </body>
 
 </html>
