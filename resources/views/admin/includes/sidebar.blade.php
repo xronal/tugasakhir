@@ -8,56 +8,56 @@
     </div>
     <div class="sidebar-menu-area">
         <ul class="sidebar-menu" id="sidebar-menu">
-            <li class="sidebar-menu-group-title">Getting Started</li>
+            <li class="sidebar-menu-group-title">Dashboard - Admin</li>
             <li>
-                <a href="index.html">
+                <a href="#">
                     <iconify-icon icon="solar:document-add-outline" class="menu-icon"></iconify-icon>
-                    <span>Introduction</span>
+                    <span>Dashboard</span>
                 </a>
             </li>
             <li>
-                <a href="started.html">
+                <a href="#">
                     <iconify-icon icon="hugeicons:start-up-02" class="menu-icon"></iconify-icon>
-                    <span>Gettings Started</span>
+                    <span>Package</span>
                 </a>
             </li>
-            <li class="sidebar-menu-group-title">Layout Structure</li>
+            <li class="sidebar-menu-group-title">Invoice</li>
             <li>
-                <a href="html.html">
+                <a href="#">
                     <iconify-icon icon="icomoon-free:html-five2" class="menu-icon"></iconify-icon>
-                    <span>HTML Structure</span>
+                    <span>Invoice List</span>
                 </a>
             </li>
             <li>
                 <a href="dark.html">
                     <iconify-icon icon="line-md:moon" class="menu-icon"></iconify-icon>
-                    <span>Dark Layout</span>
+                    <span>Invoice Preview</span>
                 </a>
             </li>
             <li>
-                <a href="rtl.html">
+                <a href="#">
                     <iconify-icon icon="mdi:rtl" class="menu-icon"></iconify-icon>
-                    <span>RTL Layout</span>
+                    <span>Invoice add</span>
                 </a>
             </li>
 
-            <li class="sidebar-menu-group-title">Folder Structure</li>
+            <li class="sidebar-menu-group-title">Employee</li>
             <li>
                 <a href="css.html">
                     <iconify-icon icon="bi:filetype-css" class="menu-icon"></iconify-icon>
-                    <span>CSS</span>
+                    <span>User List</span>
                 </a>
             </li>
             <li>
                 <a href="scss.html">
                     <iconify-icon icon="bi:filetype-scss" class="menu-icon"></iconify-icon>
-                    <span>SCSS</span>
+                    <span>User Grid</span>
                 </a>
             </li>
             <li>
                 <a href="js.html">
                     <iconify-icon icon="fluent:document-javascript-24-regular" class="menu-icon"></iconify-icon>
-                    <span>JavaScript</span>
+                    <span>User View</span>
                 </a>
             </li>
 

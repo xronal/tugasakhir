@@ -27,3 +27,11 @@ Route::controller(DashboardController::class)->prefix('/admin/dashboard')->group
 Route::controller(PackageController::class)->prefix('/admin/package')->group(function () {
     Route::get('/', 'index');
 });
+
+Route::get('/', function () {
+    return view('admin.pages.invoice.index');
+});
+
+Route::get('/', function () {
+    return view('admin.pages.user.index');
+});
