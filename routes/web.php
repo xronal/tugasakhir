@@ -35,3 +35,15 @@ Route::get('/', function () {
 Route::get('/', function () {
     return view('admin.pages.user.index');
 });
+
+Route::get('/', function () {
+    return view('login-register.login');
+});
+
+Route::get('/', function () {
+    return view('login-register.register');
+});
+
+Route::get('/', function () {
+    return view('login-register.forgot-password');
+});
