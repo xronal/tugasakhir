@@ -211,7 +211,7 @@
                 </div>
                 <!-- end our class -->
                 <!-- about -->
-                <div class="about" data-aos="fade-right" data-aos-offset="300" data-aos-easing="ease-in-sine">
+                <div class="about pl-3" data-aos="fade-right" data-aos-offset="300" data-aos-easing="ease-in-sine">
                     <div class="container-fluid">
                         <div class="row d_flex">
                             <div class="col-md-6">
@@ -225,10 +225,34 @@
                                         tenda sendiri atau sewa tenda anti ribet yang sudah disiapkan oleh tim kami.
                                         Dengan kuota campsite yang terbatas, pastikan reservasi lebih awal untuk
                                         mendapatkan spot camping terbaik. </p>
+                                    <div class="d-flex align-items-center gap-2 w-100">
+                                        <h3 class="pr-5 text-white">Fasilitas</h3>
+                                        <div class="w-100 ms-auto">
+                                            <div class="progress progress-sm rounded-pill" role="progressbar"
+                                                aria-label="Success example" aria-valuenow="90" aria-valuemin="0"
+                                                aria-valuemax="100">
+                                                <div class="progress-bar progress-bar-striped progress-bar-animated rounded-pill bg-primary-600"
+                                                    style="width: 90%;"></div>
+                                            </div>
+                                        </div>
+                                        <span class="text-secondary-light line-height-10 text-white pl-2">90%</span>
+                                    </div>
+                                    <div class="d-flex align-items-center gap-2 w-100">
+                                        <h3 class="pr-4 text-white">Pelayanan</h3>
+                                        <div class="w-100 ms-auto">
+                                            <div class="progress progress-sm rounded-pill" role="progressbar"
+                                                aria-label="Success example" aria-valuenow="90" aria-valuemin="0"
+                                                aria-valuemax="100">
+                                                <div class="progress-bar progress-bar-striped progress-bar-animated rounded-pill bg-primary-600"
+                                                    style="width: 95%;"></div>
+                                            </div>
+                                        </div>
+                                        <span class="text-secondary-light line-height-10 text-white pl-2">95%</span>
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <div class="about_img text_align_center">
+                                <div class="about_img text_align_center pr-3 pb-5">
                                     <figure><img src="{{ asset('Landing-page/images/about.webp') }}"
                                             alt="foto1" /></figure>
                                 </div>
