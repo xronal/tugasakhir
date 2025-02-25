@@ -86,8 +86,8 @@
                 </div>
                 <div class="col-md-2">
                     <ul class="email text_align_right">
-                        <li class="d_none"><a href="Javascript:void(0)"><i class="fa fa-user"
-                                    aria-hidden="true"></i><span class="txt-login">Login</span></a></li>
+                        <li class="d_none"><a href=""><i class="fa fa-user" aria-hidden="true"></i><span
+                                    class="txt-login">Login</span></a></li>
                     </ul>
                 </div>
             </div>

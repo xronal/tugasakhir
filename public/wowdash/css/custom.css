@@ -1,0 +1,81 @@
+.btn-check {
+    position: relative !important;
+    padding: 0 1rem 0 0 !important;
+}
+
+.card-body .btn-group1 input{
+    padding-left: 4rem !important;
+}
+
+.card-body .btn-group2 input{
+    padding-left: 26rem !important;
+}
+
+.card-body {
+    padding-left: 10rem !important;
+}
+
+p {
+    font-size: 20px;
+    font-family: auto;
+    text-align: center;
+}
+
+.card-body .btn-group3 input{
+    padding-left: 26rem !important;
+}
+
+#btncheck18, #btncheck17, #btncheck16{
+    padding-left: 0 !important;
+}
+
+#btncheck19, #btncheck21, #btncheck30, #btncheck31 {
+    padding-left: 5rem !important;
+}
+
+#btncheck28, #btncheck29{
+    padding-left: 2rem !important;
+}
+
+#btncheck32{
+    padding-left: 40rem !important;
+}
+
+#btncheck33{
+    padding-left: 18rem !important;
+}
+
+#btncheck34{
+    padding-left: 44rem !important;
+}
+
+#btncheck35{
+    padding-left: 8rem !important;
+}
+
+#btncheck36{
+    padding-left: 54rem !important;
+}
+
+#btncheck37{
+    padding-left: 3rem !important;
+}
+
+#btncheck38{
+    padding-left: 10rem !important;
+}
+
+.material-symbols-outlined{
+    font-size: 100px !important;
+    padding-left: 5rem !important;
+}
+
+#btncheck40{
+    padding-left: 8rem !important;
+}
+
+@media (min-width: 1200px) {
+    .col-xl-6{
+        width: 100% !important;
+    }
+}

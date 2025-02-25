@@ -28,26 +28,26 @@ Route::controller(PackageController::class)->prefix('/admin/package')->group(fun
     Route::get('/', 'index');
 });
 
-// Route::get('/', function () {
-//     return view('admin.pages.invoice.index');
-// });
+Route::get('/', function () {
+    return view('admin.pages.invoice.index');
+});
 
-// Route::get('/', function () {
-//     return view('admin.pages.user.index');
-// });
+Route::get('/', function () {
+    return view('admin.pages.user.index');
+});
 
-// Route::get('/', function () {
-//     return view('login-register.login');
-// });
+Route::get('/', function () {
+    return view('login-register.login');
+});
 
-// Route::get('/', function () {
-//     return view('login-register.register');
-// });
+Route::get('/', function () {
+    return view('login-register.register');
+});
 
-// Route::get('/', function () {
-//     return view('login-register.forgot-password');
-// });
+Route::get('/', function () {
+    return view('login-register.forgot-password');
+});
 
-// Route::get('/', function () {
-//     return view('user.pages.ground');
-// });
+Route::get('/', function () {
+    return view('user.pages.ground');
+});
