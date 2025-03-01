@@ -54,7 +54,7 @@
                     <h4 class="mb-12">Sign Up to your Account</h4>
                     <p class="mb-32 text-secondary-light text-lg">Welcome back! please enter your detail</p>
                 </div>
-                <form action="#">
+                <form action="{{ route('register') }}" method="POST">
                     <div class="icon-field mb-16">
                         <span class="icon top-50 translate-middle-y">
                             <iconify-icon icon="f7:person"></iconify-icon>
@@ -120,7 +120,7 @@
                         </button>
                     </div>
                     <div class="mt-32 text-center text-sm">
-                        <p class="mb-0">Already have an account? <a href="sign-in.html"
+                        <p class="mb-0">Already have an account? <a href="{{ route('login') }}"
                                 class="text-primary-600 fw-semibold">Sign In</a></p>
                     </div>
 

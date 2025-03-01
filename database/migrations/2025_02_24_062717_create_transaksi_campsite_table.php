@@ -14,8 +14,10 @@ return new class extends Migration
     public function up()
     {
         Schema::create('transaksi_campsite', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->string('kode_transaksi');
+            $table->string('kode_item');
+            $table->string('kode_ground');
+            $table->integer('price');
         });
     }
 

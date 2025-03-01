@@ -14,8 +14,11 @@ return new class extends Migration
     public function up()
     {
         Schema::create('transaksi_addons', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->string('kode_transaksi');
+            $table->string('kode_item');
+            $table->integer('quantity');
+            $table->integer('price');
+            $table->integer('subtotal');
         });
     }
 

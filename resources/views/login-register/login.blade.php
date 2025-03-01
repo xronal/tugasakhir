@@ -54,7 +54,8 @@
                     <h4 class="mb-12">Sign In to your Account</h4>
                     <p class="mb-32 text-secondary-light text-lg">Welcome back! please enter your detail</p>
                 </div>
-                <form action="#">
+                <form method="POST" action="{{ route('login') }}">
+                    @csrf
                     <div class="icon-field mb-16">
                         <span class="icon top-50 translate-middle-y">
                             <iconify-icon icon="mage:email"></iconify-icon>
@@ -80,7 +81,7 @@
                                     id="remeber">
                                 <label class="form-check-label" for="remeber">Remember me </label>
                             </div>
-                            <a href="javascript:void(0)" class="text-primary-600 fw-medium">Forgot Password?</a>
+                            <a href="{{ route('password') }}" class="text-primary-600 fw-medium">Forgot Password?</a>
                         </div>
                     </div>
 
@@ -105,7 +106,8 @@
                         </button>
                     </div>
                     <div class="mt-32 text-center text-sm">
-                        <p class="mb-0">Don’t have an account? <a href="#" class="text-primary-600 fw-semibold">Sign
+                        <p class="mb-0">Don’t have an account? <a href="{{ route('register') }}"
+                                class="text-primary-600 fw-semibold">Sign
                                 Up</a></p>
                     </div>
 

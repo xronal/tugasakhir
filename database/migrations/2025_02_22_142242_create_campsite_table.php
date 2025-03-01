@@ -14,8 +14,11 @@ return new class extends Migration
     public function up()
     {
         Schema::create('campsite', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->string('kode_campsite');
+            $table->string('name_campsite');
+            $table->integer('weekday_price');
+            $table->integer('weekend_price');
+            $table->text('description');
         });
     }
 

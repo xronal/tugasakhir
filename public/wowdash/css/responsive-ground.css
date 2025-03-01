@@ -1,0 +1,189 @@
+.container-ground{
+    background-color: rgb(183, 101, 0);
+    border-radius: 10px;
+    padding: 20px 0;
+}
+
+
+.btn-outline-primary{
+    border-color: white !important;
+}
+
+.btn-group-responsives {
+    display: flex;
+    flex-wrap: wrap; /* Agar elemen turun ke bawah jika tidak cukup lebar */
+    gap: 10px; /* Jarak antar elemen */
+    justify-content: center; /* Pusatkan elemen */
+    width: 100%;
+}
+
+.btn-group-responsive {
+    display: flex;
+    flex-wrap: wrap; /* Agar elemen turun ke bawah jika tidak cukup lebar */
+    padding: 0 10px 0;
+    gap: 10px; /* Jarak antar elemen */
+    width: 100%;
+}
+
+.btn-responsive {
+    display: flex;
+    flex-wrap: wrap; /* Agar elemen turun ke bawah jika tidak cukup lebar */
+    gap: 10px; /* Jarak antar elemen */
+    padding: 0 10px 0;
+    width: 100%;
+}
+
+.btn-responsive label:last-of-type {
+    margin-left: auto; /* Menggeser ke kanan */
+}
+
+.btn-group-responsive label {
+    margin-top: 10px;
+    padding: 10px 10px; /* Ukuran tombol lebih fleksibel */
+    font-size: 16px; /* Ukuran teks agar mudah dibaca */
+    color: white;
+}
+
+.btn-group-responsives label {
+    margin-top: 10px;
+    padding: 10px 10px; /* Ukuran tombol lebih fleksibel */
+    font-size: 16px; /* Ukuran teks agar mudah dibaca */
+    color: white;
+}
+
+.btn-responsive label {
+    margin-top: 10px;
+    padding: 10px 10px; /* Ukuran tombol lebih fleksibel */
+    font-size: 16px; /* Ukuran teks agar mudah dibaca */
+    color: white;
+}
+
+.group-responsives label {
+    margin-top: 10px;
+    padding: 10px 10px; /* Ukuran tombol lebih fleksibel */
+    font-size: 16px; /* Ukuran teks agar mudah dibaca */
+    color: white;
+}
+
+.group-responsive label {
+    margin-top: 10px;
+    padding: 10px 10px; /* Ukuran tombol lebih fleksibel */
+    font-size: 16px; /* Ukuran teks agar mudah dibaca */
+    color: white;
+}
+
+/* Responsif untuk tablet */
+@media (max-width: 768px) {
+    .btn-group-responsive {
+        align-items: center; /* Pusatkan */
+    }
+
+    .btn-group-responsive label {
+        width: 12%; /* Lebarkan tombol agar lebih mudah diklik */
+        text-align: center;
+    }
+
+    .btn-group-responsives {
+        align-items: center; /* Pusatkan */
+    }
+
+    .btn-group-responsives label {
+        width: 12%; /* Lebarkan tombol agar lebih mudah diklik */
+        text-align: center;
+    }
+
+    .btn-responsive {
+        align-items: center; /* Pusatkan */
+    }
+
+    .btn-responsive label {
+        width: 12%; /* Lebarkan tombol agar lebih mudah diklik */
+        text-align: center;
+    }
+
+    #line-right{
+        width: 70%;
+        background-color: white;
+    }
+
+    #line-left{
+        width: 19.3%;
+        background-color: white;
+    }
+}
+
+/* Responsif untuk handphone */
+@media (max-width: 576px) {
+    .btn-group-responsive label {
+        width: 12%; /* Tombol penuh di layar kecil */
+        font-size: 10px; /* Ukuran teks lebih kecil */
+        padding: 10px 0;
+    }
+
+    .btn-group-responsives label {
+        width: 12%; /* Tombol penuh di layar kecil */
+        font-size: 10px; /* Ukuran teks lebih kecil */
+        padding: 10px 0;
+    }
+
+    .btn-responsive label {
+        width: 12%; /* Tombol penuh di layar kecil */
+        font-size: 10px; /* Ukuran teks lebih kecil */
+        padding: 10px 0;
+    }
+
+    #line-right{
+        width: 65%;
+        background-color: white;
+    }
+
+    #line-left{
+        width: 13.3%;
+        background-color: white;
+    }
+}
+
+/* Responsive untuk pc/laptop */
+@media (min-width: 1200px) {
+    .btn-group-responsive {
+        padding: 10px 20px;
+    }
+
+    .btn-group-responsive label {
+        width: 12%; /* Lebarkan tombol agar lebih mudah diklik */
+        text-align: center;
+    }
+
+    .btn-group-responsives {
+        padding: 10px 20px;
+    }
+
+    .btn-group-responsives label {
+        width: 12%; /* Lebarkan tombol agar lebih mudah diklik */
+        text-align: center;
+    }
+
+
+    .btn-responsive {
+        padding: 10px 20px;
+    }
+
+    .btn-responsive label {
+        width: 12%; /* Lebarkan tombol agar lebih mudah diklik */
+        text-align: center;
+    }
+
+    #line-right{
+        width: 70%;
+        background-color: white;
+    }
+
+    #line-left{
+        width: 21.5%;
+        background-color: white;
+    }
+
+    .btn-outline-primary{
+        font-size: 16px !important;
+    }
+}

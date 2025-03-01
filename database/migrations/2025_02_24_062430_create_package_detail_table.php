@@ -14,8 +14,10 @@ return new class extends Migration
     public function up()
     {
         Schema::create('package_detail', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->string('kode_package');
+            $table->string('kode_item');
+            $table->integer('price');
+            $table->integer('quantity');
         });
     }
 

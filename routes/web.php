@@ -4,6 +4,12 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\PackageController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\ForgotPasswordController;
+use App\Http\Controllers\GroundController;
+use App\Http\Controllers\InvoiceController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,26 +34,21 @@ Route::controller(PackageController::class)->prefix('/admin/package')->group(fun
     Route::get('/', 'index');
 });
 
-Route::get('/', function () {
-    return view('admin.pages.invoice.index');
-});
+Route::get('/admin/invoice', [InvoiceController::class, 'showInvoiceForm']);
 
-Route::get('/', function () {
-    return view('admin.pages.user.index');
-});
 
-Route::get('/', function () {
-    return view('login-register.login');
-});
+Route::get('/admin/user', [UserController::class, 'showUserForm']);
 
-Route::get('/', function () {
-    return view('login-register.register');
-});
+Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [LoginController::class, 'login']);
 
-Route::get('/', function () {
-    return view('login-register.forgot-password');
-});
+Route::get('/register', [RegisterController::class, 'showRegisterForm'])->name('register');
+Route::post('/register', [RegisterController::class, 'register']);
 
-Route::get('/', function () {
-    return view('user.pages.ground');
-});
+Route::get('/forgot-password', [ForgotPasswordController::class, 'showForgotPasswordForm']);
+
+Route::get('/forgot-password', [ForgotPasswordController::class, 'showForgotPasswordForm'])->name('password');
+Route::post('/forgot-password', [ForgotPasswordController::class, 'password']);
+
+
+Route::get('/user/ground', [GroundController::class, 'showGroundForm']);

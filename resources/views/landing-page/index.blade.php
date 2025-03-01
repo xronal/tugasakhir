@@ -86,8 +86,8 @@
                 </div>
                 <div class="col-md-2">
                     <ul class="email text_align_right">
-                        <li class="d_none"><a href=""><i class="fa fa-user" aria-hidden="true"></i><span
-                                    class="txt-login">Login</span></a></li>
+                        <li class="d_none"><a href="{{ route('login') }}"><i class="fa fa-user"
+                                    aria-hidden="true"></i><span class="txt-login">Login</span></a></li>
                     </ul>
                 </div>
             </div>
@@ -125,7 +125,7 @@
                                             <div class="col-md-7">
                                                 <div class="banner_img">
                                                     <figure><img class="img_responsive"
-                                                            src="{{ asset('landing-page/images/banner_img.png') }}">
+                                                            src="{{ asset('landing-page/images/awal.webp') }}">
                                                     </figure>
                                                 </div>
                                             </div>

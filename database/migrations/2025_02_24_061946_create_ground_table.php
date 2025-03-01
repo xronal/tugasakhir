@@ -14,8 +14,9 @@ return new class extends Migration
     public function up()
     {
         Schema::create('ground', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->string('kode_ground');
+            $table->string('kode_campsite');
+            $table->boolean('is_booked');
         });
     }
 

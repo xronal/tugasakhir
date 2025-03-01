@@ -14,11 +14,10 @@ return new class extends Migration
     public function up()
     {
         Schema::create('packages', function (Blueprint $table) {
-            $table->id();
-            $table->string('slug');
-            $table->string('name');
-            $table->integer('price');
-            $table->timestamps();
+            $table->string('kode_package');
+            $table->string('name_package');
+            $table->string('kode_capsite');
+            $table->integer('price_package');
         });
     }
 

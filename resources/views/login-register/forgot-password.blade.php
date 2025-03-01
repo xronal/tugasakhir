@@ -27,7 +27,7 @@
 @section('content')
     <section class="auth forgot-password-page bg-base d-flex flex-wrap">
         <div class="auth-left d-lg-block d-none">
-            <div class="d-flex align-items-center flex-column h-100 justify-content-center">
+            <div class="d-flex align-items-center flex-column h-100 justify-content-center bg-white">
                 <img src="{{ asset('landing-page/images/logo.webp') }}" alt="">
             </div>
         </div>
@@ -50,11 +50,11 @@
                         data-bs-toggle="modal" data-bs-target="#exampleModal">Continue</button>
 
                     <div class="text-center">
-                        <a href="sign-in.html" class="text-primary-600 fw-bold mt-24">Back to Sign In</a>
+                        <a href="{{ route('login') }}" class="text-primary-600 fw-bold mt-24">Back to Sign In</a>
                     </div>
 
                     <div class="mt-120 text-center text-sm">
-                        <p class="mb-0">Already have an account? <a href="sign-in.html"
+                        <p class="mb-0">Already have an account? <a href="{{ route('login') }}"
                                 class="text-primary-600 fw-semibold">Sign In</a></p>
                     </div>
                 </form>
