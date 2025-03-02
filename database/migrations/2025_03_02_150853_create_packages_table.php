@@ -14,10 +14,13 @@ return new class extends Migration
     public function up()
     {
         Schema::create('packages', function (Blueprint $table) {
-            $table->string('kode_package');
-            $table->string('name_package');
-            $table->string('kode_capsite');
-            $table->integer('price_package');
+            $table->string('package_code')->unique()->primary();
+            $table->string('package_name')->unique();
+            $table->string('campsite_code');
+            $table->bigInteger('package_price')->default(0);
+            $table->timestamps();
+
+            $table->foreign('campsite_code')->references('campsite_code')->on('campsites')->onDelete('restrict');
         });
     }
 

@@ -13,10 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('ground', function (Blueprint $table) {
-            $table->string('kode_ground');
-            $table->string('kode_campsite');
-            $table->boolean('is_booked');
+        Schema::create('grounds', function (Blueprint $table) {
+            $table->string('ground_code')->unique()->primary();
+            $table->string('campsite_code');
+            $table->timestamps();
+
+            $table->foreign('campsite_code')
+                ->references('campsite_code')
+                ->on('campsites')->onDelete('restrict');
         });
     }
 
@@ -27,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ground');
+        Schema::dropIfExists('grounds');
     }
 };

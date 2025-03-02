@@ -13,11 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('transaksi_campsite', function (Blueprint $table) {
-            $table->string('kode_transaksi');
-            $table->string('kode_item');
-            $table->string('kode_ground');
-            $table->integer('price');
+        Schema::create('person_entries', function (Blueprint $table) {
+            $table->string('person_entry_code')->unique()->primary();
+            $table->string('person_type');
+            $table->string('price')->default(0);
+            $table->timestamps();
         });
     }
 
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('transaksi_campsite');
+        Schema::dropIfExists('person_entries');
     }
 };

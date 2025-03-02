@@ -13,12 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('campsite', function (Blueprint $table) {
-            $table->string('kode_campsite');
-            $table->string('name_campsite');
-            $table->integer('weekday_price');
-            $table->integer('weekend_price');
-            $table->text('description');
+        Schema::create('items', function (Blueprint $table) {
+            $table->string('item_code')->unique()->primary();
+            $table->string('item_name')->unique();
+            $table->bigInteger('item_price')->default(0);
+            $table->timestamps();
         });
     }
 
@@ -29,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('campsite');
+        Schema::dropIfExists('items');
     }
 };
