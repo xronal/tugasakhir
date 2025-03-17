@@ -10,4 +10,14 @@ class InvoiceController extends Controller
     {
         return view('admin.pages.invoice.index');
     }
+
+    public function showInvoiceListForm()
+    {
+        return view('admin.pages.invoice.invoice-list');
+    }
+
+    public function showInvoiceDetailForm()
+    {
+        return view('admin.pages.invoice.invoice-preview');
+    }
 }

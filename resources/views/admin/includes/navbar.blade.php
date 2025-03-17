@@ -1,7 +1,7 @@
 <div class="navbar-header">
     <div class="row align-items-center justify-content-between">
         <div class="col-auto">
-            <h6 class="text-xl mb-0">Documentation</h6>
+            <h6 class="text-xl mb-0">Dashboard Admin</h6>
         </div>
         <div class="col-auto">
             <div class="d-flex flex-wrap align-items-center gap-3">

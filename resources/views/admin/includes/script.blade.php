@@ -5,3 +5,9 @@
   <script src="{{ asset('wowdash/js/lib/magnifc-popup.min.js') }}"></script>
   <script src="{{ asset('wowdash/js/lib/slick.min.js') }}"></script>
   <script src="{{ asset('wowdash/js/app.js') }}"></script>
+
+
+  <script src="{{ asset('wowdash/js/lib/apexcharts.min.js') }}"></script>
+  <script src="{{ asset('wowdash/js/lib/dataTables.min.js') }}"></script>
+  <script src="{{ asset('wowdash/js/lib/jquery-jvectormap-2.0.5.min.js') }}"></script>
+  <script src="{{ asset('wowdash/js/lib/jquery-jvectormap-world-mill-en.js') }}"></script>
