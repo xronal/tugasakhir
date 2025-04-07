@@ -52,6 +52,14 @@
                 </a>
             </li>
 
+            <li>
+                <a href="{{ route('packagedetail') }}">
+                    <iconify-icon icon="hugeicons:start-up-02" class="menu-icon"></iconify-icon>
+                    <span>Package Detail</span>
+                </a>
+            </li>
+
+
             <li class="dropdown">
                 <a href="javascript:void(0)">
                     <iconify-icon icon="hugeicons:invoice-03" class="menu-icon"></iconify-icon>
@@ -66,6 +74,7 @@
                     <li>
                         <a href="{{ route('invoicepreview') }}"><i
                                 class="ri-circle-fill circle-icon text-warning-main w-auto"></i> Preview</a>
+
                         {{-- </li>
                     <li>
                         <a href="invoice-add.html"><i class="ri-circle-fill circle-icon text-info-main w-auto"></i> Add
@@ -77,6 +86,73 @@
                     </li> --}}
                 </ul>
             </li>
+
+            <li>
+                <a href="{{ route('campsite') }}">
+                    <iconify-icon icon="hugeicons:start-up-02" class="menu-icon"></iconify-icon>
+                    <span>Campsite</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ route('campsitetrans') }}">
+                    <iconify-icon icon="hugeicons:start-up-02" class="menu-icon"></iconify-icon>
+                    <span>Campsite Transaction</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ route('grounddashboard') }}">
+                    <iconify-icon icon="hugeicons:start-up-02" class="menu-icon"></iconify-icon>
+                    <span>Ground</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ route('item') }}">
+                    <iconify-icon icon="hugeicons:start-up-02" class="menu-icon"></iconify-icon>
+                    <span>Item</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ route('customer') }}">
+                    <iconify-icon icon="hugeicons:start-up-02" class="menu-icon"></iconify-icon>
+                    <span>Customer</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ route('transaction') }}">
+                    <iconify-icon icon="hugeicons:start-up-02" class="menu-icon"></iconify-icon>
+                    <span>Transaction</span>
+                </a>
+            </li>
+
+
+            <li>
+                <a href="{{ route('personentry') }}">
+                    <iconify-icon icon="hugeicons:start-up-02" class="menu-icon"></iconify-icon>
+                    <span>Person Entry</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ route('addons') }}">
+                    <iconify-icon icon="hugeicons:start-up-02" class="menu-icon"></iconify-icon>
+                    <span>Transaction add-ons</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ route('personentrytrans') }}">
+                    <iconify-icon icon="hugeicons:start-up-02" class="menu-icon"></iconify-icon>
+                    <span>Transaction Person Entry</span>
+                </a>
+            </li>
+
+
+
 
             {{-- <li class="sidebar-menu-group-title">Application</li>
 
