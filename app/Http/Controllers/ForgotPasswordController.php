@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class ForgotPasswordController extends Controller
 {
-    public function showForgotPasswordForm()
+    public function index()
     {
         return view('login-register.forgot-password');
     }

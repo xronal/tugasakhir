@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class PackageCustomerController extends Controller
 {
-    public function showPackageCustomerForm()
+    public function index()
     {
         return view('user.pages.package.package');
     }

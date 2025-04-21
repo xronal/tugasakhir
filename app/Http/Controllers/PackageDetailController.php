@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class PackageDetailController extends Controller
 {
-    public function showPackageDetailForm()
+    public function index()
     {
         return view('admin.pages.package.package-detail');
     }

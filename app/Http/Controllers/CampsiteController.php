@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class CampsiteController extends Controller
 {
-    public function showCampsiteForm()
+    public function index()
     {
         return view('admin.pages.campsite.campsite');
     }

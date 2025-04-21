@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class PersonEntryController extends Controller
 {
-    public function showPersonEntryForm()
+    public function index()
     {
         return view('admin.pages.customer.person-entry');
     }

@@ -25,7 +25,7 @@
 
 @section('content')
     <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-24">
-        <h6 class="fw-semibold mb-0">Campsite</h6>
+        <h6 class="fw-semibold mb-0">Person Entry</h6>
         <ul class="d-flex align-items-center gap-2">
             <li class="fw-medium">
                 <a href="index.html" class="d-flex align-items-center gap-1 hover-text-primary">
@@ -34,7 +34,7 @@
                 </a>
             </li>
             <li>-</li>
-            <li class="fw-medium">Campsite</li>
+            <li class="fw-medium">Person entry</li>
         </ul>
     </div>
 
@@ -47,7 +47,7 @@
                     <option>Pending</option>
                 </select>
                 <a href="#" class="btn btn-sm btn-primary-600"><i class="ri-add-line"></i> Create
-                    campsite</a>
+                    Person Entry</a>
             </div>
         </div>
         <div class="card-body">

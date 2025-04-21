@@ -46,7 +46,7 @@
             </li>
 
             <li>
-                <a href="{{ route('package') }}">
+                <a href="{{ route('package.index') }}">
                     <iconify-icon icon="hugeicons:start-up-02" class="menu-icon"></iconify-icon>
                     <span>Package</span>
                 </a>
@@ -109,7 +109,7 @@
             </li>
 
             <li>
-                <a href="{{ route('item') }}">
+                <a href="{{ route('item.index') }}">
                     <iconify-icon icon="hugeicons:start-up-02" class="menu-icon"></iconify-icon>
                     <span>Item</span>
                 </a>

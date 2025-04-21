@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class GroundDashboardController extends Controller
 {
-    public function showGroundDashboardForm()
+    public function index()
     {
         return view('admin.pages.grounds.ground');
     }
