@@ -59,7 +59,7 @@
         <div class="card-header d-flex flex-wrap align-items-center justify-content-between gap-3">
             <div class="d-flex flex-wrap align-items-center gap-3">
                 <button class="btn btn-sm btn-primary-600" data-bs-toggle="modal" data-bs-target="#PackageAddModal"><i
-                        class="ri-add-line"></i> Create Package</button>
+                        class="ri-add-line"></i> <a href="{{ route('addpackage') }}">Create Package</a></button>
             </div>
         </div>
         <div class="card basic-data-table">
@@ -127,4 +127,5 @@
                 </table>
             </div>
         </div>
+        {{-- @include('admin.pages.package.add-package') --}}
     @endsection

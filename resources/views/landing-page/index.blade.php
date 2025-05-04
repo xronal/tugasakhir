@@ -9,10 +9,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
     <!-- site metas -->
-    <title>sbs</title>
+    <title>Taman Pinus Batu</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="author" content="">
+    <!-- icon -->
+    <link rel="icon" href="{{ asset('landing-page/images/logo.webp') }}" />
     <!-- bootstrap css -->
     <link rel="stylesheet" href="{{ asset('landing-page/css/bootstrap.min.css') }}">
     <!-- style css -->
@@ -20,16 +22,11 @@
     <link rel="stylesheet" href="{{ asset('landing-page/css/custom.css') }}">
     <!-- Responsive-->
     <link rel="stylesheet" href="{{ asset('landing-page/css/responsive.css') }}">
-    <!-- fevicon -->
-    <link rel="icon" href="{{ asset('landing-page/images/fevicon.png') }}" type="image/gif" />
     <!-- Tweaks for older IEs-->
     <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
     {{-- AOS CSS --}}
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
 </head>
 <!-- body -->
 
@@ -66,19 +63,19 @@
                                     <a class="nav-link" href="index.html">Beranda</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="about.html">Fasilitas</a>
+                                    <a class="nav-link" href="#fasilitas">Fasilitas</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="skating.html">Tentang Kami</a>
+                                    <a class="nav-link" href="#about">Tentang Kami</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="shop.html">List Harga</a>
+                                    <a class="nav-link" href="#price">List Harga</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="contact.html">FAQ</a>
+                                    <a class="nav-link" href="#faq">FAQ</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">Kontak Kami</a>
+                                    <a class="nav-link" href="#kontak">Kontak Kami</a>
                                 </li>
                             </ul>
                         </div>
@@ -290,7 +287,7 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="titlepage text_align_center">
-                                    <h2>FAQ</h2>
+                                    <h2 id="faq">FAQ</h2>
                                 </div>
                             </div>
                         </div>

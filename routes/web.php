@@ -36,7 +36,7 @@ use App\Http\Controllers\UserController;
 // Route Get
 
 
-Route::get('/', function () {
+Route::get('/landing', function () {
     return view('landing-page.index');
 });
 
@@ -51,6 +51,8 @@ Route::controller(PackageAdminController::class)->prefix('/admin/package/index')
     Route::get('/destroy', 'destroy')->name('destroy');
 });
 
+Route::get('/admin/package/addpackage', [PackageAdminController::class, 'addpackage'])->name('addpackage');
+
 Route::get('/admin/invoice', [InvoiceController::class, 'showInvoiceForm'])->name('invoice');
 
 Route::get('/admin/user', [UserController::class, 'index'])->name('user');
@@ -59,7 +61,7 @@ Route::get('/login', [LoginController::class, 'index'])->name('login');
 
 Route::get('/register', [RegisterController::class, 'index'])->name('register');
 
-Route::get('/forgot-password', [ForgotPasswordController::class, 'index'])->name('password');
+Route::get('/forgot-password', [ForgotPasswordController::class, 'index'])->name('forgot-password');
 
 Route::get('/user/ground', [GroundController::class, 'index'])->name('ground');
 
@@ -71,7 +73,14 @@ Route::get('/admin/invoice/invoice-preview', [InvoiceController::class, 'showInv
 
 Route::get('/admin/transaction/addons-trans', [AddOnsTransactionController::class, 'index'])->name('addons');
 
-Route::get('/admin/campsite/campsite', [CampsiteController::class, 'index'])->name('campsite');
+// Route::get('/admin/campsite/campsite', [CampsiteController::class, 'index'])->name('campsite');
+Route::controller(CampsiteController::class)->prefix('/admin/campsite/campsite')->name('campsite.')->group(function () {
+    Route::get('/', 'index')->name('index');
+    Route::post('/store', 'store')->name('store');
+    Route::get('/show', 'show')->name('show');
+    Route::post('/update', 'update')->name('update');
+    Route::get('/destroy', 'destroy')->name('destroy');
+});
 
 Route::get('/admin/transaction/campsite-trans', [CampsiteTransactionController::class, 'index'])->name('campsitetrans');
 
@@ -99,9 +108,11 @@ Route::get('/admin/transaction/transaction', [TransactionController::class, 'ind
 // Route Post
 Route::post('/admin/dashboard', [DashboardController::class, 'dashboard']);
 Route::post('/admin/package', [PackageAdminController::class, 'package']);
+Route::post('/admin/package/add-package', [PackageAdminController::class, 'addpackage']);
+Route::post('/admin/package/addpackage', [PackageAdminController::class, 'addpackage']);
 Route::post('/login', [LoginController::class, 'login']);
-Route::post('/register', [RegisterController::class, 'register']);
-Route::post('/forgot-password', [ForgotPasswordController::class, 'password']);
+Route::post('/register', [RegisterController::class, 'store']);
+Route::post('/forgot-password', [ForgotPasswordController::class, 'forgot-password']);
 Route::post('/user/ground', [GroundController::class, 'ground']);
 Route::post('/user/package', [PackageCustomerController::class, 'packagecustomer']);
 Route::post('/admin/invoice', [InvoiceController::class, 'invoice']);

@@ -88,7 +88,7 @@
             </li>
 
             <li>
-                <a href="{{ route('campsite') }}">
+                <a href="{{ route('campsite.index') }}">
                     <iconify-icon icon="hugeicons:start-up-02" class="menu-icon"></iconify-icon>
                     <span>Campsite</span>
                 </a>

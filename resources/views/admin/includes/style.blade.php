@@ -2,7 +2,6 @@
 <link rel="stylesheet" href="{{ asset('wowdash/css/lib/magnific-popup.css') }}">
 <link rel="stylesheet" href="{{ asset('wowdash/css/lib/slick.css') }}">
 <link rel="stylesheet" href="{{ asset('wowdash/css/style.css') }}">
-
 <link rel="stylesheet" href="{{ asset('wowdash/css/remixicon.css') }}">
 <link rel="stylesheet" href="{{ asset('wowdash/css/lib/apexcharts.css') }}">
 <link rel="stylesheet" href="{{ asset('wowdash/css/lib/dataTables.min.css') }}">

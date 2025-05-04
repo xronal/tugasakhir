@@ -21,6 +21,31 @@
     <script src="{{ asset('wowdash/js/lib/dataTables.min.js') }}"></script>
     <script src="{{ asset('wowdash/js/lib/jquery-jvectormap-2.0.5.min.js') }}"></script>
     <script src="{{ asset('wowdash/js/lib/jquery-jvectormap-world-mill-en.js') }}"></script>
+    <script>
+        $(document).ready(function() {
+            $('.table .btn-edit').click(function(e) {
+                e.preventDefault();
+                console.log($(this).data('id'));
+                $.ajax({
+                    type: "GET",
+                    url: "{{ route('campsite.show') }}",
+                    data: {
+                        "id": $(this).data('id')
+                    },
+                    dataType: "JSON",
+                    success: function(res) {
+                        console.log(res);
+                        $('#campsiteEditModal').modal('show');
+                        $('#campsiteEditForm [name="campsites_code"]').val(res.campsite_code);
+                        $('#campsiteEditForm [name="campsites_name"]').val(res.campsite_name);
+                        $('#campsiteEditForm [name="weekday_price"]').val(res.weekday_price);
+                        $('#campsiteEditForm [name="weekend_price"]').val(res.weekend_price);
+                        $('#campsiteEditForm [name="description"]').val(res.description);
+                    }
+                });
+            });
+        });
+    </script>
 @endpush
 
 @section('content')
@@ -41,37 +66,66 @@
     <div class="card">
         <div class="card-header d-flex flex-wrap align-items-center justify-content-between gap-3">
             <div class="d-flex flex-wrap align-items-center gap-3">
-                <select class="form-select form-select-sm w-auto">
-                    <option>Satatus</option>
-                    <option>Paid</option>
-                    <option>Pending</option>
-                </select>
-                <a href="#" class="btn btn-sm btn-primary-600"><i class="ri-add-line"></i> Create
-                    campsite</a>
+                <button class="btn btn-sm btn-primary-600" data-bs-toggle="modal" data-bs-target="#campsiteAddModal"><i
+                        class="ri-add-line"></i> Create
+                    Campsite</button>
             </div>
         </div>
-        <div class="card-body">
+        <div class="card-body" style="overflow-x: auto;">
             <table class="table bordered-table mb-0">
                 <thead>
                     <tr>
-                        <th scope="col">
-                            <div class="form-check style-check d-flex align-items-center">
-                                <input class="form-check-input" type="checkbox" value="" id="checkAll">
-                                <label class="form-check-label" for="checkAll">
-                                    S.L
-                                </label>
-                            </div>
-                        </th>
                         <th scope="col">Campsite Code</th>
                         <th scope="col">Campsite Name</th>
                         <th scope="col">Weekday Price</th>
-                        <th scope="col">Weekly Price</th>
+                        <th scope="col">Weekend Price</th>
                         <th scope="col">Description</th>
                         <th scope="col">Create at</th>
                         <th scope="col">Upload at</th>
+                        <th scope="col">Action</th>
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach ($datas as $data)
+                        <tr>
+                            <td>
+                                {{ $data->campsite_code }}
+                            </td>
+                            <td>
+                                {{ $data->campsite_name }}
+                            </td>
+                            <td>
+                                {{ $data->weekday_price }}
+                            </td>
+                            <td>
+                                {{ $data->weekend_price }}
+                            </td>
+                            <td>
+                                {{ $data->description }}
+                            </td>
+                            <td>
+                                {{ $data->created_at }}
+                            </td>
+                            <td>
+                                {{ $data->updated_at }}
+                            </td>
+                            <td>
+                                <div class="card-body p-24">
+                                    <div class="d-flex flex-wrap align-items-center gap-3">
+                                        <button type="button"
+                                            class="btn btn-warning-600 radius-8 p-20 w-20-px h-20-px d-flex align-items-center justify-content-center gap-2 bg-success btn-edit"
+                                            data-id="{{ $data->campsite_code }}">
+                                            <iconify-icon icon="mdi:edit" class="text-xl"></iconify-icon>
+                                        </button>
+                                        <a href="{{ route('campsite.destroy', ['id' => $data->campsite_code]) }}"
+                                            class="btn btn-warning-600 radius-8 p-20 w-20-px h-20-px d-flex align-items-center justify-content-center gap-2 bg-red">
+                                            <iconify-icon icon="mdi:delete-outline" class="text-xl"></iconify-icon>
+                                        </a>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
 
@@ -104,4 +158,5 @@
             </div>
         </div>
     </div>
+    @include('admin.pages.campsite.modal-campsite')
 @endsection

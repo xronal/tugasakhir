@@ -12,6 +12,12 @@ class PackageAdminController extends Controller
         $result['datas'] = Package::all();
         return view('admin.pages.package.index', $result);
         // dd(Package::all());
+
+    }
+
+    public function addpackage()
+    {
+        return view('admin.pages.package.add-package');
     }
 
     public function store(Request $request)

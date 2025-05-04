@@ -1,7 +1,7 @@
 @extends('admin.layout.apps')
 
 @section('title')
-    Admin Dashboard
+    Login
 @endsection
 
 @push('after-main-style')
@@ -48,6 +48,19 @@
                 <img src="{{ asset('landing-page/images/logo.webp') }}" alt="">
             </div>
         </div>
+        @if (session()->has('success'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ session(success) }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
+
+        @if (session()->has('loginError'))
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                {{ session('loginError') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
         <div class="auth-right py-32 px-24 d-flex flex-column justify-content-center">
             <div class="max-w-464-px mx-auto w-100">
                 <div>
@@ -60,19 +73,26 @@
                         <span class="icon top-50 translate-middle-y">
                             <iconify-icon icon="mage:email"></iconify-icon>
                         </span>
-                        <input type="email" class="form-control h-56-px bg-neutral-50 radius-12" placeholder="Email">
+                        <input type="email" name="email" id="email"
+                            class="form-control h-56-px bg-neutral-50 radius-12 @error('email') is-invalid @enderror"
+                            placeholder="Email" autofocus required value="{{ old('email') }}">
+                        @error('email')
+                            <div class="ivalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
                     </div>
                     <div class="position-relative mb-20">
                         <div class="icon-field">
                             <span class="icon top-50 translate-middle-y">
                                 <iconify-icon icon="solar:lock-password-outline"></iconify-icon>
                             </span>
-                            <input type="password" class="form-control h-56-px bg-neutral-50 radius-12" id="your-password"
-                                placeholder="Password">
+                            <input type="password" name="password" class="form-control h-56-px bg-neutral-50 radius-12"
+                                id="password" placeholder="Password" required>
                         </div>
                         <span
                             class="toggle-password ri-eye-line cursor-pointer position-absolute end-0 top-50 translate-middle-y me-16 text-secondary-light"
-                            data-toggle="#your-password"></span>
+                            data-toggle="#password"></span>
                     </div>
                     <div class="">
                         <div class="d-flex justify-content-between gap-2">
@@ -81,7 +101,8 @@
                                     id="remeber">
                                 <label class="form-check-label" for="remeber">Remember me </label>
                             </div>
-                            <a href="{{ route('password') }}" class="text-primary-600 fw-medium">Forgot Password?</a>
+                            <a href="{{ route('forgot-password') }}" class="text-primary-600 fw-medium">Forgot
+                                Password?</a>
                         </div>
                     </div>
 
