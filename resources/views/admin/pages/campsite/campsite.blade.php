@@ -67,8 +67,8 @@
         <div class="card-header d-flex flex-wrap align-items-center justify-content-between gap-3">
             <div class="d-flex flex-wrap align-items-center gap-3">
                 <button class="btn btn-sm btn-primary-600" data-bs-toggle="modal" data-bs-target="#campsiteAddModal"><i
-                        class="ri-add-line"></i> Create
-                    Campsite</button>
+                        class="ri-add-line"></i> Create Campsite</button>
+
             </div>
         </div>
         <div class="card-body" style="overflow-x: auto;">
@@ -128,34 +128,35 @@
                     @endforeach
                 </tbody>
             </table>
-
-            <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mt-24">
-                <span>Showing 1 to 10 of 12 entries</span>
-                <ul class="pagination d-flex flex-wrap align-items-center gap-2 justify-content-center">
-                    <li class="page-item">
-                        <a class="page-link text-secondary-light fw-medium radius-4 border-0 px-10 py-10 d-flex align-items-center justify-content-center h-32-px w-32-px bg-base"
-                            href="javascript:void(0)"><iconify-icon icon="ep:d-arrow-left"
-                                class="text-xl"></iconify-icon></a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link bg-primary-600 text-white fw-medium radius-4 border-0 px-10 py-10 d-flex align-items-center justify-content-center h-32-px w-32-px"
-                            href="javascript:void(0)">1</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link bg-primary-50 text-secondary-light fw-medium radius-4 border-0 px-10 py-10 d-flex align-items-center justify-content-center h-32-px w-32-px"
-                            href="javascript:void(0)">2</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link bg-primary-50 text-secondary-light fw-medium radius-4 border-0 px-10 py-10 d-flex align-items-center justify-content-center h-32-px w-32-px"
-                            href="javascript:void(0)">3</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link text-secondary-light fw-medium radius-4 border-0 px-10 py-10 d-flex align-items-center justify-content-center h-32-px w-32-px bg-base"
-                            href="javascript:void(0)"> <iconify-icon icon="ep:d-arrow-right" class="text-xl"></iconify-icon>
-                        </a>
-                    </li>
-                </ul>
-            </div>
+            </form>
+            {{-- <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mt-24">
+                    <span>Showing 1 to 10 of 12 entries</span>
+                    <ul class="pagination d-flex flex-wrap align-items-center gap-2 justify-content-center">
+                        <li class="page-item">
+                            <a class="page-link text-secondary-light fw-medium radius-4 border-0 px-10 py-10 d-flex align-items-center justify-content-center h-32-px w-32-px bg-base"
+                                href="javascript:void(0)"><iconify-icon icon="ep:d-arrow-left"
+                                    class="text-xl"></iconify-icon></a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link bg-primary-600 text-white fw-medium radius-4 border-0 px-10 py-10 d-flex align-items-center justify-content-center h-32-px w-32-px"
+                                href="javascript:void(0)">1</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link bg-primary-50 text-secondary-light fw-medium radius-4 border-0 px-10 py-10 d-flex align-items-center justify-content-center h-32-px w-32-px"
+                                href="javascript:void(0)">2</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link bg-primary-50 text-secondary-light fw-medium radius-4 border-0 px-10 py-10 d-flex align-items-center justify-content-center h-32-px w-32-px"
+                                href="javascript:void(0)">3</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link text-secondary-light fw-medium radius-4 border-0 px-10 py-10 d-flex align-items-center justify-content-center h-32-px w-32-px bg-base"
+                                href="javascript:void(0)"> <iconify-icon icon="ep:d-arrow-right"
+                                    class="text-xl"></iconify-icon>
+                            </a>
+                        </li>
+                    </ul>
+                </div> --}}
         </div>
     </div>
     @include('admin.pages.campsite.modal-campsite')

@@ -52,7 +52,7 @@
             <div class="max-w-464-px mx-auto w-100">
                 <div>
                     <h4 class="mb-12">Sign Up to your Account</h4>
-                    <p class="mb-32 text-secondary-light text-lg">Welcome back! please enter your detail</p>
+                    <p class="mb-32 text-secondary-light text-lg">Enter Your Detail Please!</p>
                 </div>
                 <form action="{{ route('register') }}" method="POST">
                     @csrf
@@ -60,9 +60,20 @@
                         <span class="icon top-50 translate-middle-y">
                             <iconify-icon icon="f7:person"></iconify-icon>
                         </span>
+                        <input type="text" name="username"
+                            class="form-control h-56-px bg-neutral-50 radius-12 @error('username') is-invalid @enderror"
+                            placeholder="Username" autofocus required value="{{ old('username') }}">
+                        @error('username')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="icon-field mb-16">
+                        <span class="icon top-50 translate-middle-y">
+                            <iconify-icon icon="f7:person"></iconify-icon>
+                        </span>
                         <input type="text" name="name"
                             class="form-control h-56-px bg-neutral-50 radius-12 @error('name') is-invalid @enderror"
-                            placeholder="Full Name" autofocus required value="{{ old('name') }}">
+                            placeholder="Full Name" required value="{{ old('name') }}">
                         @error('name')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror

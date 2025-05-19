@@ -118,34 +118,56 @@
                     @endforeach
                 </tbody>
             </table>
-
+            {{-- <div class="mt-3">
+                {{ $datas->links() }}
+            </div> --}}
             <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mt-24">
-                <span>Showing 1 to 10 of 12 entries</span>
+                <span>
+                    Showing {{ $datas->firstItem() }} to {{ $datas->lastItem() }} of {{ $datas->total() }} entries
+                </span>
                 <ul class="pagination d-flex flex-wrap align-items-center gap-2 justify-content-center">
-                    <li class="page-item">
-                        <a class="page-link text-secondary-light fw-medium radius-4 border-0 px-10 py-10 d-flex align-items-center justify-content-center h-32-px w-32-px bg-base"
-                            href="javascript:void(0)"><iconify-icon icon="ep:d-arrow-left"
-                                class="text-xl"></iconify-icon></a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link bg-primary-600 text-white fw-medium radius-4 border-0 px-10 py-10 d-flex align-items-center justify-content-center h-32-px w-32-px"
-                            href="javascript:void(0)">1</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link bg-primary-50 text-secondary-light fw-medium radius-4 border-0 px-10 py-10 d-flex align-items-center justify-content-center h-32-px w-32-px"
-                            href="javascript:void(0)">2</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link bg-primary-50 text-secondary-light fw-medium radius-4 border-0 px-10 py-10 d-flex align-items-center justify-content-center h-32-px w-32-px"
-                            href="javascript:void(0)">3</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link text-secondary-light fw-medium radius-4 border-0 px-10 py-10 d-flex align-items-center justify-content-center h-32-px w-32-px bg-base"
-                            href="javascript:void(0)"> <iconify-icon icon="ep:d-arrow-right" class="text-xl"></iconify-icon>
-                        </a>
-                    </li>
+                    {{-- Tombol Previous --}}
+                    @if ($datas->onFirstPage())
+                        <li class="page-item disabled">
+                            <a class="page-link bg-base text-secondary-light">
+                                <iconify-icon icon="ep:d-arrow-left" class="text-xl"></iconify-icon>
+                            </a>
+                        </li>
+                    @else
+                        <li class="page-item">
+                            <a class="page-link bg-base text-secondary-light" href="{{ $datas->previousPageUrl() }}">
+                                <iconify-icon icon="ep:d-arrow-left" class="text-xl"></iconify-icon>
+                            </a>
+                        </li>
+                    @endif
+
+                    {{-- Nomor Halaman --}}
+                    @for ($i = 1; $i <= $datas->lastPage(); $i++)
+                        <li class="page-item">
+                            <a class="page-link
+                    {{ $datas->currentPage() == $i ? 'bg-primary-600 text-white' : 'bg-primary-50 text-secondary-light' }}
+                    fw-medium radius-4 border-0 px-10 py-10 d-flex align-items-center justify-content-center h-32-px w-32-px"
+                                href="{{ $datas->url($i) }}">{{ $i }}</a>
+                        </li>
+                    @endfor
+
+                    {{-- Tombol Next --}}
+                    @if ($datas->hasMorePages())
+                        <li class="page-item">
+                            <a class="page-link bg-base text-secondary-light" href="{{ $datas->nextPageUrl() }}">
+                                <iconify-icon icon="ep:d-arrow-right" class="text-xl"></iconify-icon>
+                            </a>
+                        </li>
+                    @else
+                        <li class="page-item disabled">
+                            <a class="page-link bg-base text-secondary-light">
+                                <iconify-icon icon="ep:d-arrow-right" class="text-xl"></iconify-icon>
+                            </a>
+                        </li>
+                    @endif
                 </ul>
             </div>
+
         </div>
     </div>
 

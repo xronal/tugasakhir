@@ -1,107 +1,89 @@
-@extends('admin.layout.app')
-
-@section('title')
-    Admin Dashboard
-@endsection
-
-@push('after-main-style')
-    <link rel="stylesheet" href="{{ asset('wowdash/css/remixicon.css') }}">
-    <link rel="stylesheet" href="{{ asset('wowdash/css/lib/apexcharts.css') }}">
-    <link rel="stylesheet" href="{{ asset('wowdash/css/lib/dataTables.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('wowdash/css/lib/editor-katex.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('wowdash/css/lib/editor.atom-one-dark.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('wowdash/css/lib/editor.quill.snow.css') }}">
-    <link rel="stylesheet" href="{{ asset('wowdash/css/lib/flatpickr.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('wowdash/css/lib/full-calendar.css') }}">
-    <link rel="stylesheet" href="{{ asset('wowdash/css/lib/jquery-jvectormap-2.0.5.css') }}">
-@endpush
-
-@push('after-main-script')
-    <script src="{{ asset('wowdash/js/lib/apexcharts.min.js') }}"></script>
-    <script src="{{ asset('wowdash/js/lib/dataTables.min.js') }}"></script>
-    <script src="{{ asset('wowdash/js/lib/jquery-jvectormap-2.0.5.min.js') }}"></script>
-    <script src="{{ asset('wowdash/js/lib/jquery-jvectormap-world-mill-en.js') }}"></script>
-@endpush
-
-@section('content')
-    <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-24">
-        <h6 class="fw-semibold mb-0">Package Detail</h6>
-        <ul class="d-flex align-items-center gap-2">
-            <li class="fw-medium">
-                <a href="index.html" class="d-flex align-items-center gap-1 hover-text-primary">
-                    <iconify-icon icon="solar:home-smile-angle-outline" class="icon text-lg"></iconify-icon>
-                    Dashboard
-                </a>
-            </li>
-            <li>-</li>
-            <li class="fw-medium">Package Detail</li>
-        </ul>
-    </div>
-
-    <div class="card">
-        <div class="card-header d-flex flex-wrap align-items-center justify-content-between gap-3">
-            <div class="d-flex flex-wrap align-items-center gap-3">
-                <select class="form-select form-select-sm w-auto">
-                    <option>Satatus</option>
-                    <option>Paid</option>
-                    <option>Pending</option>
-                </select>
-                <a href="#" class="btn btn-sm btn-primary-600"><i class="ri-add-line"></i> Create
-                    Package Detail</a>
+{{-- Modal Detail --}}
+<div class="modal fade" id="packagedetailModal" tabindex="-1" aria-labelledby="packagedetailModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog modal-dialog-centered">
+        <div class="modal-content radius-16 bg-base">
+            <div class="modal-header py-16 px-24 border border-top-0 border-start-0 border-end-0">
+                <h1 class="modal-title fs-5" id="packagedetailModalLabel">Package Detail</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-        </div>
-        <div class="card-body">
-            <table class="table bordered-table mb-0">
-                <thead>
-                    <tr>
-                        <th scope="col">
-                            <div class="form-check style-check d-flex align-items-center">
-                                <input class="form-check-input" type="checkbox" value="" id="checkAll">
-                                <label class="form-check-label" for="checkAll">
-                                    S.L
-                                </label>
-                            </div>
-                        </th>
-                        <th scope="col">ID</th>
-                        <th scope="col">Package Code</th>
-                        <th scope="col">Item Code</th>
-                        <th scope="col">Price</th>
-                        <th scope="col">Quantity</th>
-                        <th scope="col">Create at</th>
-                        <th scope="col">Upload at</th>
-                    </tr>
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
+            <div class="modal-body p-24">
+                <form action="{{ route('package.index') }}" method="GET">
+                    @csrf
+                    <div class="row">
+                        <div class="col-12 mb-20">
+                            <label class="form-label fw-semibold text-primary-light text-sm mb-8">Package Code :
+                            </label>
+                            <input type="text" class="form-control radius-8" value="{{ $data->package_code }}"
+                                readonly>
+                        </div>
+                        <div class="col-12 mb-20">
+                            <label class="form-label fw-semibold text-primary-light text-sm mb-8">Package Name :
+                            </label>
+                            <input type="text" class="form-control radius-8" value="{{ $data->package_name }}"
+                                readonly>
+                        </div>
+                        <div class="col-12 mb-20">
+                            <label class="form-label fw-semibold text-primary-light text-sm mb-8">Campsite Code :
+                            </label>
+                            @foreach ($campsites as $d)
+                                @if ($data->campsite_code == $d->campsite_code)
+                                    <input type="text" class="form-control radius-8" value="{{ $d->campsite_name }}"
+                                        readonly>
+                                @endif
+                            @endforeach
+                        </div>
+                        <div class="col-12 mb-20">
+                            <label class="form-label fw-semibold text-primary-light text-sm mb-8">weekday Price :
+                            </label>
+                            <input type="text" class="form-control radius-8" value="{{ $data->weekday_price }}"
+                                readonly>
+                        </div>
+                        <div class="col-12 mb-20">
+                            <label class="form-label fw-semibold text-primary-light text-sm mb-8">weekend Price :
+                            </label>
+                            <input type="text" class="form-control radius-8" value="{{ $data->weekend_price }}"
+                                readonly>
+                        </div>
 
-            <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mt-24">
-                <span>Showing 1 to 10 of 12 entries</span>
-                <ul class="pagination d-flex flex-wrap align-items-center gap-2 justify-content-center">
-                    <li class="page-item">
-                        <a class="page-link text-secondary-light fw-medium radius-4 border-0 px-10 py-10 d-flex align-items-center justify-content-center h-32-px w-32-px bg-base"
-                            href="javascript:void(0)"><iconify-icon icon="ep:d-arrow-left"
-                                class="text-xl"></iconify-icon></a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link bg-primary-600 text-white fw-medium radius-4 border-0 px-10 py-10 d-flex align-items-center justify-content-center h-32-px w-32-px"
-                            href="javascript:void(0)">1</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link bg-primary-50 text-secondary-light fw-medium radius-4 border-0 px-10 py-10 d-flex align-items-center justify-content-center h-32-px w-32-px"
-                            href="javascript:void(0)">2</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link bg-primary-50 text-secondary-light fw-medium radius-4 border-0 px-10 py-10 d-flex align-items-center justify-content-center h-32-px w-32-px"
-                            href="javascript:void(0)">3</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link text-secondary-light fw-medium radius-4 border-0 px-10 py-10 d-flex align-items-center justify-content-center h-32-px w-32-px bg-base"
-                            href="javascript:void(0)"> <iconify-icon icon="ep:d-arrow-right" class="text-xl"></iconify-icon>
-                        </a>
-                    </li>
-                </ul>
+                        <table class="table bordered-table mb-0" id="package-table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Item Code</th>
+                                    <th scope="col">Quantity</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($details as $detail)
+                                    <tr>
+                                        <td>
+                                            <select class="form-select" aria-label="Default select example"
+                                                name="item_code[]">
+                                                <option selected>Open this select menu</option>
+                                                @foreach ($items as $item)
+                                                    <option value="{{ $item->item_code }}"
+                                                        {{ $detail->item_code == $item->item_code ? 'selected' : '' }}>
+                                                        {{ $item->item_name }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                        </td>
+                                        <td><input type="text" class="form-control" name="quantity[]"
+                                                value="{{ $detail->qty }}" readonly></td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+
+                        <div class="d-flex align-items-center justify-content-center gap-3 mt-24">
+                            <button type="button"
+                                class="border border-danger-600 bg-hover-danger-200 text-danger-600 text-md px-40 py-11 radius-8"
+                                data-bs-dismiss="modal">
+                                Back
+                            </button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
-@endsection
+</div>

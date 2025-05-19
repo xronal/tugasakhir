@@ -2992,7 +2992,7 @@ input[type="button"].btn-block {
 }
 
 .dropdown-toggle::after {
-  display: inline-block;
+  display: inline;
   width: 0;
   height: 0;
   margin-left: 0.255em;

@@ -5,6 +5,7 @@ File Name: responsive.css
 @media (min-width: 1200px) and (max-width: 1342px) {}
 
 @media (min-width: 992px) and (max-width: 1199px) {
+    
     .slider_main {
        padding-top: 9%;
     }
@@ -37,6 +38,16 @@ File Name: responsive.css
     ul.social_icon li a i {
         font-size: 16px;
     }
+    .dropdown{
+
+        margin-top: 25px;
+   }
+
+   .maps{
+    width: 100%;
+    height: 100%;
+   }
+
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
@@ -101,6 +112,16 @@ File Name: responsive.css
     ul.social_icon {
         padding-top: 15px;
     }
+    .dropdown{
+
+        margin-top: 25px;
+   }
+
+    .maps{
+        width: 100%;
+        height: 100%;
+       }
+
 }
 
 @media (min-width: 576px) and (max-width: 767px) {
@@ -202,6 +223,15 @@ File Name: responsive.css
     .d_none {
         display: none;
     }
+    .dropdown{
+
+        margin-top: 25px;
+   }
+
+    .maps{
+        width: 100%;
+        height: 100%;
+       }
 }
 
 @media (max-width: 575px) {
@@ -266,8 +296,8 @@ File Name: responsive.css
         padding-left: 0px;
     }
     .testimonial .titlepage {
-        padding-bottom: [0;
-        ]
+        padding-bottom: 0;
+        
     }
     .testimonial {
         padding: 90px 0 10px 0;
@@ -340,4 +370,13 @@ File Name: responsive.css
     .d_none {
         display: none;
     }
+    .dropdown{
+
+        margin-top: 25px;
+   }
+
+    .maps{
+        width: 100%;
+        height: 100%;
+       }
 }

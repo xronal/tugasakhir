@@ -81,12 +81,34 @@
                         </div>
                     </nav>
                 </div>
-                <div class="col-md-2">
-                    <ul class="email text_align_right">
-                        <li class="d_none"><a href="{{ route('login') }}"><i class="fa fa-user"
-                                    aria-hidden="true"></i><span class="txt-login">Login</span></a></li>
-                    </ul>
-                </div>
+                @auth
+                    <div class="dropdown">
+                        <button class="btn text-primary-600 hover-text-primary px-18 py-11 dropdown-toggle toggle-icon"
+                            type="button" data-bs-toggle="dropdown" aria-expanded="false"> <i class="fa fa-user"
+                                aria-hidden="true"></i></button>
+                        <ul class="dropdown-menu">
+                            <li><a
+                                    class="dropdown-item px-16 py-8 rounded text-secondary-light bg-hover-neutral-200 text-hover-neutral-900">Welcome,
+                                    {{ auth()->user()->name }} </a></li>
+                            <li><a class="dropdown-item px-16 py-8 rounded text-secondary-light bg-hover-neutral-200 text-hover-neutral-900"
+                                    href="{{ route('dashboarduser') }}">Profil</a></li>
+                            <li>
+                                <form action="/logout" method="POST">
+                                    @csrf
+                                    <button type="submit" class="dropdown-item">Logout</button>
+                                </form>
+                            </li>
+                        </ul>
+                    </div>
+                @else
+                    <div class="col-md-2">
+                        <ul class="email text_align_right">
+                            <li class="d_none "><a href="{{ route('login') }}"><i class="fa fa-user"
+                                        aria-hidden="true"></i><span class="txt-login">Login</span></a>
+                            </li>
+                        </ul>
+                    </div>
+                @endauth
             </div>
         </div>
     </div>
@@ -111,19 +133,34 @@
                                             <div class="col-md-5">
                                                 <div class="board">
                                                     <h3>
-                                                        Taman Pinus Campervan park
+                                                        Taman Pinus Campervan Park
                                                     </h3>
-                                                    <div class="link_btn">
-                                                        <a class="btn btn-primary" href="Javascript:void(0)">Reservasi
-                                                            Disini</a>
-                                                    </div>
+                                                    @auth
+                                                        <div class="link_btn">
+                                                            <a class="btn btn-primary" href="/user/package">Reservasi
+                                                                Disini</a>
+                                                        </div>
+                                                    @endauth
+                                                    @guest
+                                                        <div class="link_btn">
+                                                            <a class="btn btn-primary" href="/login">Reservasi
+                                                                Disini</a>
+                                                        </div>
+                                                    @endguest
                                                 </div>
                                             </div>
                                             <div class="col-md-7">
-                                                <div class="banner_img">
-                                                    <figure><img class="img_responsive"
-                                                            src="{{ asset('landing-page/images/awal.webp') }}">
-                                                    </figure>
+                                                <div class="sliderpr">
+                                                    <div class="wrapper">
+                                                        <img src="{{ asset('landing-page/images/sakt1.webp') }}">
+                                                        <img src="{{ asset('landing-page/images/sak2.webp') }}">
+                                                        <img src="{{ asset('landing-page/images/sakt3.webp') }}">
+                                                        <img src="{{ asset('landing-page/images/sakt4.webp') }}">
+                                                        <img src="{{ asset('landing-page/images/sakt5.webp') }}">
+                                                        <img src="{{ asset('landing-page/images/sakt6.webp') }}">
+                                                        <img src="{{ asset('landing-page/images/sakt7.webp') }}">
+                                                        <img src="{{ asset('landing-page/images/sakt8.webp') }}">
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -450,7 +487,7 @@
                                 <div class="col-md-8">
                                     <div class="row border_left">
                                         <div class="col-md-12">
-                                            <iframe
+                                            <iframe class="maps"
                                                 src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15807.6573856854!2d112.5220532!3d-7.904017!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7887e3735eaca9%3A0xa6b9aff595e38f88!2sTaman%20Pinus%20Campervan%20Park!5e0!3m2!1sen!2sid!4v1739683363698!5m2!1sen!2sid"
                                                 width="600" height="250" style="border:0;" allowfullscreen=""
                                                 loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
@@ -482,6 +519,7 @@
                 <script>
                     AOS.init();
                 </script>
+                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

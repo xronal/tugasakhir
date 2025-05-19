@@ -47,8 +47,8 @@
                     <td>
                         <select class="form-select" aria-label="Default select example" name="item_code[]">
                             <option selected>Open this select menu</option>
-                            @foreach ($items as $item)
-                                <option value="{{ $item->item_code }}">{{ $item->item_name }}
+                            @foreach ($items as $data)
+                                <option value="{{ $data->item_code }}">{{ $data->item_name }}
                                 </option>
                             @endforeach
                         </select>
@@ -89,30 +89,30 @@
             </div>
         </div> --}}
         <div class="card-body">
-            <form action="{{ route('package.update') }}" method="POST" id="PackageEditForm">
+            <form action="{{ route('package.store') }}" method="POST">
                 @csrf
                 <div class="row">
                     <div class="col-12 mb-20">
                         <label class="form-label fw-semibold text-primary-light text-sm mb-8">Package Code :
                         </label>
                         <input type="text" class="form-control radius-8" placeholder="Enter Package Code "
-                            name="package_code" readonly value="{{ $datas->package_code }}">
+                            name="package_code">
                     </div>
                     <div class="col-12 mb-20">
                         <label class="form-label fw-semibold text-primary-light text-sm mb-8">Package Name :
                         </label>
                         <input type="text" class="form-control radius-8" placeholder="Enter Item Name "
-                            name="package_name" value="{{ $datas->package_name }}">
+                            name="package_name">
                     </div>
                     <div class="col-12 mb-20">
                         <label class="form-label fw-semibold text-primary-light text-sm mb-8">Campsite Code :
                         </label>
+                        {{-- <input type="text" class="form-control radius-8" placeholder="Enter Campsite Code "
+                            name="campsite_code"> --}}
                         <select class="form-select" aria-label="Default select example" name="campsite_code">
-                            <option>Open this select menu</option>
-                            @foreach ($campsites as $d)
-                                <option value="{{ $d->campsite_code }}"
-                                    {{ $datas->campsite_code == $d->campsite_code ? 'selected' : '' }}>
-                                    {{ $d->campsite_name }}
+                            <option selected>Open this select menu</option>
+                            @foreach ($campsites as $data)
+                                <option value="{{ $data->campsite_code }}">{{ $data->campsite_name }}
                                 </option>
                             @endforeach
                         </select>
@@ -120,14 +120,14 @@
                     <div class="col-12 mb-20">
                         <label class="form-label fw-semibold text-primary-light text-sm mb-8">Weekday Price :
                         </label>
-                        <input type="text" class="form-control radius-8" placeholder="Enter weekday Price "
-                            name="weekday_price" value="{{ $datas->weekday_price }}">
+                        <input type="text" class="form-control radius-8" placeholder="Enter Weekday Price "
+                            name="weekday_price">
                     </div>
                     <div class="col-12 mb-20">
                         <label class="form-label fw-semibold text-primary-light text-sm mb-8">Weekend Price :
                         </label>
-                        <input type="text" class="form-control radius-8" placeholder="Enter weekend Price "
-                            name="weekend_price" value="{{ $datas->weekend_price }}">
+                        <input type="text" class="form-control radius-8" placeholder="Enter Weekend Price "
+                            name="weekend_price">
                     </div>
 
                     <table class="table bordered-table mb-0" id="package-table">
@@ -139,27 +139,10 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($details as $detail)
-                                <tr>
-                                    <td>
-                                        <select class="form-select" name="item_code[]">
-                                            <option selected>Open this select menu</option>
-                                            @foreach ($items as $item)
-                                                <option value="{{ $item->item_code }}"
-                                                    {{ $detail->item_code == $item->item_code ? 'selected' : '' }}>
-                                                    {{ $item->item_name }}
-                                                </option>
-                                            @endforeach
-                                        </select>
-                                    </td>
-                                    <td><input type="text" class="form-control" name="quantity[]"
-                                            value="{{ $detail->qty }}"></td>
-                                    <td><button type="button" class="btn btn-danger remove-row">Remove</button></td>
-                                </tr>
-                            @endforeach
                         </tbody>
                     </table>
                     <button id="add-row">Add Row</button>
+
                     <div class="d-flex align-items-center justify-content-center gap-3 mt-24">
                         <button type="button"
                             class="border border-danger-600 bg-hover-danger-200 text-danger-600 text-md px-40 py-11 radius-8"
@@ -174,4 +157,5 @@
                 </div>
             </form>
         </div>
+        {{-- @include('admin.pages.package.add-package') --}}
     @endsection

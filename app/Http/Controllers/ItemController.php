@@ -9,7 +9,7 @@ class ItemController extends Controller
 {
     public function index()
     {
-        $result['datas'] = Item::all();
+        $result['datas'] = Item::paginate(10);
         return view('admin.pages.item.item', $result);
         // dd(Item::all());
     }

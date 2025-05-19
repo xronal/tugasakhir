@@ -19,6 +19,7 @@ class RegisterController extends Controller
     {
         $validateData = $request->validate([
             'name' => 'required|max:255',
+            'username' => 'required|max:255|unique:users',
             'email' => 'required|email:dns|unique:users',
             'password' => 'required|min:7|max:255',
         ]);
@@ -27,6 +28,10 @@ class RegisterController extends Controller
 
         User::create($validateData);
 
-        return redirect('/login')->with('success', 'Registration successful! Please login');
+        $request = session();
+
+        session()->flash('success', 'Registration successful! Please login');
+
+        return redirect('/login');
     }
 }

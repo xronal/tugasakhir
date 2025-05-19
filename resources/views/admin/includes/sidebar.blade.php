@@ -51,15 +51,6 @@
                     <span>Package</span>
                 </a>
             </li>
-
-            <li>
-                <a href="{{ route('packagedetail') }}">
-                    <iconify-icon icon="hugeicons:start-up-02" class="menu-icon"></iconify-icon>
-                    <span>Package Detail</span>
-                </a>
-            </li>
-
-
             <li class="dropdown">
                 <a href="javascript:void(0)">
                     <iconify-icon icon="hugeicons:invoice-03" class="menu-icon"></iconify-icon>
@@ -91,13 +82,6 @@
                 <a href="{{ route('campsite.index') }}">
                     <iconify-icon icon="hugeicons:start-up-02" class="menu-icon"></iconify-icon>
                     <span>Campsite</span>
-                </a>
-            </li>
-
-            <li>
-                <a href="{{ route('campsitetrans') }}">
-                    <iconify-icon icon="hugeicons:start-up-02" class="menu-icon"></iconify-icon>
-                    <span>Campsite Transaction</span>
                 </a>
             </li>
 
@@ -137,21 +121,11 @@
                 </a>
             </li>
 
-            <li>
-                <a href="{{ route('addons') }}">
-                    <iconify-icon icon="hugeicons:start-up-02" class="menu-icon"></iconify-icon>
-                    <span>Transaction add-ons</span>
-                </a>
-            </li>
 
-            <li>
-                <a href="{{ route('personentrytrans') }}">
-                    <iconify-icon icon="hugeicons:start-up-02" class="menu-icon"></iconify-icon>
-                    <span>Transaction Person Entry</span>
-                </a>
-            </li>
-
-
+            <form action="/logout" method="POST">
+                @csrf
+                <button type="submit" class="dropdown-item"><strong>Logout</strong></button>
+            </form>
 
 
             {{-- <li class="sidebar-menu-group-title">Application</li>
