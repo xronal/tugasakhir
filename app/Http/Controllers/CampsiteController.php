@@ -36,7 +36,7 @@ class CampsiteController extends Controller
     {
         $campsite = Campsite::find($request->campsites_code);
         $campsite->campsite_name = $request->campsites_name;
-        $campsite->campsite_price = $request->weekday_price;
+        $campsite->weekday_price = $request->weekday_price;
         $campsite->weekend_price = $request->weekend_price;
         $campsite->description = $request->description;
         $campsite->save();

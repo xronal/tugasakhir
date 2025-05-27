@@ -28,17 +28,17 @@
                 console.log($(this).data('id'));
                 $.ajax({
                     type: "GET",
-                    url: "{{ route('item.show') }}",
+                    url: "{{ route('person.show') }}",
                     data: {
                         "id": $(this).data('id')
                     },
                     dataType: "JSON",
                     success: function(res) {
                         console.log(res);
-                        $('#itemEditModal').modal('show');
-                        $('#itemEditForm [name="item_code"]').val(res.item_code);
-                        $('#itemEditForm [name="item_name"]').val(res.item_name);
-                        $('#itemEditForm [name="item_price"]').val(res.item_price);
+                        $('#personEditModal').modal('show');
+                        $('#personEditForm [name="person_code"]').val(res.person_entry_code);
+                        $('#personEditForm [name="person_type"]').val(res.person_type);
+                        $('#personEditForm [name="price"]').val(res.price);
                     }
                 });
             });
@@ -48,24 +48,33 @@
 
 @section('content')
     <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-24">
-        <h6 class="fw-semibold mb-0">Item Table</h6>
+        <h6 class="fw-semibold mb-0">Person Entry</h6>
+        <ul class="d-flex align-items-center gap-2">
+            <li class="fw-medium">
+                <a href="index.html" class="d-flex align-items-center gap-1 hover-text-primary">
+                    <iconify-icon icon="solar:home-smile-angle-outline" class="icon text-lg"></iconify-icon>
+                    Dashboard
+                </a>
+            </li>
+            <li>-</li>
+            <li class="fw-medium">Person entry</li>
+        </ul>
     </div>
 
     <div class="card">
         <div class="card-header d-flex flex-wrap align-items-center justify-content-between gap-3">
             <div class="d-flex flex-wrap align-items-center gap-3">
-                <button class="btn btn-sm btn-primary-600" data-bs-toggle="modal" data-bs-target="#itemAddModal"><i
-                        class="ri-add-line"></i> Create
-                    Item</button>
+                <button class="btn btn-sm btn-primary-600" data-bs-toggle="modal" data-bs-target="#personAddModal"><i
+                        class="ri-add-line"></i> Create Person Entry</button>
             </div>
         </div>
         <div class="card-body">
             <table class="table bordered-table mb-0">
                 <thead>
                     <tr>
-                        <th scope="col">Item Code</th>
-                        <th scope="col">Item Name</th>
-                        <th scope="col">Item Price</th>
+                        <th scope="col">Person Entry Code</th>
+                        <th scope="col">Person Type</th>
+                        <th scope="col">Price</th>
                         <th scope="col">Create at</th>
                         <th scope="col">Upload at</th>
                         <th scope="col">Action</th>
@@ -75,13 +84,13 @@
                     @foreach ($datas as $data)
                         <tr>
                             <td>
-                                {{ $data->item_code }}
+                                {{ $data->person_entry_code }}
                             </td>
                             <td>
-                                {{ $data->item_name }}
+                                {{ $data->person_type }}
                             </td>
                             <td>
-                                {{ $data->item_price }}
+                                {{ $data->price }}
                             </td>
                             <td>
                                 {{ $data->created_at }}
@@ -94,10 +103,10 @@
                                     <div class="d-flex flex-wrap align-items-center gap-3">
                                         <button type="button"
                                             class="btn btn-warning-600 radius-8 p-20 w-20-px h-20-px d-flex align-items-center justify-content-center gap-2 bg-success btn-edit"
-                                            data-id="{{ $data->item_code }}">
+                                            data-id="{{ $data->person_entry_code }}">
                                             <iconify-icon icon="mdi:edit" class="text-xl"></iconify-icon>
                                         </button>
-                                        <a href="{{ route('item.destroy', ['id' => $data->item_code]) }}"
+                                        <a href="{{ route('person.destroy', ['id' => $data->person_entry_code]) }}"
                                             class="btn btn-warning-600 radius-8 p-20 w-20-px h-20-px d-flex align-items-center justify-content-center gap-2 bg-red">
                                             <iconify-icon icon="mdi:delete-outline" class="text-xl"></iconify-icon>
                                         </a>
@@ -108,55 +117,9 @@
                     @endforeach
                 </tbody>
             </table>
-            <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mt-24">
-                <span>
-                    Showing {{ $datas->firstItem() }} to {{ $datas->lastItem() }} of {{ $datas->total() }} entries
-                </span>
-                <ul class="pagination d-flex flex-wrap align-items-center gap-2 justify-content-center">
-                    {{-- Tombol Previous --}}
-                    @if ($datas->onFirstPage())
-                        <li class="page-item disabled">
-                            <a class="page-link bg-base text-secondary-light">
-                                <iconify-icon icon="ep:d-arrow-left" class="text-xl"></iconify-icon>
-                            </a>
-                        </li>
-                    @else
-                        <li class="page-item">
-                            <a class="page-link bg-base text-secondary-light" href="{{ $datas->previousPageUrl() }}">
-                                <iconify-icon icon="ep:d-arrow-left" class="text-xl"></iconify-icon>
-                            </a>
-                        </li>
-                    @endif
-
-                    {{-- Nomor Halaman --}}
-                    @for ($i = 1; $i <= $datas->lastPage(); $i++)
-                        <li class="page-item">
-                            <a class="page-link
-                    {{ $datas->currentPage() == $i ? 'bg-primary-600 text-white' : 'bg-primary-50 text-secondary-light' }}
-                    fw-medium radius-4 border-0 px-10 py-10 d-flex align-items-center justify-content-center h-32-px w-32-px"
-                                href="{{ $datas->url($i) }}">{{ $i }}</a>
-                        </li>
-                    @endfor
-
-                    {{-- Tombol Next --}}
-                    @if ($datas->hasMorePages())
-                        <li class="page-item">
-                            <a class="page-link bg-base text-secondary-light" href="{{ $datas->nextPageUrl() }}">
-                                <iconify-icon icon="ep:d-arrow-right" class="text-xl"></iconify-icon>
-                            </a>
-                        </li>
-                    @else
-                        <li class="page-item disabled">
-                            <a class="page-link bg-base text-secondary-light">
-                                <iconify-icon icon="ep:d-arrow-right" class="text-xl"></iconify-icon>
-                            </a>
-                        </li>
-                    @endif
-                </ul>
-            </div>
-
         </div>
     </div>
+    @include('admin.pages.person-entry.modal-personentry')
 
-    @include('admin.pages.item.modal-item')
+    {{-- Modal Edit --}}
 @endsection

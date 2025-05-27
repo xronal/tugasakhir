@@ -54,6 +54,61 @@ Route::controller(PackageAdminController::class)->prefix('/admin/package')->name
     Route::get('/addpackage', 'addpackage')->name('addpackage');
 });
 
+
+Route::controller(CampsiteController::class)->prefix('/admin/campsite')->name('campsite.')->group(function () {
+    Route::get('/', 'index')->name('index');
+    Route::post('/store', 'store')->name('store');
+    Route::get('/show', 'show')->name('show');
+    Route::post('/update', 'update')->name('update');
+    Route::get('/destroy', 'destroy')->name('destroy');
+});
+
+Route::controller(CustomerController::class)->prefix('/admin/customer')->name('customer.')->group(function () {
+    Route::get('/', 'index')->name('index');
+    Route::post('/', 'store')->name('store');
+    Route::get('/show', 'show')->name('show');
+    Route::post('/update', 'update')->name('update');
+    Route::get('/destroy', 'destroy')->name('destroy');
+    Route::get('/editcustomer', 'editcustomer')->name('edit');
+    Route::get('/addcustomer', 'addcustomer')->name('add');
+});
+
+Route::controller(ItemController::class)->prefix('/admin/item')->name('item.')->group(function () {
+    Route::get('/', 'index')->name('index');
+    Route::post('/', 'store')->name('store');
+    Route::get('/show', 'show')->name('show');
+    Route::post('/update', 'update')->name('update');
+    Route::get('/destroy', 'destroy')->name('destroy');
+});
+
+Route::controller(TransactionController::class)->prefix('/admin/transaction')->name('transaction.')->group(function () {
+    Route::get('/', 'index')->name('index');
+    Route::post('/', 'store')->name('store');
+    Route::get('/show', 'show')->name('show');
+    Route::post('/update', 'update')->name('update');
+    Route::get('/destroy', 'destroy')->name('destroy');
+    Route::get('/edittransaction', 'edittransaction')->name('edit');
+    Route::get('/addtransaction', 'addtransaction')->name('add');
+    Route::get('/getgroundbycampsite', 'getGroundByCampsite')->name('getGroundByCampsite');
+    Route::get('/getdetailcampsite', 'getDetailCampsite')->name('getDetailCampsite');
+});
+
+Route::controller(GroundDashboardController::class)->prefix('/admin/grounds')->name('grounds.')->group(function () {
+    Route::get('/', 'index')->name('index');
+    Route::post('/', 'store')->name('store');
+    Route::get('/show', 'show')->name('show');
+    Route::post('/update', 'update')->name('update');
+    Route::get('/destroy', 'destroy')->name('destroy');
+});
+
+Route::controller(PersonEntryController::class)->prefix('/admin/person-entry')->name('person.')->group(function () {
+    Route::get('/', 'index')->name('index');
+    Route::post('/', 'store')->name('store');
+    Route::get('/show', 'show')->name('show');
+    Route::post('/update', 'update')->name('update');
+    Route::get('/destroy', 'destroy')->name('destroy');
+});
+
 Route::get('/admin/invoice', [InvoiceController::class, 'showInvoiceForm'])->name('invoice');
 
 Route::get('/admin/user', [UserController::class, 'index'])->name('user');
@@ -72,42 +127,8 @@ Route::get('/admin/invoice/invoice-list', [InvoiceController::class, 'showInvoic
 
 Route::get('/admin/invoice/invoice-preview', [InvoiceController::class, 'showInvoiceDetailForm'])->name('invoicepreview');
 
-Route::get('/admin/transaction/addons-trans', [AddOnsTransactionController::class, 'index'])->name('addons');
-
-// Route::get('/admin/campsite/campsite', [CampsiteController::class, 'index'])->name('campsite');
-Route::controller(CampsiteController::class)->prefix('/admin/campsite/campsite')->name('campsite.')->group(function () {
-    Route::get('/', 'index')->name('index');
-    Route::post('/store', 'store')->name('store');
-    Route::get('/show', 'show')->name('show');
-    Route::post('/update', 'update')->name('update');
-    Route::get('/destroy', 'destroy')->name('destroy');
-    Route::delete('/bulk-delete', 'bulkDelete')->name('bulkDelete');
-});
-
-Route::get('/admin/customer/customer', [CustomerController::class, 'index'])->name('customer');
-
-Route::get('/admin/grounds/ground', [GroundDashboardController::class, 'index'])->name('grounddashboard');
-
-// Route::get('/admin/item/item', [ItemController::class, 'index'])->name('item');
-Route::controller(ItemController::class)->prefix('/admin/item')->name('item.')->group(function () {
-    Route::get('/', 'index')->name('index');
-    Route::post('/', 'store')->name('store');
-    Route::get('/show', 'show')->name('show');
-    Route::post('/update', 'update')->name('update');
-    Route::get('/destroy', 'destroy')->name('destroy');
-});
-
-Route::get('/admin/package/package-detail', [PackageDetailController::class, 'index'])->name('packagedetail');
-
-Route::get('/admin/customer/person-entry', [PersonEntryController::class, 'index'])->name('personentry');
-
-Route::get('/admin/transaction/transaction', [TransactionController::class, 'index'])->name('transaction');
-
 // Route Post
 Route::post('/admin/dashboard', [DashboardController::class, 'dashboard']);
-// Route::post('/admin/package', [PackageAdminController::class, 'package']);
-// Route::post('/admin/package/add-package', [PackageAdminController::class, 'addpackage']);
-// Route::post('/admin/package/addpackage', [PackageAdminController::class, 'addpackage']);
 Route::post('/register', [RegisterController::class, 'store']);
 Route::post('/login', [LoginController::class, 'login']);
 Route::post('/logout', [LoginController::class, 'logout']);
@@ -118,11 +139,3 @@ Route::post('/admin/invoice', [InvoiceController::class, 'invoice']);
 Route::post('/admin/user', [UserController::class, 'user']);
 Route::post('/admin/invoice/invoice-list', [InvoiceController::class, 'invoicelist']);
 Route::post('/admin/invoice/invoice-preview', [InvoiceController::class, 'invoicepreview']);
-Route::post('/admin/transaction/addons-trans', [AddOnsTransactionController::class, 'addons']);
-Route::post('/admin/campsite/campsite', [CampsiteController::class, 'campsite']);
-Route::post('/admin/customer/customer', [CustomerController::class, 'customer']);
-Route::post('/admin/grounds/ground', [GroundDashboardController::class, 'grounddashboard']);
-Route::post('/admin/item/item', [ItemController::class, 'item']);
-Route::post('/admin/package/package-detail', [PackageDetailController::class, 'packagedetail']);
-Route::post('/admin/customer/person-entry', [PersonEntryController::class, 'personentry']);
-Route::post('/admin/transaction/transaction', [TransactionController::class, 'transaction']);

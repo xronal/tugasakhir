@@ -25,88 +25,90 @@
 
 @section('content')
     <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-24">
-        <h6 class="fw-semibold mb-0">Transaction</h6>
-        <ul class="d-flex align-items-center gap-2">
-            <li class="fw-medium">
-                <a href="index.html" class="d-flex align-items-center gap-1 hover-text-primary">
-                    <iconify-icon icon="solar:home-smile-angle-outline" class="icon text-lg"></iconify-icon>
-                    Dashboard
-                </a>
-            </li>
-            <li>-</li>
-            <li class="fw-medium">Transaction</li>
-        </ul>
+        <h6 class="fw-semibold mb-0">Transaction Table</h6>
     </div>
 
     <div class="card">
         <div class="card-header d-flex flex-wrap align-items-center justify-content-between gap-3">
             <div class="d-flex flex-wrap align-items-center gap-3">
-                <select class="form-select form-select-sm w-auto">
-                    <option>Satatus</option>
-                    <option>Paid</option>
-                    <option>Pending</option>
-                </select>
-                <a href="#" class="btn btn-sm btn-primary-600"><i class="ri-add-line"></i> Create
-                    Transaction</a>
+                <button class="btn btn-sm btn-primary-600"><i class="ri-add-line"></i> <a
+                        href="{{ route('transaction.add') }}">Create
+                        Transaction</a></button>
             </div>
         </div>
-        <div class="card-body">
-            <table class="table bordered-table mb-0">
-                <thead>
-                    <tr>
-                        <th scope="col">
-                            <div class="form-check style-check d-flex align-items-center">
-                                <input class="form-check-input" type="checkbox" value="" id="checkAll">
-                                <label class="form-check-label" for="checkAll">
-                                    S.L
-                                </label>
-                            </div>
-                        </th>
-                        <th scope="col">Transaction Code</th>
-                        <th scope="col">Transaction Date</th>
-                        <th scope="col">Payment Date</th>
-                        <th scope="col">Payment Status</th>
-                        <th scope="col">Customer Code</th>
-                        <th scope="col">Check-in Date</th>
-                        <th scope="col">Check-out Date</th>
-                        <th scope="col">Total Campsite Price</th>
-                        <th scope="col">Total Addons Price</th>
-                        <th scope="col">Total People Entry Price</th>
-                        <th scope="col">Create at</th>
-                        <th scope="col">Upload at</th>
-                    </tr>
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
 
-            <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mt-24">
-                <span>Showing 1 to 10 of 12 entries</span>
-                <ul class="pagination d-flex flex-wrap align-items-center gap-2 justify-content-center">
-                    <li class="page-item">
-                        <a class="page-link text-secondary-light fw-medium radius-4 border-0 px-10 py-10 d-flex align-items-center justify-content-center h-32-px w-32-px bg-base"
-                            href="javascript:void(0)"><iconify-icon icon="ep:d-arrow-left"
-                                class="text-xl"></iconify-icon></a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link bg-primary-600 text-white fw-medium radius-4 border-0 px-10 py-10 d-flex align-items-center justify-content-center h-32-px w-32-px"
-                            href="javascript:void(0)">1</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link bg-primary-50 text-secondary-light fw-medium radius-4 border-0 px-10 py-10 d-flex align-items-center justify-content-center h-32-px w-32-px"
-                            href="javascript:void(0)">2</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link bg-primary-50 text-secondary-light fw-medium radius-4 border-0 px-10 py-10 d-flex align-items-center justify-content-center h-32-px w-32-px"
-                            href="javascript:void(0)">3</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link text-secondary-light fw-medium radius-4 border-0 px-10 py-10 d-flex align-items-center justify-content-center h-32-px w-32-px bg-base"
-                            href="javascript:void(0)"> <iconify-icon icon="ep:d-arrow-right" class="text-xl"></iconify-icon>
-                        </a>
-                    </li>
-                </ul>
+        <div class="card overflow-auto">
+            <div class="card-body">
+                <table class="table bordered-table mb-0">
+                    <thead>
+                        <tr>
+                            <th scope="col">Transaction Code</th>
+                            <th scope="col">Transaction Date</th>
+                            <th scope="col">Payment Date</th>
+                            <th scope="col">Payment Status</th>
+                            <th scope="col">Customer Name</th>
+                            <th scope="col">Check-in Date</th>
+                            <th scope="col">Check-out Date</th>
+                            {{-- <th scope="col">Total Campsite Price</th>
+                        <th scope="col">Total Addons Price</th>
+                        <th scope="col">Total People Entry Price</th> --}}
+                            <th scope="col">Create at</th>
+                            <th scope="col">Upload at</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($datas as $data)
+                            <tr>
+                                <td>
+                                    {{ $data->transaction_code }}
+                                </td>
+                                <td>
+                                    {{ $data->transaction_date }}
+                                </td>
+                                <td>
+                                    {{ $data->payment_date }}
+                                </td>
+                                <td>
+                                    {{ $data->payment_status }}
+                                </td>
+                                <td>
+                                    {{ $data->customer_name }}
+                                </td>
+                                <td>
+                                    {{ $data->checkin_date }}
+                                </td>
+                                <td>
+                                    {{ $data->checkout_date }}
+                                </td>
+                                <td>
+                                    {{ $data->created_at }}
+                                </td>
+                                <td>
+                                    {{ $data->updated_at }}
+                                </td>
+                                <td>
+                                    <div class="card-body p-24">
+                                        <div class="d-flex flex-wrap align-items-center gap-3">
+                                            <a class="btn btn-warning-600 radius-8 p-20 w-20-px h-20-px d-flex align-items-center justify-content-center gap-2 bg-success btn-edit"
+                                                href="{{ route('package.edit', ['id' => $data->package_code]) }}"><iconify-icon
+                                                    icon="mdi:edit" class="text-xl"></iconify-icon></a>
+                                            <a href="{{ route('package.destroy', ['id' => $data->package_code]) }}"
+                                                class="btn btn-warning-600 radius-8 p-20 w-20-px h-20-px d-flex align-items-center justify-content-center gap-2 bg-red">
+                                                <iconify-icon icon="mdi:delete-outline" class="text-xl"></iconify-icon>
+                                            </a>
+                                            <button type="button"
+                                                class="btn btn-warning-600 radius-8 p-20 w-20-px h-20-px d-flex align-items-center justify-content-center gap-2 bg-primary"
+                                                data-bs-toggle="modal"
+                                                data-bs-target="#transactiondetailModal-{{ $data->package_code }}"><iconify-icon
+                                                    icon="mdi:eye-outline" class="text-xl"></iconify-icon></button>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
         </div>
-    </div>
-@endsection
+    @endsection

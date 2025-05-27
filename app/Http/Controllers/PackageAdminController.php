@@ -18,8 +18,6 @@ class PackageAdminController extends Controller
         $result['items'] = Item::all();
         $result['details'] = PackageDetail::all();
         return view('admin.pages.package.index', $result);
-        // dd(Package::all());
-
     }
 
     public function addpackage()
@@ -36,13 +34,10 @@ class PackageAdminController extends Controller
         $result['campsites'] = Campsite::all();
         $result['items'] = Item::all();
         return view('admin.pages.package.edit-package', $result);
-        // $details = PackageDetail::where('package_code', $request->id)->get();
-        // dd($details->pluck('item_code', 'id'));
     }
 
     public function store(Request $request)
     {
-        // dd($request->all());
         DB::beginTransaction();
         try {
             $package = new Package();
@@ -53,10 +48,19 @@ class PackageAdminController extends Controller
             $package->weekend_price = $request->weekend_price;
             $package->save();
 
+            foreach ($request->item_code as $key => $value) {
+                $item = Item::find($value);
+                $package_detail = new PackageDetail();
+                $package_detail->package_code = $request->package_code;
+                $package_detail->item_code = $value;
+                $package_detail->qty = $request->quantity[$key];
+                $package_detail->price = $item->item_price;
+                $package_detail->save();
+            }
+
             DB::commit();
             return redirect()->route('package.index')->with('success', 'Package created successfully');
         } catch (\Exception $ex) {
-            //throw $th;
             echo $ex->getMessage();
             DB::rollBack();
         }
@@ -64,9 +68,15 @@ class PackageAdminController extends Controller
 
     public function show(Request $request)
     {
-        $result = Package::find($request->id);
-        return response()->json($result, 200);
+        $package = Package::find($request->id);
+        $details = PackageDetail::where('package_code', $request->id)->get();
+
+        return response()->json([
+            'package' => $package,
+            'details' => $details,
+        ]);
     }
+
 
     public function update(Request $request)
     {
@@ -93,7 +103,6 @@ class PackageAdminController extends Controller
             DB::commit();
             return redirect()->route('package.index')->with('success', 'Package updated successfully');
         } catch (\Exception $ex) {
-            //throw $th;
             echo $ex->getMessage();
             DB::rollBack();
         }

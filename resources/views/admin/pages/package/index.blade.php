@@ -15,30 +15,6 @@
     <script src="{{ asset('wowdash/js/lib/dataTables.min.js') }}"></script>
     <script src="{{ asset('wowdash/js/lib/jquery-jvectormap-2.0.5.min.js') }}"></script>
     <script src="{{ asset('wowdash/js/lib/jquery-jvectormap-world-mill-en.js') }}"></script>
-    <script>
-        // $(document).ready(function() {
-        //     $('.table .btn-edit').click(function(e) {
-        //         e.preventDefault();
-        //         console.log($(this).data('id'));
-        //         $.ajax({
-        //             type: "GET",
-        //             url: "{{ route('package.show') }}",
-        //             data: {
-        //                 "id": $(this).data('id')
-        //             },
-        //             dataType: "JSON",
-        //             success: function(res) {
-        //                 console.log(res);
-        //                 $('#PackageEditModal').modal('show');
-        //                 $('#PackageEditForm [name="package_code"]').val(res.package_code);
-        //                 $('#PackageEditForm [name="package_name"]').val(res.package_name);
-        //                 $('#PackageEditForm [name="campsite_code"]').val(res.campsite_code);
-        //                 $('#PackageEditForm [name="package_price"]').val(res.package_price);
-        //             }
-        //         });
-        //     });
-        // });
-    </script>
 @endpush
 
 @section('content')
@@ -58,14 +34,11 @@
     <div class="card">
         <div class="card-header d-flex flex-wrap align-items-center justify-content-between gap-3">
             <div class="d-flex flex-wrap align-items-center gap-3">
-                <button class="btn btn-sm btn-primary-600" data-bs-toggle="modal" data-bs-target="#PackageAddModal"><i
-                        class="ri-add-line"></i> <a href="{{ route('package.addpackage') }}">Create Package</a></button>
+                <button class="btn btn-sm btn-primary-600"><i class="ri-add-line"></i> <a
+                        href="{{ route('package.addpackage') }}">Create Package</a></button>
             </div>
         </div>
         <div class="card basic-data-table">
-            <div class="card-header">
-                <h5 class="card-title mb-0">Package Table</h5>
-            </div>
             <div class="card-body overflow-auto">
                 <table class="table bordered-table mb-0" id="dataTable" data-page-length='10'>
                     <thead>
@@ -116,9 +89,9 @@
                                             </a>
                                             <button type="button"
                                                 class="btn btn-warning-600 radius-8 p-20 w-20-px h-20-px d-flex align-items-center justify-content-center gap-2 bg-primary"
-                                                data-bs-toggle="modal" data-bs-target="#packagedetailModal"
-                                                data-id="{{ $data->package_code }}"><iconify-icon icon="mdi:eye-outline"
-                                                    class="text-xl"></iconify-icon></button>
+                                                data-bs-toggle="modal"
+                                                data-bs-target="#packagedetailModal-{{ $data->package_code }}"><iconify-icon
+                                                    icon="mdi:eye-outline" class="text-xl"></iconify-icon></button>
                                         </div>
                                     </div>
                                 </td>

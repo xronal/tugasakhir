@@ -15,30 +15,6 @@
     <script src="{{ asset('wowdash/js/lib/dataTables.min.js') }}"></script>
     <script src="{{ asset('wowdash/js/lib/jquery-jvectormap-2.0.5.min.js') }}"></script>
     <script src="{{ asset('wowdash/js/lib/jquery-jvectormap-world-mill-en.js') }}"></script>
-    {{-- <script>
-        $(document).ready(function() {
-            $('.table .btn-edit').click(function(e) {
-                e.preventDefault();
-                console.log($(this).data('id'));
-                $.ajax({
-                    type: "GET",
-                    url: "{{ route('package.show') }}",
-                    data: {
-                        "id": $(this).data('id')
-                    },
-                    dataType: "JSON",
-                    success: function(res) {
-                        console.log(res);
-                        $('#PackageEditModal').modal('show');
-                        $('#PackageEditForm [name="package_code"]').val(res.package_code);
-                        $('#PackageEditForm [name="package_name"]').val(res.package_name);
-                        $('#PackageEditForm [name="campsite_code"]').val(res.campsite_code);
-                        $('#PackageEditForm [name="package_price"]').val(res.package_price);
-                    }
-                });
-            });
-        });
-    </script> --}}
     <script>
         $('#add-row').click(function(e) {
             e.preventDefault();
@@ -82,12 +58,6 @@
         </ul>
     </div>
     <div class="card">
-        {{-- <div class="card-header d-flex flex-wrap align-items-center justify-content-between gap-3">
-            <div class="d-flex flex-wrap align-items-center gap-3">
-                <button class="btn btn-sm btn-primary-600" data-bs-toggle="modal" data-bs-target="#PackageAddModal"><i
-                        class="ri-add-line"></i> <a href="{{ route('addpackage') }}">Create Package</a></button>
-            </div>
-        </div> --}}
         <div class="card-body">
             <form action="{{ route('package.store') }}" method="POST">
                 @csrf
@@ -107,8 +77,6 @@
                     <div class="col-12 mb-20">
                         <label class="form-label fw-semibold text-primary-light text-sm mb-8">Campsite Code :
                         </label>
-                        {{-- <input type="text" class="form-control radius-8" placeholder="Enter Campsite Code "
-                            name="campsite_code"> --}}
                         <select class="form-select" aria-label="Default select example" name="campsite_code">
                             <option selected>Open this select menu</option>
                             @foreach ($campsites as $data)
@@ -157,5 +125,4 @@
                 </div>
             </form>
         </div>
-        {{-- @include('admin.pages.package.add-package') --}}
     @endsection

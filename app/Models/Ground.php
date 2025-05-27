@@ -5,15 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class PackageDetail extends Model
+class Ground extends Model
 {
     use HasFactory;
+    protected $primaryKey = 'ground_code';
     public $incrementing = false;
     protected $keyType = 'string';
-    protected $guarded = [];
-
-    public function PackageDetail()
-    {
-        return $this->hasMany(PackageDetail::class, 'item_code', 'package_code');
-    }
 }
