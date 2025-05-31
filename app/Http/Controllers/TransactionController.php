@@ -189,11 +189,11 @@ class TransactionController extends Controller
             $transaction->AddOnsTrans()->delete();
             $transaction->PersonEntryTrans()->delete();
             $transaction->delete();
-            return redirect()->back()->with('success', 'Package deleted successfully');
+            return redirect()->back()->with('success', 'Transaction deleted successfully');
         };
 
 
-        return redirect()->back()->with('Error', 'Package Cannot deleted successfully');
+        return redirect()->back()->with('Error', 'Transaction Cannot deleted successfully');
     }
 
     public function getGroundByCampsite(Request $request)

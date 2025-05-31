@@ -50,15 +50,15 @@
 
 {{-- Modal Edit --}}
 <div class="modal fade" id="itemEditModal" tabindex="-1" aria-labelledby="itemEditModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog modal-dialog-centered">
-        <div class="modal-content radius-16 bg-base">
-            <div class="modal-header py-16 px-24 border border-top-0 border-start-0 border-end-0">
-                <h1 class="modal-title fs-5" id="itemAddModalLabel">Edit Item</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body p-24">
-                <form action="{{ route('item.update') }}" method="POST" id="itemEditForm">
-                    @csrf
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <form action="{{ route('item.update') }}" method="POST" id="itemEditForm">
+                @csrf
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="itemAddModalLabel">Edit Admin Info</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
                     <div class="row">
                         <div class="col-12 mb-20">
                             <label class="form-label fw-semibold text-primary-light text-sm mb-8">Item Code : </label>
@@ -88,9 +88,9 @@
                             </button>
                         </div>
                     </div>
-                </form>
-            </div>
+            </form>
         </div>
     </div>
+</div>
 </div>
 {{-- Modal Edit End --}}

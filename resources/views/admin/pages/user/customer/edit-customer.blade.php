@@ -25,57 +25,62 @@
 
 @section('content')
     <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-24">
-        <h6 class="fw-semibold mb-0">Tambah Customer</h6>
+        <h6 class="fw-semibold mb-0">Edit Customer</h6>
     </div>
     <div class="card">
         <div class="card-body">
-            <form action="{{ route('customer.store') }}" method="POST">
+            <form action="{{ route('customer.update', $data->customer_code) }}" method="POST" id="editCustomerForm">
                 @csrf
                 <div class="row">
                     <div class="col-12 mb-20">
                         <label class="form-label fw-semibold text-primary-light text-sm mb-8">Customer Code :
                         </label>
                         <input type="text" class="form-control radius-8" placeholder="Enter Customer Code "
-                            name="customer_code">
+                            name="customer_code" readonly value="{{ $data->customer_code }}">
                     </div>
+
                     <div class="col-12 mb-20">
                         <label class="form-label fw-semibold text-primary-light text-sm mb-8">Customer Name :
                         </label>
-                        <select class="form-select" aria-label="Default select example" name="customer_name">
-                            <option selected>Pilih Customer Name</option>
-                            @foreach ($users as $data)
-                                <option value="{{ $data->name }}">{{ $data->name }}
-                                </option>
-                            @endforeach
-                        </select>
+                        <input type="text" class="form-control radius-8" placeholder="Enter Customer Name "
+                            name="customer_name" value="{{ $data->customer_name }}">
                     </div>
+
                     <div class="col-12 mb-20">
                         <label class="form-label fw-semibold text-primary-light text-sm mb-8">Nomor Telepon :
                         </label>
                         <input type="text" class="form-control radius-8" placeholder="Enter Nomor Telepon "
-                            name="phone">
+                            name="phone" value="{{ $data->phone }}">
+                    </div>
+                    <div class="col-12 mb-20">
+                        <label class="form-label fw-semibold text-primary-light text-sm mb-8">Nomor Telepon :
+                        </label>
+                        <input type="text" class="form-control radius-8" placeholder="Enter Email Customer "
+                            name="email" value="{{ $data->user->email }}">
                     </div>
                     <div class="col-12 mb-20">
                         <label class="form-label fw-semibold text-primary-light text-sm mb-8">User ID :
                         </label>
-                        <select class="form-select" aria-label="Default select example" name="user_id">
-                            <option selected>Pilih User ID</option>
-                            @foreach ($users as $data)
-                                <option value="{{ $data->id }}">{{ $data->id }}
-                                </option>
-                            @endforeach
-                        </select>
+                        <input type="text" class="form-control radius-8" placeholder="Enter User ID " name="user_id"
+                            value="{{ $data->user_id }}" readonly>
+                    </div>
+
+                    <div class="col-12 mb-20">
+                        <label class="form-label fw-semibold text-primary-light text-sm mb-8">Username :
+                        </label>
+                        <input type="text" class="form-control radius-8" placeholder="Enter User ID " name="username"
+                            value="{{ $data->user->username }}" readonly>
                     </div>
 
                     <div class="d-flex align-items-center justify-content-center gap-3 mt-24">
+                        <button type="submit"
+                            class="btn btn-primary border border-primary-600 text-md px-24 py-12 radius-8">
+                            Save
+                        </button>
                         <button type="button"
                             class="border border-danger-600 bg-hover-danger-200 text-danger-600 text-md px-40 py-11 radius-8"
                             onclick="history.back()">
                             Back
-                        </button>
-                        <button type="submit"
-                            class="btn btn-primary border border-primary-600 text-md px-24 py-12 radius-8">
-                            Save
                         </button>
                     </div>
                 </div>

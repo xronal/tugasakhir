@@ -13,22 +13,24 @@ class CustomerController extends Controller
     {
         $result['datas'] = Customer::paginate(10);
         $result['users'] = User::all();
-        return view('admin.pages.customer.customer', $result);
+        return view('admin.pages.user.customer.customer', $result);
     }
 
     public function addcustomer()
     {
         $result['datas'] = Customer::all();
-        $result['users'] = User::all();
-        return view('admin.pages.customer.form-customer', $result);
+        $result['users'] = User::where('role', 'user')->get();;
+        return view('admin.pages.user.customer.form-customer', $result);
     }
 
-    public function editcustomer(Request $request)
+    public function editcustomer($id)
     {
-        $result['datas'] = Customer::find($request->id);
-        $result['users'] = User::all();
-        return view('admin.pages.customer.edit-customer', $result);
+        $data = Customer::with('user')->findOrFail($id);
+        return view('admin.pages.user.customer.edit-customer', compact('data'));
     }
+
+
+
 
     public function store(Request $request)
     {
@@ -56,28 +58,34 @@ class CustomerController extends Controller
         return response()->json($customer, 200);
     }
 
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
         DB::beginTransaction();
         try {
+            $customer = Customer::with('user')->findOrFail($id);
+            $user = $customer->user;
 
-            foreach ($request->users_id as $key => $value) {
-                $users = User::find($value);
-                $customer = new Customer();
-                $customer->customer_code = $request->customer_code;
-                $customer->customer_name = $request->users_name;
-                $customer->phone = $request->phone;
-                $customer->user_id = $users->$value[$key];
-                $customer->save();
-            }
+            // Update user
+            $user->name = $request->customer_name;
+            $user->email = $request->email;
+            $user->username = $request->username;
+            $user->save();
 
+            // Update customer
+            $customer->customer_code = $request->customer_code;
+            $customer->customer_name = $request->customer_name;
+            $customer->phone = $request->phone;
+            $customer->save();
+
+            // Commit the transaction
             DB::commit();
-            return redirect()->route('customer.index')->with('success', 'Customer created successfully');
+            return redirect()->route('customer.index')->with('success', 'Customer updated successfully');
         } catch (\Exception $ex) {
             echo $ex->getMessage();
             DB::rollBack();
         }
     }
+
 
     public function destroy(Request $request)
     {

@@ -24,22 +24,6 @@
                     <span>Package</span>
                 </a>
             </li>
-            <li class="dropdown">
-                <a href="javascript:void(0)">
-                    <iconify-icon icon="hugeicons:invoice-03" class="menu-icon"></iconify-icon>
-                    <span>Invoice</span>
-                </a>
-                <ul class="sidebar-submenu">
-                    <li>
-                        <a href="{{ route('invoicelist') }}"><i
-                                class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>
-                            List</a>
-                    </li>
-                    <li>
-                        <a href="{{ route('invoicepreview') }}"><i
-                                class="ri-circle-fill circle-icon text-warning-main w-auto"></i> Preview</a>
-                </ul>
-            </li>
 
             <li>
                 <a href="{{ route('campsite.index') }}">
@@ -63,13 +47,6 @@
             </li>
 
             <li>
-                <a href="{{ route('customer.index') }}">
-                    <iconify-icon icon="hugeicons:start-up-02" class="menu-icon"></iconify-icon>
-                    <span>Customer</span>
-                </a>
-            </li>
-
-            <li>
                 <a href="{{ route('transaction.index') }}">
                     <iconify-icon icon="hugeicons:start-up-02" class="menu-icon"></iconify-icon>
                     <span>Transaction</span>
@@ -84,11 +61,31 @@
                 </a>
             </li>
 
+            <li class="dropdown">
+                <a href="javascript:void(0)">
+                    <iconify-icon icon="solar:user-id-bold" class="menu-icon"></iconify-icon>
+                    <span>User</span>
+                </a>
+                <ul class="sidebar-submenu">
+                    <li>
+                        <a href="{{ route('admin.index') }}">
+                            <iconify-icon icon="material-symbols:admin-panel-settings-rounded"
+                                class="menu-icon"></iconify-icon><span>Admin</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('customer.index') }}">
+                            <iconify-icon icon="garden:customer-lists-fill-26" class="menu-icon"></iconify-icon>
+                            <span>Customer</span>
+                        </a>
+                </ul>
+            </li>
 
             <form action="/logout" method="POST">
                 @csrf
                 <button type="submit" class="dropdown-item"><strong>Logout</strong></button>
             </form>
+
         </ul>
     </div>
 </aside>

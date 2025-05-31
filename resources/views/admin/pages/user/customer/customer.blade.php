@@ -89,6 +89,11 @@
                                             class="btn btn-warning-600 radius-8 p-20 w-20-px h-20-px d-flex align-items-center justify-content-center gap-2 bg-red">
                                             <iconify-icon icon="mdi:delete-outline" class="text-xl"></iconify-icon>
                                         </a>
+                                        <a href="#" data-bs-toggle="modal"
+                                            data-bs-target="#modalDetail{{ $data->customer_code }}"
+                                            class="btn btn-warning-600 radius-8 p-20 w-20-px h-20-px d-flex align-items-center justify-content-center gap-2 bg-primary">
+                                            <iconify-icon icon="mdi:eye-outline" class="text-xl"></iconify-icon>
+                                        </a>
                                     </div>
                                 </div>
                             </td>
@@ -146,5 +151,5 @@
         </div>
     </div>
 
-    {{-- @include('admin.pages.customer.modal-customer') --}}
+    @include('admin.pages.user.customer.detail-customer')
 @endsection

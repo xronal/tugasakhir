@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AddOnsTransactionController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CampsiteController;
 use App\Http\Controllers\CampsiteTransactionController;
 use App\Http\Controllers\CustomerController;
@@ -21,6 +22,7 @@ use App\Http\Controllers\PersonEntryTransactionController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\UserController;
+use Illuminate\Foundation\Auth\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -63,14 +65,24 @@ Route::controller(CampsiteController::class)->prefix('/admin/campsite')->name('c
     Route::get('/destroy', 'destroy')->name('destroy');
 });
 
-Route::controller(CustomerController::class)->prefix('/admin/customer')->name('customer.')->group(function () {
+Route::controller(CustomerController::class)->prefix('/admin/user/customer')->name('customer.')->group(function () {
     Route::get('/', 'index')->name('index');
     Route::post('/', 'store')->name('store');
     Route::get('/show', 'show')->name('show');
-    Route::post('/update', 'update')->name('update');
+    Route::post('/update/{id}', 'update')->name('update');
     Route::get('/destroy', 'destroy')->name('destroy');
-    Route::get('/editcustomer', 'editcustomer')->name('edit');
+    Route::get('/editcustomer/{id}', 'editcustomer')->name('edit');
     Route::get('/addcustomer', 'addcustomer')->name('add');
+});
+
+Route::controller(AdminController::class)->prefix('/admin/user')->name('admin.')->group(function () {
+    Route::get('/', 'index')->name('index');
+    Route::post('/', 'store')->name('store');
+    Route::get('/show', 'show')->name('show');
+    Route::post('/update/{id}', 'update')->name('update');
+    Route::get('/destroy', 'destroy')->name('destroy');
+    Route::get('/editadmin', 'editadmin')->name('edit');
+    Route::get('/addadmin', 'addadmin')->name('add');
 });
 
 Route::controller(ItemController::class)->prefix('/admin/item')->name('item.')->group(function () {
@@ -109,9 +121,6 @@ Route::controller(PersonEntryController::class)->prefix('/admin/person-entry')->
     Route::get('/destroy', 'destroy')->name('destroy');
 });
 
-Route::get('/admin/invoice', [InvoiceController::class, 'showInvoiceForm'])->name('invoice');
-
-Route::get('/admin/user', [UserController::class, 'index'])->name('user');
 
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 
@@ -123,10 +132,6 @@ Route::get('/user/ground', [GroundController::class, 'index'])->name('ground');
 
 Route::get('/user/package', [PackageCustomerController::class, 'index'])->name('packagecustomer');
 
-Route::get('/admin/invoice/invoice-list', [InvoiceController::class, 'showInvoiceListForm'])->name('invoicelist');
-
-Route::get('/admin/invoice/invoice-preview', [InvoiceController::class, 'showInvoiceDetailForm'])->name('invoicepreview');
-
 // Route Post
 Route::post('/admin/dashboard', [DashboardController::class, 'dashboard']);
 Route::post('/register', [RegisterController::class, 'store']);
@@ -135,7 +140,3 @@ Route::post('/logout', [LoginController::class, 'logout']);
 Route::post('/forgot-password', [ForgotPasswordController::class, 'forgot-password']);
 Route::post('/user/ground', [GroundController::class, 'ground']);
 Route::post('/user/package', [PackageCustomerController::class, 'packagecustomer']);
-Route::post('/admin/invoice', [InvoiceController::class, 'invoice']);
-Route::post('/admin/user', [UserController::class, 'user']);
-Route::post('/admin/invoice/invoice-list', [InvoiceController::class, 'invoicelist']);
-Route::post('/admin/invoice/invoice-preview', [InvoiceController::class, 'invoicepreview']);

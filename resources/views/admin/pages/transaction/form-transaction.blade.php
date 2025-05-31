@@ -95,56 +95,82 @@
         // Addons Transaction Table
         $('#add-row2').click(function(e) {
             e.preventDefault();
+            var options = $('#item-template').html();
             var newRow = `
-                <tr>
-
-                    <td>
-                        <select class="form-select" aria-label="Default select example" >
-                            <option selected>Open this select menu</option>
-                            @foreach ($items as $data)
-                                <option value="{{ $data->item_code }}">{{ $data->item_name }}
-                                </option>
-                            @endforeach
-                    </td>
-                    <td><input type="text" class="form-control" name="quantity[]"></td>
-                    <td><input type="text" class="form-control" name="price[]" readonly></td>
-                    <td><input type="text" class="form-control" name="amount[]" readonly></td>
-                    <td><button type="button" class="btn btn-danger remove-row">Remove</button></td>
-                </tr>
-            `;
+        <tr>
+            <td>
+                <select class="form-select" name="item_code[]">
+                    <option selected>Open this select menu</option>
+                    ${options}
+                </select>
+            </td>
+            <td><input type="text" class="form-control" name="quantity[]"></td>
+            <td><input type="text" class="form-control" name="price[]" readonly></td>
+            <td><input type="text" class="form-control" name="amount[]" readonly></td>
+            <td><button type="button" class="btn btn-danger remove-row">Remove</button></td>
+        </tr>
+    `;
             $('#addons-table tbody').append(newRow);
         });
+
 
         $('#addons-table').on('click', '.remove-row', function(e) {
             e.preventDefault();
             $(this).closest('tr').remove();
         });
 
+        $('#addons-table').on('input', 'input[name="quantity[]"]', function() {
+            var row = $(this).closest('tr');
+            var quantity = parseFloat($(this).val()) || 0;
+            var price = parseFloat(row.find('input[name="price[]"]').val()) || 0;
+            row.find('input[name="amount[]"]').val((quantity * price).toFixed(2));
+        });
+
+        $('#addons-table').on('change', 'select', function(e) {
+            var selectedOption = $(this).find('option:selected');
+            var price = selectedOption.data('price') || 0;
+            $(this).closest('tr').find('input[name="price[]"]').val(price);
+        });
+
+
         // Person Entry Transaction Table
         $('#add-row3').click(function(e) {
             e.preventDefault();
+            var options = $('#personentry-template').html();
             var newRow = `
-                <tr>
-                    <td>
-                        <select class="form-select" aria-label="Default select example" >
-                            <option selected>Open this select menu</option>
-                            @foreach ($personentry as $data)
-                                <option value="{{ $data->person_entry_code }}">{{ $data->person_type }}
-                                </option>
-                            @endforeach
-                    </td>
-                    <td><input type="text" class="form-control" name="quantity[]"></td>
-                    <td><input type="text" class="form-control" name="price[]" readonly></td>
-                    <td><input type="text" class="form-control" name="amount[]" readonly></td>
-                    <td><button type="button" class="btn btn-danger remove-row">Remove</button></td>
-                </tr>
-            `;
+            <tr>
+                <td>
+                    <select class="form-select" name="person_entry_code[]">
+                        <option selected>Open this select menu</option>
+                        ${options}
+                        </select>
+                        </td>
+                        <td><input type="text" class="form-control" name="quantity[]"></td>
+                        <td><input type="text" class="form-control" name="price[]" readonly></td>
+                        <td><input type="text" class="form-control" name="amount[]" readonly></td>
+                        <td><button type="button" class="btn btn-danger remove-row">Remove</button></td>
+                        </tr>
+                        `;
             $('#person-table tbody').append(newRow);
         });
 
         $('#person-table').on('click', '.remove-row', function(e) {
             e.preventDefault();
             $(this).closest('tr').remove();
+        });
+
+
+        $('#person-table').on('input', 'input[name="quantity[]"]', function() {
+            var row = $(this).closest('tr');
+            var quantity = parseFloat($(this).val()) || 0;
+            var price = parseFloat(row.find('input[name="price[]"]').val()) || 0;
+            row.find('input[name="amount[]"]').val((quantity * price).toFixed(2));
+        });
+
+        $('#person-table').on('change', 'select', function(e) {
+            var selectedOption = $(this).find('option:selected');
+            var price = selectedOption.data('price') || 0;
+            $(this).closest('tr').find('input[name="price[]"]').val(price);
         });
     </script>
 
@@ -228,13 +254,6 @@
                     <div class="col-12 mb-20">
                         <label class="form-label fw-semibold text-primary-light text-sm mb-8">Customer name :
                         </label>
-                        {{-- <select class="form-select" aria-label="Default select example" name="customer_name">
-                            <option selected>Open this select menu</option>
-                            @foreach ($customer as $data)
-                                <option value="{{ $data->customer_code }}">{{ $data->customer_name }}
-                                </option>
-                            @endforeach
-                        </select> --}}
                         <input type="text" class="form-control radius-8" placeholder="Enter Customer Name "
                             name="customer_name">
                     </div>
@@ -330,4 +349,23 @@
                 </div>
             </form>
         </div>
+
+        {{-- select item --}}
+        <select id="item-template" class="d-none">
+            @foreach ($items as $data)
+                <option value="{{ $data->item_code }}" data-price="{{ $data->item_price }}">
+                    {{ $data->item_name }}
+                </option>
+            @endforeach
+        </select>
+
+        {{-- select person entry type --}}
+        <select class="d-none" id="personentry-template">
+            <option selected>Open this select menu</option>
+            @foreach ($personentry as $data)
+                <option value="{{ $data->person_entry_code }}" data-price="{{ $data->price }}">
+                    {{ $data->person_type }}
+                </option>
+            @endforeach
+        </select>
     @endsection
