@@ -44,7 +44,7 @@
                     <div class="full">
                         <div class="center-desk">
                             <div class="logo">
-                                <a href="index.html"><img src="{{ asset('landing-page/images/logo.webp') }}"
+                                <a href="/"><img src="{{ asset('landing-page/images/logo.webp') }}"
                                         alt="#" /></a>
                             </div>
                         </div>

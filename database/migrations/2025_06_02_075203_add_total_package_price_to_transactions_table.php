@@ -13,8 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('packages', function (Blueprint $table) {
-            $table->string('weekend_price')->after('weekday_price')->default(0);
+        Schema::table('transactions', function (Blueprint $table) {
+            $table->integer('total_package_price')->default(0)->nullable()->after('checkout_date');
         });
     }
 
@@ -25,8 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('packages', function (Blueprint $table) {
-            $table->dropColumn('weekend_price');
+        Schema::table('transactions', function (Blueprint $table) {
+            $table->dropColumn('total_package_price');
         });
     }
 };

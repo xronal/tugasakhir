@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class CampsiteTransaction extends Model
+class PackageTransaction extends Model
 {
     use HasFactory;
     protected $primaryKey = 'transaction_code';

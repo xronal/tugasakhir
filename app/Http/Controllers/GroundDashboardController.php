@@ -47,13 +47,13 @@ class GroundDashboardController extends Controller
             }
 
             DB::commit();
-            return redirect()->route('grounds.index')->with('success', 'ground created successfully');
+            return redirect()->route('grounds.index')->with('success', 'Ground created successfully');
         } catch (\Exception $ex) {
             echo $ex->getMessage();
             DB::rollBack();
         }
 
-        return redirect()->back()->with('success', 'ground updated successfully');
+        return redirect()->back()->with('success', 'Ground updated successfully');
     }
 
     public function destroy(Request $request)

@@ -22,7 +22,7 @@
                 <tr>
                     <td>
                         <select class="form-select" aria-label="Default select example" name="item_code[]">
-                            <option selected>Open this select menu</option>
+                            <option selected disabled>Open this select menu</option>
                             @foreach ($items as $data)
                                 <option value="{{ $data->item_code }}">{{ $data->item_name }}
                                 </option>
@@ -78,7 +78,7 @@
                         <label class="form-label fw-semibold text-primary-light text-sm mb-8">Campsite Code :
                         </label>
                         <select class="form-select" aria-label="Default select example" name="campsite_code">
-                            <option selected>Open this select menu</option>
+                            <option selected disabled>Open this select menu</option>
                             @foreach ($campsites as $data)
                                 <option value="{{ $data->campsite_code }}">{{ $data->campsite_name }}
                                 </option>
@@ -92,10 +92,10 @@
                             name="weekday_price">
                     </div>
                     <div class="col-12 mb-20">
-                        <label class="form-label fw-semibold text-primary-light text-sm mb-8">Weekend Price :
+                        <label class="form-label fw-semibold text-primary-light text-sm mb-8">Weekly Price :
                         </label>
-                        <input type="text" class="form-control radius-8" placeholder="Enter Weekend Price "
-                            name="weekend_price">
+                        <input type="number" class="form-control radius-8" placeholder="Enter Weekly Price "
+                            name="weekly_price">
                     </div>
 
                     <table class="table bordered-table mb-0" id="package-table">
@@ -109,7 +109,7 @@
                         <tbody>
                         </tbody>
                     </table>
-                    <button id="add-row">Add Row</button>
+                    <button class="btn btn-outline-primary w-auto mt-10" id="add-row">Add Row</button>
 
                     <div class="d-flex align-items-center justify-content-center gap-3 mt-24">
                         <button type="button"
@@ -125,4 +125,5 @@
                 </div>
             </form>
         </div>
-    @endsection
+    </div>
+@endsection

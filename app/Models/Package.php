@@ -14,7 +14,7 @@ class Package extends Model
     protected $keyType = 'string';
     protected $guarded = [];
 
-    public function PackageDetail()
+    public function details()
     {
         return $this->hasMany(PackageDetail::class, 'package_code', 'package_code');
     }

@@ -78,6 +78,13 @@
                             <iconify-icon icon="garden:customer-lists-fill-26" class="menu-icon"></iconify-icon>
                             <span>Customer</span>
                         </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('user.index') }}">
+                            <iconify-icon icon="garden:customer-lists-fill-26" class="menu-icon"></iconify-icon>
+                            <span>Account</span>
+                        </a>
+                    </li>
                 </ul>
             </li>
 

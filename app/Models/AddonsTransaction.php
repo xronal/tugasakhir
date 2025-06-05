@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class AddonsTransaction extends Model
 {
     use HasFactory;
+    protected $primaryKey = 'transaction_code';
+    public $incrementing = false;
+    protected $keyType = 'string';
+    protected $guarded = [];
 }

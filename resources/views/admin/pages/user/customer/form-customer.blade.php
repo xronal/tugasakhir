@@ -68,7 +68,7 @@
                         </label>
                         <select class="form-select" aria-label="Default select example" id="customer_name_select"
                             name="customer_name">
-                            <option selected>Pilih Admin Name</option>
+                            <option selected>Pilih Customer Name</option>
                             @foreach ($users as $data)
                                 <option value="{{ $data->name }}" data-email="{{ $data->email }}"
                                     data-user_id="{{ $data->id }}" data-username="{{ $data->username }}">

@@ -94,10 +94,10 @@
                             name="weekday_price" value="{{ $datas->weekday_price }}">
                     </div>
                     <div class="col-12 mb-20">
-                        <label class="form-label fw-semibold text-primary-light text-sm mb-8">Weekend Price :
+                        <label class="form-label fw-semibold text-primary-light text-sm mb-8">Weekly Price :
                         </label>
                         <input type="text" class="form-control radius-8" placeholder="Enter weekend Price "
-                            name="weekend_price" value="{{ $datas->weekend_price }}">
+                            name="weekly_price" value="{{ $datas->weekly_price }}">
                     </div>
 
                     <table class="table bordered-table mb-0" id="package-table">
@@ -129,7 +129,7 @@
                             @endforeach
                         </tbody>
                     </table>
-                    <button id="add-row">Add Row</button>
+                    <button id="add-row" class="btn btn-outline-primary w-auto mt-10">Add Row</button>
                     <div class="d-flex align-items-center justify-content-center gap-3 mt-24">
                         <button type="button"
                             class="border border-danger-600 bg-hover-danger-200 text-danger-600 text-md px-40 py-11 radius-8"

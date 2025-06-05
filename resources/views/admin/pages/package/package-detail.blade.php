@@ -1,8 +1,4 @@
 @foreach ($datas as $data)
-    @php
-        $packageDetails = $details->where('package_code', $data->package_code);
-    @endphp
-
     <!-- Modal -->
     <div class="modal fade" id="packagedetailModal-{{ $data->package_code }}" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered">
@@ -17,12 +13,7 @@
                         <input type="text" class="form-control" value="{{ $data->package_name }}" readonly>
                     </div>
                     <div class="mb-3">
-                        <label>Package Name</label>
-                        <input type="text" class="form-control" value="{{ $data->package_name }}" readonly>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label fw-semibold text-primary-light text-sm mb-8">Campsite Code :
-                        </label>
+                        <label class="form-label fw-semibold text-primary-light text-sm mb-8">Campsite Code :</label>
                         <select class="form-select" aria-label="Default select example" name="campsite_code" disabled>
                             <option>Open this select menu</option>
                             @foreach ($campsites as $d)
@@ -39,9 +30,8 @@
                     </div>
                     <div class="mb-3">
                         <label>Weekend Price</label>
-                        <input type="text" class="form-control" value="{{ $data->weekend_price }}" readonly>
+                        <input type="text" class="form-control" value="{{ $data->weekly_price }}" readonly>
                     </div>
-
 
                     <!-- Tabel Detail -->
                     <table class="table">
@@ -52,7 +42,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($packageDetails as $detail)
+                            @foreach ($data->details as $detail)
                                 <tr>
                                     <td>
                                         <select class="form-select" disabled>

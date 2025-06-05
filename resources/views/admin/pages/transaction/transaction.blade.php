@@ -91,16 +91,16 @@
                                     <div class="card-body p-24">
                                         <div class="d-flex flex-wrap align-items-center gap-3">
                                             <a class="btn btn-warning-600 radius-8 p-20 w-20-px h-20-px d-flex align-items-center justify-content-center gap-2 bg-success btn-edit"
-                                                href="{{ route('package.edit', ['id' => $data->package_code]) }}"><iconify-icon
+                                                href="{{ route('transaction.edit', ['id' => $data->transaction_code]) }}"><iconify-icon
                                                     icon="mdi:edit" class="text-xl"></iconify-icon></a>
-                                            <a href="{{ route('package.destroy', ['id' => $data->package_code]) }}"
+                                            <a href="{{ route('transaction.destroy', ['id' => $data->transaction_code]) }}"
                                                 class="btn btn-warning-600 radius-8 p-20 w-20-px h-20-px d-flex align-items-center justify-content-center gap-2 bg-red">
                                                 <iconify-icon icon="mdi:delete-outline" class="text-xl"></iconify-icon>
                                             </a>
                                             <button type="button"
                                                 class="btn btn-warning-600 radius-8 p-20 w-20-px h-20-px d-flex align-items-center justify-content-center gap-2 bg-primary"
                                                 data-bs-toggle="modal"
-                                                data-bs-target="#transactiondetailModal-{{ $data->package_code }}"><iconify-icon
+                                                data-bs-target="#transactiondetailModal-{{ $data->transaction_code }}"><iconify-icon
                                                     icon="mdi:eye-outline" class="text-xl"></iconify-icon></button>
                                         </div>
                                     </div>

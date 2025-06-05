@@ -13,10 +13,11 @@ class PackageAdminController extends Controller
 {
     public function index()
     {
-        $result['datas'] = Package::all();
+        // Ambil semua package beserta details-nya (eager loading)
+        $result['datas'] = Package::with('details')->get();
         $result['campsites'] = Campsite::all();
         $result['items'] = Item::all();
-        $result['details'] = PackageDetail::all();
+
         return view('admin.pages.package.index', $result);
     }
 
@@ -38,6 +39,16 @@ class PackageAdminController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate([
+            'package_code' => 'required|string',
+            'package_name' => 'required|string',
+            'campsite_code' => 'required|string',
+            'weekday_price' => 'required|numeric',
+            'weekly_price' => 'nullable|numeric|min:0',
+            'item_code' => 'required|array',
+            'quantity' => 'required|array',
+        ]);
+
         DB::beginTransaction();
         try {
             $package = new Package();
@@ -45,7 +56,7 @@ class PackageAdminController extends Controller
             $package->package_name = $request->package_name;
             $package->campsite_code = $request->campsite_code;
             $package->weekday_price = $request->weekday_price;
-            $package->weekend_price = $request->weekend_price;
+            $package->weekly_price = $request->filled('weekly_price') ? $request->weekly_price : 0;
             $package->save();
 
             foreach ($request->item_code as $key => $value) {
@@ -80,16 +91,25 @@ class PackageAdminController extends Controller
 
     public function update(Request $request)
     {
+        $request->validate([
+            'package_code' => 'required|string',
+            'package_name' => 'required|string',
+            'campsite_code' => 'required|string',
+            'weekday_price' => 'required|numeric',
+            'weekly_price' => 'nullable|numeric|min:0',
+            'item_code' => 'required|array',
+            'quantity' => 'required|array',
+        ]);
+
         DB::beginTransaction();
         try {
             $package = Package::find($request->package_code);
             $package->package_name = $request->package_name;
+            $package->campsite_code = $request->campsite_code;
             $package->weekday_price = $request->weekday_price;
-            $package->weekend_price = $request->weekend_price;
+            $package->weekly_price = $request->filled('weekly_price') ? $request->weekly_price : 0;
             $package->save();
 
-            // Delete existing package details
-            PackageDetail::where('package_code', $request->package_code)->delete();
             foreach ($request->item_code as $key => $value) {
                 $item = Item::find($value);
                 $package_detail = new PackageDetail();
@@ -101,7 +121,7 @@ class PackageAdminController extends Controller
             }
 
             DB::commit();
-            return redirect()->route('package.index')->with('success', 'Package updated successfully');
+            return redirect()->route('package.index')->with('success', 'Package created successfully');
         } catch (\Exception $ex) {
             echo $ex->getMessage();
             DB::rollBack();
@@ -110,10 +130,10 @@ class PackageAdminController extends Controller
 
     public function destroy(Request $request)
     {
-        $package = Package::find($request->id);
 
+        $package = Package::find($request->id);
         if ($package) {
-            $package->PackageDetail()->delete();
+            PackageDetail::where('package_code', $request->id)->delete();
             $package->delete();
 
             return redirect()->back()->with('success', 'Package deleted successfully');

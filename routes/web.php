@@ -43,7 +43,7 @@ Route::get('/', function () {
 });
 
 
-Route::get('/admin', [DashboardController::class, 'index'])->name('dashboard');
+Route::get('/admin', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth');
 Route::get('/user', [DashboardController::class, 'indexuser'])->name('dashboarduser');
 
 Route::controller(PackageAdminController::class)->prefix('/admin/package')->name('package.')->group(function () {
@@ -93,6 +93,14 @@ Route::controller(ItemController::class)->prefix('/admin/item')->name('item.')->
     Route::get('/destroy', 'destroy')->name('destroy');
 });
 
+Route::controller(UserController::class)->prefix('/admin/user/account')->name('user.')->group(function () {
+    Route::get('/', 'index')->name('index');
+    Route::post('/', 'store')->name('store');
+    Route::get('/show', 'show')->name('show');
+    Route::post('/update', 'update')->name('update');
+    Route::get('/destroy', 'destroy')->name('destroy');
+});
+
 Route::controller(TransactionController::class)->prefix('/admin/transaction')->name('transaction.')->group(function () {
     Route::get('/', 'index')->name('index');
     Route::post('/', 'store')->name('store');
@@ -103,6 +111,7 @@ Route::controller(TransactionController::class)->prefix('/admin/transaction')->n
     Route::get('/addtransaction', 'addtransaction')->name('add');
     Route::get('/getgroundbycampsite', 'getGroundByCampsite')->name('getGroundByCampsite');
     Route::get('/getdetailcampsite', 'getDetailCampsite')->name('getDetailCampsite');
+    Route::get('/getdetailpackage', 'getDetailPackage')->name('getDetailPackage');
 });
 
 Route::controller(GroundDashboardController::class)->prefix('/admin/grounds')->name('grounds.')->group(function () {

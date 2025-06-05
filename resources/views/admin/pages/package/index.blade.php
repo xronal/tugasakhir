@@ -69,7 +69,7 @@
                                     {{ $data->weekday_price }}
                                 </td>
                                 <td>
-                                    {{ $data->weekend_price }}
+                                    {{ $data->weekly_price }}
                                 </td>
                                 <td>
                                     {{ $data->created_at }}

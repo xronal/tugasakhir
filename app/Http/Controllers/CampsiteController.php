@@ -41,7 +41,7 @@ class CampsiteController extends Controller
         $campsite->description = $request->description;
         $campsite->save();
 
-        return redirect()->back()->with('success', 'campsite updated successfully');
+        return redirect()->back()->with('success', 'Campsite updated successfully');
     }
 
     public function destroy(Request $request)
@@ -49,6 +49,6 @@ class CampsiteController extends Controller
         $campsite = Campsite::find($request->id);
         $campsite->delete();
 
-        return redirect()->back()->with('success', 'campsite deleted successfully');
+        return redirect()->back()->with('success', 'Campsite deleted successfully');
     }
 }

@@ -28,16 +28,20 @@
                 console.log($(this).data('id'));
                 $.ajax({
                     type: "GET",
-                    url: "{{ route('grounds.show') }}",
+                    url: "{{ route('user.show') }}",
                     data: {
                         "id": $(this).data('id')
                     },
                     dataType: "JSON",
                     success: function(res) {
                         console.log(res);
-                        $('#groundEditModal').modal('show');
-                        $('#groundEditForm [name="ground_code"]').val(res.ground_code);
-                        $('#groundEditForm [name="campsite_code"]').val(res.campsite_code);
+                        $('#userEditModal').modal('show');
+                        $('#userEditForm [name="user_id"]').val(res.id);
+                        $('#userEditForm [name="username"]').val(res.username);
+                        $('#userEditForm [name="name"]').val(res.name);
+                        $('#userEditForm [name="role"]').val(res.role);
+                        $('#userEditForm [name="email"]').val(res.email);
+                        $('#userEditForm [name="password"]').val(res.password);
                     }
                 });
             });
@@ -47,22 +51,26 @@
 
 @section('content')
     <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-24">
-        <h6 class="fw-semibold mb-0">Ground Table</h6>
+        <h6 class="fw-semibold mb-0">Account User Table</h6>
     </div>
 
     <div class="card">
         <div class="card-header d-flex flex-wrap align-items-center justify-content-between gap-3">
             <div class="d-flex flex-wrap align-items-center gap-3">
-                <button class="btn btn-sm btn-primary-600" data-bs-toggle="modal" data-bs-target="#groundAddModal"><i
-                        class="ri-add-line"></i> Create Ground</button>
+                <button class="btn btn-sm btn-primary-600" data-bs-toggle="modal" data-bs-target="#userAddModal"><i
+                        class="ri-add-line"></i> Create User Account</button>
             </div>
         </div>
-        <div class="card-body">
+        <div class="card-body overflow-auto">
             <table class="table bordered-table mb-0">
                 <thead>
                     <tr>
-                        <th scope="col">Ground Code</th>
-                        <th scope="col">Campsite Code</th>
+                        <th scope="col">ID</th>
+                        <th scope="col">Username</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Role</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Password</th>
                         <th scope="col">Create at</th>
                         <th scope="col">Upload at</th>
                         <th scope="col">Action</th>
@@ -72,10 +80,22 @@
                     @foreach ($datas as $data)
                         <tr>
                             <td>
-                                {{ $data->ground_code }}
+                                {{ $data->id }}
                             </td>
                             <td>
-                                {{ $data->campsite_code }}
+                                {{ $data->username }}
+                            </td>
+                            <td>
+                                {{ $data->name }}
+                            </td>
+                            <td>
+                                {{ $data->role }}
+                            </td>
+                            <td>
+                                {{ $data->email }}
+                            </td>
+                            <td>
+                                ***
                             </td>
                             <td>
                                 {{ $data->created_at }}
@@ -88,10 +108,10 @@
                                     <div class="d-flex flex-wrap align-items-center gap-3">
                                         <button type="button"
                                             class="btn btn-warning-600 radius-8 p-20 w-20-px h-20-px d-flex align-items-center justify-content-center gap-2 bg-success btn-edit"
-                                            data-id="{{ $data->ground_code }}">
+                                            data-id="{{ $data->id }}">
                                             <iconify-icon icon="mdi:edit" class="text-xl"></iconify-icon>
                                         </button>
-                                        <a href="{{ route('grounds.destroy', ['id' => $data->ground_code]) }}"
+                                        <a href="{{ route('user.destroy', ['id' => $data->id]) }}"
                                             class="btn btn-warning-600 radius-8 p-20 w-20-px h-20-px d-flex align-items-center justify-content-center gap-2 bg-red">
                                             <iconify-icon icon="mdi:delete-outline" class="text-xl"></iconify-icon>
                                         </a>
@@ -148,7 +168,9 @@
                     @endif
                 </ul>
             </div>
+
         </div>
     </div>
-    @include('admin.pages.grounds.modal-ground')
+
+    @include('admin.pages.user.account.modal-account')
 @endsection

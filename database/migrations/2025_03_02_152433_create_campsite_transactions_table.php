@@ -15,17 +15,26 @@ return new class extends Migration
     {
         Schema::create('campsite_transactions', function (Blueprint $table) {
             $table->id();
-            $table->string('transaction_code');
-            $table->string('campsite_code');
-            $table->string('ground_code');
-            $table->string('price');
+            $table->string('transaction_code')->index();
+            $table->string('campsite_code')->index();
+            $table->string('ground_code')->index();
+            $table->bigInteger('price')->default(0);
             $table->timestamps();
 
-            $table->foreign('transaction_code')->references('transaction_code')->on('transactions')->onDelete('restrict');
-            $table->foreign('campsite_code')->references('campsite_code')->on('campsites')->onDelete('restrict');
-            $table->foreign('ground_code')->references('ground_code')->on('grounds')->onDelete('restrict');
+            $table->foreign('transaction_code')
+                ->references('transaction_code')->on('transactions')
+                ->onDelete('restrict')->onUpdate('cascade');
+
+            $table->foreign('campsite_code')
+                ->references('campsite_code')->on('campsites')
+                ->onDelete('restrict')->onUpdate('cascade');
+
+            $table->foreign('ground_code')
+                ->references('ground_code')->on('grounds')
+                ->onDelete('restrict')->onUpdate('cascade');
         });
     }
+
 
     /**
      * Reverse the migrations.

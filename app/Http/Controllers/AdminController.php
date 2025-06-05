@@ -48,7 +48,7 @@ class AdminController extends Controller
             $admin->save();
 
             DB::commit();
-            return redirect()->route('admin.index')->with('success', 'Customer created successfully');
+            return redirect()->route('admin.index')->with('success', 'Admin created successfully');
         } catch (\Exception $ex) {
             echo $ex->getMessage();
             DB::rollBack();
@@ -99,6 +99,6 @@ class AdminController extends Controller
         $admin = Admin::find($request->id);
         $admin->delete();
 
-        return redirect()->back()->with('Success', 'Customer deleted successfully');
+        return redirect()->back()->with('Success', 'Admin deleted successfully');
     }
 }
