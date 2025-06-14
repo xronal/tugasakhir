@@ -1,0 +1,44 @@
+[
+    {
+        "campsite_code": "DC",
+        "campsite_name": "Deluxe Campsite",
+        "weekday_price": "200000",
+        "weekend_price": "275000",
+        "description": "Plot Area Campsite 2 Mobil"
+    },
+    {
+        "campsite_code": "JCC",
+        "campsite_name": "Junior Campsite Car",
+        "weekday_price": "85000",
+        "weekend_price": "125000",
+        "description": "Plot Area Campsite 2 City Car"
+    },
+    {
+        "campsite_code": "JCM",
+        "campsite_name": "Junior Campsite Motor",
+        "weekday_price": "50000",
+        "weekend_price": "75000",
+        "description": "Plot Area Campsite 1-2 Motor"
+    },
+    {
+        "campsite_code": "RC",
+        "campsite_name": "Reguler Campsite",
+        "weekday_price": "50000",
+        "weekend_price": "75000",
+        "description": "Non Fasilitas : Lampu dan Listrik"
+    },
+    {
+        "campsite_code": "SD",
+        "campsite_name": "Standard Campsite",
+        "weekday_price": "100000",
+        "weekend_price": "150000",
+        "description": "Plot Area 1 Campsite 1 Mobil"
+    },
+    {
+        "campsite_code": "SDC",
+        "campsite_name": "Super Deluxe Campsite",
+        "weekday_price": "300000",
+        "weekend_price": "400000",
+        "description": "Plot Area Campsite 3 Mobil"
+    }
+]
