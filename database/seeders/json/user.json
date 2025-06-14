@@ -1,0 +1,23 @@
+[
+    {
+        "username": "Administrator",
+        "name": "Administrator",
+        "role": "admin",
+        "email": "admin@admin.com",
+        "password": "admin"
+    },
+    {
+        "username": "ronal",
+        "name": "Ronal",
+        "role": "user",
+        "email": "ronal@gmail.com",
+        "password": "ronal123"
+    },
+    {
+        "username": "pelanggan",
+        "name": "Pelanggan Tampin",
+        "role": "user",
+        "email": "pelanggan@gmail.com",
+        "password": "pelanggan"
+    }
+]

@@ -1,0 +1,127 @@
+[
+    {
+        "item_code": "ITM01",
+        "item_name": "Sleeping Bag",
+        "item_price": "15000"
+    },
+    {
+        "item_code": "ITM02",
+        "item_name": "Matras Spon",
+        "item_price": "10000"
+    },
+    {
+        "item_code": "ITM03",
+        "item_name": "Flysheet",
+        "item_price": "15000"
+    },
+    {
+        "item_code": "ITM04",
+        "item_name": "Kursi Portable",
+        "item_price": "20000"
+    },
+    {
+        "item_code": "ITM05",
+        "item_name": "Meja Portable",
+        "item_price": "30000"
+    },
+    {
+        "item_code": "ITM06",
+        "item_name": "Meja Kursi Lipat",
+        "item_price": "50000"
+    },
+    {
+        "item_code": "ITM07",
+        "item_name": "Lampu Tenda",
+        "item_price": "5000"
+    },
+    {
+        "item_code": "ITM08",
+        "item_name": "Lampu Charge",
+        "item_price": "10000"
+    },
+    {
+        "item_code": "ITM09",
+        "item_name": "Oloran Kabel",
+        "item_price": "10000"
+    },
+    {
+        "item_code": "ITM10",
+        "item_name": "Tikar",
+        "item_price": "10000"
+    },
+    {
+        "item_code": "ITM11",
+        "item_name": "Flysheet Seet",
+        "item_price": "50000"
+    },
+    {
+        "item_code": "ITM12",
+        "item_name": "Terpal 3x3",
+        "item_price": "10000"
+    },
+    {
+        "item_code": "ITM13",
+        "item_name": "Terpal 3x4",
+        "item_price": "15000"
+    },
+    {
+        "item_code": "ITM14",
+        "item_name": "Kasur Tenda Set",
+        "item_price": "100000"
+    },
+    {
+        "item_code": "ITM15",
+        "item_name": "Bed Cover",
+        "item_price": "60000"
+    },
+    {
+        "item_code": "ITM16",
+        "item_name": "Tenda Payung 2,5x2,5",
+        "item_price": "80000"
+    },
+    {
+        "item_code": "ITM17",
+        "item_name": "Kompor Koper",
+        "item_price": "30000"
+    },
+    {
+        "item_code": "ITM18",
+        "item_name": "Cooking Set",
+        "item_price": "20000"
+    },
+    {
+        "item_code": "ITM19",
+        "item_name": "Grill Pan Set",
+        "item_price": "100000"
+    },
+    {
+        "item_code": "ITM20",
+        "item_name": "Gas Isi Ulang",
+        "item_price": "10000"
+    },
+    {
+        "item_code": "ITM21",
+        "item_name": "Tenda Dome Standart",
+        "item_price": "125000"
+    },
+    {
+        "item_code": "ITM22",
+        "item_name": "Tenda Dome Sultan",
+        "item_price": "200000"
+    },
+    {
+        "item_code": "ITM23",
+        "item_name": "Tenda Sultan Plus (4 Pax)",
+        "item_price": "325000"
+    },
+    {
+        "item_code": "ITM24",
+        "item_name": "Tenda Dome Couple (3 Pax)",
+        "item_price": "100000"
+    },
+    {
+        "item_code": "ITM25",
+        "item_name": "Paket Api Unggun",
+        "item_price": "50000"
+    }
+]
