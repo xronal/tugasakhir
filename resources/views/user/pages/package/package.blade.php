@@ -27,21 +27,6 @@
     <script src="{{ asset('wowdash/js/lib/jquery-jvectormap-world-mill-en.js') }}"></script>
     <script src="{{ asset('wowdash/js/full-calendar.js') }}"></script>
     <script src="{{ asset('wowdash/js/flatpickr.js') }}"></script>
-
-    <script>
-        // Flat pickr or date picker js 
-        function getDatePicker(receiveID) {
-            flatpickr(receiveID, {
-                enableTime: true,
-                dateFormat: "d/m/Y H:i",
-            });
-        }
-        getDatePicker('#startDate');
-        getDatePicker('#endDate');
-
-        getDatePicker('#editstartDate');
-        getDatePicker('#editendDate');
-    </script>
 @endpush
 
 @section('content')
