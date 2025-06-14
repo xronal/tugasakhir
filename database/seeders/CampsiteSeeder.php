@@ -22,8 +22,8 @@ class CampsiteSeeder extends Seeder
         try {
             foreach ($datas as $key => $data) {
                 $campsite = new Campsite();
-                $campsite->campsite_code = $data->campsites_code;
-                $campsite->campsite_name = $data->campsites_name;
+                $campsite->campsite_code = $data->campsite_code;
+                $campsite->campsite_name = $data->campsite_name;
                 $campsite->weekday_price = $data->weekday_price;
                 $campsite->weekend_price = $data->weekend_price;
                 $campsite->description = $data->description;
