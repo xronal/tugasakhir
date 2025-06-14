@@ -13,6 +13,7 @@ use App\Models\PersonEntry;
 use Illuminate\Support\Facades\DB;
 use App\Models\Ground;
 use App\Models\Package;
+use App\Models\PackageDetail;
 use App\Models\PackageTransaction;
 use App\Models\PersonEntryTransaction;
 use Illuminate\Support\Facades\Log;
@@ -60,10 +61,12 @@ class TransactionController extends Controller
         $result['addontrans'] = AddonsTransaction::where('transaction_code', $request->id)->get();
         $result['campsitetrans'] = CampsiteTransaction::where('transaction_code', $request->id)->get();
         $result['personentrytrans'] = PersonEntryTransaction::where('transaction_code', $request->id)->get();
+        $result['packagetrans'] = PackageTransaction::where('transaction_code', $request->id)->get();
         $result['campsites'] = Campsite::all();
         $result['items'] = Item::all();
         $result['personentry'] = PersonEntry::all();
         $result['customers'] = Customer::all();
+        $result['packages'] = Package::all();
         return view('admin.pages.transaction.edit-transaction', $result);
     }
 
@@ -79,27 +82,23 @@ class TransactionController extends Controller
 
             $transaction = new Transaction();
             $transaction->transaction_code = $request->transaction_code;
-            $transaction->transaction_date = Carbon::parse($request->transaction_date)->format("Y-m-d H:i");
-            $transaction->payment_date = Carbon::parse($request->payment_date)->format("Y-m-d H:i");
+            $transaction->transaction_date = Carbon::createFromFormat('d/m/Y H:i', $request->transaction_date)->format("Y-m-d H:i");
+            $transaction->payment_date = Carbon::createFromFormat('d/m/Y H:i', $request->payment_date)->format("Y-m-d H:i");
             $transaction->payment_status = $request->payment_status;
             $transaction->customer_code = $customer->customer_code;
-            $transaction->checkin_date = Carbon::parse($request->checkin_date)->format("Y-m-d H:i");
-            $transaction->checkout_date = Carbon::parse($request->checkout_date)->format("Y-m-d H:i");
+            $transaction->checkin_date = Carbon::createFromFormat('d/m/Y H:i', $request->checkin_date)->format("Y-m-d H:i");
+            $transaction->checkout_date = Carbon::createFromFormat('d/m/Y H:i', $request->checkout_date)->format("Y-m-d H:i");
             $transaction->save();
 
-            Log::info('Before save', ['transaction' => $transaction]);
-
             // Simpan package
-            if ($request->has('package_code') && is_array($request->package_code)) {
-                foreach ($request->package_code as $key => $value) {
-                    $package = Package::find($value);
-                    if ($package) {
-                        $package_trans = new PackageTransaction();
-                        $package_trans->transaction_code = $request->transaction_code;
-                        $package_trans->package_code = $value;
-                        $package_trans->price = $package->package_price ?? 0;
-                        $package_trans->save();
-                    }
+            if ($request->has('package_code') && $request->package_code) {
+                $package = Package::where('package_code', $request->package_code)->first();
+                if ($package) {
+                    $package_trans = new PackageTransaction();
+                    $package_trans->transaction_code = $transaction->transaction_code;
+                    $package_trans->package_code = $request->package_code;
+                    $package_trans->price = $request->package_price ?? $package->package_price ?? 0;
+                    $package_trans->save();
                 }
             }
 
@@ -163,12 +162,14 @@ class TransactionController extends Controller
     public function show(Request $request)
     {
         $transaction = Transaction::find($request->id);
+        $packagetrans = PackageTransaction::where('transaction_code', $request->id)->get();
         $addonstrans = AddonsTransaction::where('transaction_code', $request->id)->get();
         $campsitetrans = CampsiteTransaction::where('transaction_code', $request->id)->get();
         $personentrytrans = PersonEntryTransaction::where('transaction_code', $request->id)->get();
 
         return response()->json([
             'transaction' => $transaction,
+            'packagetrans' => $packagetrans,
             'addonstrans' => $addonstrans,
             'campsitetrans' => $campsitetrans,
             'personentrytrans' => $personentrytrans,
@@ -176,61 +177,42 @@ class TransactionController extends Controller
     }
 
 
-    public function update(Request $request)
+    public function update(Request $request, $transaction_code)
     {
-        $request->validate([
-            'transaction_code' => 'required|unique:transactions,transaction_code,' . $request->transaction_code . ',transaction_code',
-            'customer_code' => 'required|exists:customers,customer_code',
-            'transaction_date' => 'required|date',
-            'payment_date' => 'nullable|date',
-            'payment_status' => 'required|string',
-            'StartDate' => 'required|date',
-            'EndDate' => 'required|date|after_or_equal:StartDate',
-            'package_code.*' => 'nullable|exists:packages,package_code',
-            'campsite_code.*' => 'nullable|exists:campsites,campsite_code',
-            'ground_code' => 'nullable|exists:grounds,ground_code',
-            'addons.item_code.*' => 'nullable|exists:items,item_code',
-            'addons.quantity.*' => 'nullable|integer|min:0',
-            'addons.amount.*' => 'nullable|numeric|min:0',
-            'personentry_code.*' => 'nullable|exists:person_entries,personentry_code',
-            'personentry_qty.*' => 'nullable|integer|min:0',
-            'personentry_amount.*' => 'nullable|numeric|min:0',
-        ]);
-
         DB::beginTransaction();
         try {
+            $transaction = Transaction::where('transaction_code', $transaction_code)->first();
+            if (!$transaction) {
+                return redirect()->back()->with('error', 'Transaksi tidak ditemukan.');
+            }
+
             $customer = Customer::find($request->customer_code);
             if (!$customer) {
                 return redirect()->back()->with('error', 'Customer tidak ditemukan.');
             }
 
-            // Cari transaksi yg ingin diupdate
-            $transaction = Transaction::where('transaction_code', $request->transaction_code)->first();
-            if (!$transaction) {
-                return redirect()->back()->with('error', 'Transaction tidak ditemukan.');
-            }
-
-            $transaction->transaction_date = $request->transaction_date;
-            $transaction->payment_date = $request->payment_date;
+            // Update transaksi utama (tanpa mengganti transaction_code)
+            $transaction->transaction_date = Carbon::createFromFormat('d/m/Y H:i', $request->transaction_date)->format("Y-m-d H:i");
+            $transaction->payment_date = Carbon::createFromFormat('d/m/Y H:i', $request->payment_date)->format("Y-m-d H:i");
             $transaction->payment_status = $request->payment_status;
             $transaction->customer_code = $customer->customer_code;
-            $transaction->checkin_date = $request->StartDate;
-            $transaction->checkout_date = $request->EndDate;
+            $transaction->checkin_date = Carbon::createFromFormat('d/m/Y H:i', $request->checkin_date)->format("Y-m-d H:i");
+            $transaction->checkout_date = Carbon::createFromFormat('d/m/Y H:i', $request->checkout_date)->format("Y-m-d H:i");
             $transaction->save();
 
-            // Hapus data lama dulu supaya tidak duplikat
-            PackageTransaction::where('transaction_code', $transaction->transaction_code)->delete();
-            CampsiteTransaction::where('transaction_code', $transaction->transaction_code)->delete();
-            AddonsTransaction::where('transaction_code', $transaction->transaction_code)->delete();
-            PersonEntryTransaction::where('transaction_code', $transaction->transaction_code)->delete();
+            // Hapus data relasi lama
+            PackageTransaction::where('transaction_code', $transaction_code)->delete();
+            CampsiteTransaction::where('transaction_code', $transaction_code)->delete();
+            AddonsTransaction::where('transaction_code', $transaction_code)->delete();
+            PersonEntryTransaction::where('transaction_code', $transaction_code)->delete();
 
-            // Simpan ulang package
+            // Tambah ulang: package
             if ($request->has('package_code') && is_array($request->package_code)) {
                 foreach ($request->package_code as $key => $value) {
                     $package = Package::find($value);
                     if ($package) {
                         $package_trans = new PackageTransaction();
-                        $package_trans->transaction_code = $transaction->transaction_code;
+                        $package_trans->transaction_code = $transaction_code;
                         $package_trans->package_code = $value;
                         $package_trans->price = $package->package_price ?? 0;
                         $package_trans->save();
@@ -238,67 +220,52 @@ class TransactionController extends Controller
                 }
             }
 
-            // Simpan ulang campsite
+            // Tambah ulang: campsite
             if ($request->has('campsite_code') && is_array($request->campsite_code)) {
-                $ground = Ground::find($request->ground_code);
                 foreach ($request->campsite_code as $key => $value) {
-                    $campsite = Campsite::find($value);
-                    if ($campsite && $ground) {
-                        $campsite_trans = new CampsiteTransaction();
-                        $campsite_trans->transaction_code = $transaction->transaction_code;
-                        $campsite_trans->campsite_code = $value;
-                        $campsite_trans->ground_code = $ground->ground_code;
-                        $campsite_trans->price = $campsite->campsite_price ?? 0;
-                        $campsite_trans->save();
-                    }
+                    $campsite_trans = new CampsiteTransaction();
+                    $campsite_trans->transaction_code = $transaction_code;
+                    $campsite_trans->campsite_code = $value;
+                    $campsite_trans->ground_code = $request->ground_code[$key];
+                    $campsite_trans->price = $request->campsite_price[$key] ?? 0;
+                    $campsite_trans->save();
                 }
             }
 
-            // Simpan ulang addons/items
-            if ($request->has('addons') && is_array($request->addons)) {
-                $addons = $request->addons;
-                $itemCodes = $addons['item_code'] ?? [];
-                $quantities = $addons['quantity'] ?? [];
-                $amounts = $addons['amount'] ?? [];
-
-
-                foreach ($itemCodes as $key => $itemCode) {
-                    $item = Item::find($itemCode);
-                    if ($item) {
-                        $addons_trans = new AddonsTransaction();
-                        $addons_trans->transaction_code = $transaction->transaction_code;
-                        $addons_trans->item_code = $itemCode;
-                        $addons_trans->qty = $quantities[$key] ?? 0;
-                        $addons_trans->price = $item->item_price ?? 0;
-                        $addons_trans->amount = $amounts[$key] ?? 0;
-                        $addons_trans->save();
-                    }
+            // Tambah ulang: addons
+            if ($request->has('addons_item_code') && is_array($request->addons_item_code)) {
+                foreach ($request->addons_item_code as $key => $item_code) {
+                    $addons_trans = new AddonsTransaction();
+                    $addons_trans->transaction_code = $transaction_code;
+                    $addons_trans->item_code = $item_code;
+                    $addons_trans->qty = $request->addons_quantity[$key] ?? 0;
+                    $addons_trans->price = $request->addons_price[$key] ?? 0;
+                    $addons_trans->amount = $request->addons_amount[$key] ?? 0;
+                    $addons_trans->save();
                 }
             }
 
-            // Simpan ulang person entry
-            if ($request->has('personentry_code') && is_array($request->personentry_code)) {
-                foreach ($request->personentry_code as $key => $value) {
-                    $personentry = PersonEntry::find($value);
-                    if ($personentry) {
-                        $personentry_trans = new PersonEntryTransaction();
-                        $personentry_trans->transaction_code = $transaction->transaction_code;
-                        $personentry_trans->personentry_code = $value;
-                        $personentry_trans->qty = $request->personentry_qty[$key] ?? 0;
-                        $personentry_trans->price = $personentry->personentry_price ?? 0;
-                        $personentry_trans->amount = $request->personentry_amount[$key] ?? 0;
-                        $personentry_trans->save();
-                    }
+            // Tambah ulang: person entry
+            if ($request->has('person_entry_code') && is_array($request->person_entry_code)) {
+                foreach ($request->person_entry_code as $key => $value) {
+                    $personentry_trans = new PersonEntryTransaction();
+                    $personentry_trans->transaction_code = $transaction_code;
+                    $personentry_trans->person_entry_code = $value;
+                    $personentry_trans->qty = $request->person_quantity[$key] ?? 0;
+                    $personentry_trans->price = $request->person_price[$key] ?? 0;
+                    $personentry_trans->amount = $request->person_amount[$key] ?? 0;
+                    $personentry_trans->save();
                 }
             }
 
             DB::commit();
             return redirect()->route('transaction.index')->with('success', 'Transaction updated successfully');
         } catch (\Exception $ex) {
+            echo $ex->getMessage();
             DB::rollBack();
-            return redirect()->back()->with('error', $ex->getMessage());
         }
     }
+
 
     public function destroy(Request $request)
     {
@@ -332,6 +299,25 @@ class TransactionController extends Controller
     public function getDetailPackage(Request $request)
     {
         $package = Package::where('package_code', $request->package_code)->first();
-        return response()->json($package, 200);
+        $addons = PackageDetail::with('item')
+            ->where('package_code', $request->package_code)
+            ->get()
+            ->map(function ($detail) {
+                return [
+                    'item_code' => $detail->item_code,
+                    'item_name' => $detail->item ? $detail->item->item_name : null,
+                    'quantity' => $detail->qty,
+                    'price' => $detail->price,
+                    'amount' => $detail->qty * $detail->price,
+                ];
+            });
+
+
+        return response()->json([
+            'weekly_price' => $package->weekly_price,
+            'weekday_price' => $package->weekday_price,
+            'campsite_code' => $package->campsite_code,
+            'addons' => $addons,
+        ]);
     }
 }

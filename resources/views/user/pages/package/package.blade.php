@@ -155,27 +155,6 @@
                     </div>
                 </div>
             </div>
-
-            <h5 class="card-tittle">Masukkan Tanggal dan Jam</h5>
-            <div class="col-md-6 mb-20">
-                <label for="startDate" class="form-label fw-semibold text-primary-light text-sm mb-8">Check-in</label>
-                <div class=" position-relative">
-                    <input class="form-control radius-8 bg-base" id="startDate" type="text"
-                        placeholder="Masukkan tanggal dan jam kedatangan">
-                    <span class="position-absolute end-0 top-50 translate-middle-y me-12 line-height-1"><iconify-icon
-                            icon="solar:calendar-linear" class="icon text-lg"></iconify-icon></span>
-                </div>
-            </div>
-            <div class="col-md-6 mb-20">
-                <label for="endDate" class="form-label fw-semibold text-primary-light text-sm mb-8">Check-out</label>
-                <div class=" position-relative">
-                    <input class="form-control radius-8 bg-base" id="endDate" type="text"
-                        placeholder="Masukkan tanggal dan jam keluar">
-                    <span class="position-absolute end-0 top-50 translate-middle-y me-12 line-height-1"><iconify-icon
-                            icon="solar:calendar-linear" class="icon text-lg"></iconify-icon></span>
-                </div>
-            </div>
-
         </div>
     </div>
 @endsection

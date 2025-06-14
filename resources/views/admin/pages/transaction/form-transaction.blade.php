@@ -18,65 +18,13 @@
     <script src="{{ asset('wowdash/js/full-calendar.js') }}"></script>
     <script src="{{ asset('wowdash/js/flatpickr.js') }}"></script>
     <script>
-        // Campsite Transaction Table
-        // $('#add-row4').click(function(e) {
-        //     e.preventDefault();
-        //     var newRow = `
-    //         <tr>
-    //             <td>
-    //                 <select class="form-select package" aria-label="Default select example" name="package_code[]">
-    //                     <option selected disabled>Open this select menu</option>
-    //                     @foreach ($packages as $data)
-    //                         <option value="{{ $data->package_code }}">{{ $data->package_name }}
-    //                         </option>
-    //                     @endforeach
-    //                 </select>
-    //             </td>
-    //             <td><input type="text" class="form-control package_price" name="package_price[]" readonly></td>
-    //             <td><button type="button" class="btn btn-danger remove-row">Remove</button></td>
-    //         </tr>
-    //     `;
-        //     $('#package-table tbody').append(newRow);
-        // });
-
-        // $('#package-table').on('click', '.remove-row', function(e) {
-        //     e.preventDefault();
-        //     $(this).closest('tr').remove();
-        // });
-
-        // $('#package-table').on('change', '.package', function(e) {
-        //     e.preventDefault();
-        //     const package_price = $(this).closest('tr').find('.package_price');
-        //     const packageCode = $(this).val();
-
-        //     const checkinDateStr = $('#startDate').val();
-        //     if (!checkinDateStr) return;
-
-        //     const checkinDate = flatpickr.parseDate(checkinDateStr, "d/m/Y H:i");
-        //     const isWeekend = checkinDate.getDay() === 0 || checkinDate.getDay() === 6;
-
-        //     $.ajax({
-        //         type: "GET",
-        //         url: "{{ route('transaction.getDetailPackage') }}",
-        //         data: {
-        //             "package_code": packageCode
-        //         },
-        //         dataType: "JSON",
-        //         success: function(res) {
-        //             const price = isWeekend ? res.weekly_price : res.weekday_price;
-        //             package_price.val(price);
-        //         }
-        //     });
-        // });
-
-
         $('#add-row').click(function(e) {
             e.preventDefault();
             var newRow = `
                 <tr>
                     <td>
                         <select class="form-select campsite" aria-label="Default select example"  name="campsite_code[]">
-                            <option selected disabled>Open this select menu</option>
+                            <option selected>Open this select menu</option>
                             @foreach ($campsites as $data)
                                 <option value="{{ $data->campsite_code }}">{{ $data->campsite_name }}
                                 </option>
@@ -85,7 +33,7 @@
                     </td>
                     <td>
                         <select class="form-select ground" aria-label="Default select example" name="ground_code[]">
-                            <option selected disabled>Open this select menu</option>
+                            <option selected>Open this select menu</option>
                         </select>
                     </td>
                     <td><input type="text" class="form-control campsite_price" name="campsite_price[]" readonly></td>
@@ -116,7 +64,7 @@
                 success: function(res) {
                     console.log(res);
                     groundSelect.append(
-                        '<option selected disabled value="">Open this select menu</option>');
+                        '<option selected value="">Open this select menu</option>');
 
                     if (res.grounds.length > 0) {
                         res.grounds.forEach(d => {
@@ -151,7 +99,7 @@
                 <tr>
                      <td>
                         <select class="form-select" name="addons_item_code[]">
-                        <option selected disabled>Open this select menu</option>
+                        <option selected>Open this select menu</option>
                         ${options}
                         </select>
                     </td>
@@ -174,7 +122,7 @@
             var row = $(this).closest('tr');
             var quantity = parseFloat($(this).val()) || 0;
             var price = parseFloat(row.find('input[name="addons_price[]"]').val()) || 0;
-            row.find('input[name="addons_amount[]"]').val((quantity * price).toFixed(2));
+            row.find('input[name="addons_amount[]"]').val((quantity * price));
         });
 
         $('#addons-table').on('change', 'select', function(e) {
@@ -214,7 +162,7 @@
             var row = $(this).closest('tr');
             var quantity = parseFloat($(this).val()) || 0;
             var price = parseFloat(row.find('input[name="person_price[]"]').val()) || 0;
-            row.find('input[name="person_amount[]"]').val((quantity * price).toFixed(2));
+            row.find('input[name="person_amount[]"]').val((quantity * price));
         });
 
         $('#person-table').on('change', 'select', function(e) {
@@ -265,19 +213,26 @@
         $('#startDate').change(function(e) {
             e.preventDefault();
             $('#package').trigger('change');
+        });
 
-        });;
         $('#package').change(function(e) {
             e.preventDefault();
             const checkinDateStr = $('#startDate').val();
-            $('#campsite-table').find('.remove-row').last().trigger('click');
-            if (!checkinDateStr) return;
+
             if ($(this).val() == "Open this select menu") {
+                $('#campsite-table tbody').empty(); // Hapus campsite
+                $('#addons-table tbody').empty(); // Hapus addons
+                $('#package_price').val(0); // Reset harga
                 $('#add-row').show();
+                $('#add-row2').show();
                 return;
             }
+
+            if (!checkinDateStr) return;
+
             const checkinDate = flatpickr.parseDate(checkinDateStr, "d/m/Y H:i");
             const isWeekend = checkinDate.getDay() === 0 || checkinDate.getDay() === 6;
+
             $.ajax({
                 type: "GET",
                 url: "{{ route('transaction.getDetailPackage') }}",
@@ -288,40 +243,62 @@
                 success: function(res) {
                     const price = isWeekend ? res.weekly_price : res.weekday_price;
                     $('#package_price').val(price);
+
+                    // ======== CAMPSITE ========
                     const campsite_code = res.campsite_code;
                     const campsites = @json($campsites);
-                    let options = '';
-                    let disabled = '';
+                    let campsiteOptions = '';
+
                     campsites.forEach(data => {
-                        const selected = data.campsite_code === campsite_code ?
-                            'selected' : '';
-                        options +=
+                        const selected = data.campsite_code === campsite_code ? 'selected' : '';
+                        campsiteOptions +=
                             `<option value="${data.campsite_code}" ${selected}>${data.campsite_name}</option>`;
                     });
-                    var newRow = `
+
+                    const newCampsiteRow = `
                     <tr>
                         <td>
-                            <select class="form-select campsite" name="campsite_code[]" disabled>
-                                ${options}
+                            <select class="form-select campsite" name="campsite_code[]">
+                                ${campsiteOptions}
                             </select>
                         </td>
                         <td>
                             <select class="form-select ground" name="ground_code[]">
-                                <option selected disabled>Open this select menu</option>
+                                <option selected>Open this select menu</option>
                             </select>
                         </td>
                         <td><input type="text" class="form-control campsite_price" name="campsite_price[]" readonly></td>
                         <td><button type="button" class="btn btn-danger remove-row" disabled>Remove</button></td>
                     </tr>
-                    `;
-
-                    $('#campsite-table tbody').append(newRow);
+                `;
+                    $('#campsite-table tbody').html(newCampsiteRow);
                     $('#campsite-table').find('.campsite').last().trigger('change');
                     $('#add-row').hide();
 
+                    // ======== ADDONS (from packagedetail) ========
+                    const addons = res.addons || [];
+                    let addonRows = '';
+
+                    addons.forEach(addon => {
+                        addonRows += `
+                        <tr>
+                            <td>
+                                <select class="form-select" name="addons_item_code[]">
+                                    <option value="${addon.item_code}" selected>${addon.item_name}</option>
+                                </select>
+                            </td>
+                            <td><input type="number" class="form-control" name="addons_quantity[]" value="${addon.quantity}" readonly></td>
+                            <td><input type="text" class="form-control" name="addons_price[]" value="${addon.price}" readonly></td>
+                            <td><input type="text" class="form-control" name="addons_amount[]" value="${addon.amount}" readonly></td>
+                            <td><button type="button" class="btn btn-danger remove-row" disabled>Remove</button></td>
+                        </tr>
+                    `;
+                    });
+
+                    $('#addons-table tbody').html(addonRows);
+                    $('#add-row2').hide();
                 }
             });
-
         });
     </script>
 
@@ -411,7 +388,7 @@
                         <label class="form-label fw-semibold text-primary-light text-sm mb-8">Payment Status:
                         </label>
                         <select class="form-select" aria-label="Default select example" name="payment_status">
-                            <option selected disabled>Pilih Status Pembayaran</option>
+                            <option selected>Pilih Status Pembayaran</option>
                             <option value="paid" {{ old('payment_status') == 'paid' ? 'selected' : '' }}>Paid</option>
                             <option value="unpaid" {{ old('payment_status') == 'unpaid' ? 'selected' : '' }}>Unpaid
                             </option>
@@ -421,7 +398,7 @@
                     <div class="col-12 mb-20">
                         <label>Customer Name</label>
                         <select class="form-select" aria-label="Default select example" name="customer_code">
-                            <option selected disabled>Pilih Nama Customer</option>
+                            <option selected>Pilih Nama Customer</option>
                             @foreach ($customers as $cust)
                                 <option value="{{ $cust->customer_code }}"
                                     {{ old('customer_code') == $cust->customer_code ? 'selected' : '' }}>
@@ -481,7 +458,7 @@
                         <table class="table bordered-table mb-0" id="campsite-table">
                             <thead>
                                 <tr>
-                                    <th scope="col">Campsite Code</th>
+                                    <th scope="col">Campsite Name</th>
                                     <th scope="col">Ground Code</th>
                                     <th scope="col">Price</th>
                                     <th scope="col">Action</th>
@@ -499,7 +476,7 @@
                         <table class="table bordered-table mb-0" id="addons-table">
                             <thead>
                                 <tr>
-                                    <th scope="col">Item Code</th>
+                                    <th scope="col">Item Name</th>
                                     <th scope="col">Quantity</th>
                                     <th scope="col">Price</th>
                                     <th scope="col">Amount</th>
@@ -541,7 +518,7 @@
 
                     {{-- select person entry type --}}
                     <select class="d-none" id="personentry-template">
-                        <option selected disabled>Open this select menu</option>
+                        <option selected>Open this select menu</option>
                         @foreach ($personentry as $data)
                             <option value="{{ $data->person_entry_code }}" data-price="{{ $data->price }}">
                                 {{ $data->person_type }}
@@ -550,12 +527,13 @@
                     </select>
 
                     <div class="d-flex align-items-center justify-content-center gap-3 mt-24">
-                        {{-- <button type="button"
+                        <button type="button"
                             class="border border-danger-600 bg-hover-danger-200 text-danger-600 text-md px-40 py-11 radius-8"
                             onclick="history.back()">
                             Back
-                        </button> --}}
-                        <button type="submit">Save</button>
+                        </button>
+                        <button class="btn btn-primary border border-primary-600 text-md px-24 py-12 radius-8"
+                            type="submit">Save</button>
                     </div>
                 </div>
             </form>

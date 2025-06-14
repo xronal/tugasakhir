@@ -49,11 +49,6 @@
                             <th scope="col">Customer Name</th>
                             <th scope="col">Check-in Date</th>
                             <th scope="col">Check-out Date</th>
-                            {{-- <th scope="col">Total Campsite Price</th>
-                        <th scope="col">Total Addons Price</th>
-                        <th scope="col">Total People Entry Price</th> --}}
-                            <th scope="col">Create at</th>
-                            <th scope="col">Upload at</th>
                             <th scope="col">Action</th>
                         </tr>
                     </thead>
@@ -80,12 +75,6 @@
                                 </td>
                                 <td>
                                     {{ $data->checkout_date }}
-                                </td>
-                                <td>
-                                    {{ $data->created_at }}
-                                </td>
-                                <td>
-                                    {{ $data->updated_at }}
                                 </td>
                                 <td>
                                     <div class="card-body p-24">

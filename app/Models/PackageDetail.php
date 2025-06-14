@@ -16,4 +16,9 @@ class PackageDetail extends Model
     {
         return $this->hasMany(PackageDetail::class, 'item_code', 'package_code');
     }
+
+    public function item()
+    {
+        return $this->belongsTo(Item::class, 'item_code', 'item_code');
+    }
 }
