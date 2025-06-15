@@ -1,0 +1,9 @@
+[
+  {
+    "transaction_code": "TR001",
+    "person_entry_code": "PE01",
+    "qty": "2",
+    "price": "10000",
+    "amount": "20000"
+  }
+]

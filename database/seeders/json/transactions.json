@@ -1,0 +1,15 @@
+[
+  {
+    "transaction_code": "TR001",
+    "transaction_date": "2025-06-10",
+    "payment_date": "2025-06-10",
+    "payment_status": "paid",
+    "customer_code": "CUS01",
+    "checkin_date": "2025-06-15",
+    "checkout_date": "2025-06-16",
+    "total_package_price": "0",
+    "total_campsite_price": "0",
+    "total_addons_price": "0",
+    "total_people_entry_price": "0"
+  }
+]

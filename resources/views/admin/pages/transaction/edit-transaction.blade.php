@@ -443,7 +443,7 @@
                                 Price</label>
                             <div class=" position-relative">
                                 <input type="text" class="form-control package_price" name="package_price"
-                                    id="package_price" readonly>
+                                    id="package_price" value="{{ $packagetransaction->price }}" readonly>
                             </div>
                         </div>
                     @endforeach
@@ -460,6 +460,32 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach ($campsitetrans as $ct)
+                                    <tr>
+                                        <td>
+                                            <select class="form-select campsite" aria-label="Default select example"
+                                                name="campsite_code[]">
+                                                <option selected>Open this select menu</option>
+                                                @foreach ($campsites as $data)
+                                                    <option value="{{ $data->campsite_code }}"
+                                                        {{ $ct->campsite_code == $data->campsite_code ? 'selected' : '' }}>
+                                                        {{ $data->campsite_name }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <select class="form-select ground" aria-label="Default select example"
+                                                name="ground_code[]">
+                                                <option selected value="{{ $ct->ground_code }}">{{ $ct->ground_code }}
+                                                </option>
+                                            </select>
+                                        </td>
+                                        <td><input type="text" class="form-control campsite_price"
+                                                name="campsite_price[]" value="{{ $ct->price }}" readonly></td>
+                                        <td><button type="button" class="btn btn-danger remove-row">Remove</button></td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                         <button id="add-row" class="btn btn-outline-primary w-auto mt-10">Add Row</button>
@@ -479,6 +505,31 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach ($addontrans as $at)
+                                    <tr>
+                                        <td>
+                                            <select class="form-select" name="addons_item_code[]">
+                                                <option selected>Open this select menu</option>
+                                                @foreach ($items as $item)
+                                                    <option value="{{ $item->item_code }}"
+                                                        item-price="{{ $item->item_price }}"
+                                                        {{ $at->item_code == $item->item_code ? 'selected' : '' }}>
+                                                        {{ $item->item_name }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                        </td>
+                                        <td><input type="text" class="form-control" name="addons_quantity[]"
+                                                value="{{ $at->qty }}"></td>
+                                        <td><input type="text" class="form-control" name="addons_price[]"
+                                                value="{{ $at->price }}" readonly>
+                                        </td>
+                                        <td><input type="text" class="form-control" name="addons_amount[]"
+                                                value="{{ $at->amount }}" readonly>
+                                        </td>
+                                        <td><button type="button" class="btn btn-danger remove-row">Remove</button></td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                         <button id="add-row2" class="btn btn-outline-primary w-auto mt-10">Add Row</button>

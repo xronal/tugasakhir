@@ -1,0 +1,65 @@
+[
+    { "ground_code": "D01", "campsite_code": "DC" },
+    { "ground_code": "D02", "campsite_code": "DC" },
+    { "ground_code": "D03", "campsite_code": "DC" },
+    { "ground_code": "D04", "campsite_code": "DC" },
+    { "ground_code": "D05", "campsite_code": "DC" },
+    { "ground_code": "D06", "campsite_code": "DC" },
+    { "ground_code": "D07", "campsite_code": "DC" },
+    { "ground_code": "D08", "campsite_code": "DC" },
+    { "ground_code": "D09", "campsite_code": "DC" },
+    { "ground_code": "D10", "campsite_code": "DC" },
+    { "ground_code": "D11", "campsite_code": "DC" },
+    {
+        "ground_code": "JC01",
+        "campsite_code": "JCC"
+    },
+    {
+        "ground_code": "JC02",
+        "campsite_code": "JCC"
+    },
+    {
+        "ground_code": "JC03",
+        "campsite_code": "JCC"
+    },
+    {
+        "ground_code": "JC04",
+        "campsite_code": "JCC"
+    },
+    {
+        "ground_code": "JC05",
+        "campsite_code": "JCC"
+    },
+    {
+        "ground_code": "JC06",
+        "campsite_code": "JCC"
+    },
+    {
+        "ground_code": "JC07",
+        "campsite_code": "JCC"
+    },
+    {
+        "ground_code": "JM01",
+        "campsite_code": "JCM"
+    },
+    {
+        "ground_code": "JM02",
+        "campsite_code": "JCM"
+    },
+    { "ground_code": "S01", "campsite_code": "SD" },
+    { "ground_code": "S02", "campsite_code": "SD" },
+    { "ground_code": "S03", "campsite_code": "SD" },
+    { "ground_code": "S04", "campsite_code": "SD" },
+    { "ground_code": "S05", "campsite_code": "SD" },
+    { "ground_code": "S06", "campsite_code": "SD" },
+    { "ground_code": "S07", "campsite_code": "SD" },
+    { "ground_code": "S08", "campsite_code": "SD" },
+    { "ground_code": "S09", "campsite_code": "SD" },
+    { "ground_code": "S10", "campsite_code": "SD" },
+    { "ground_code": "S11", "campsite_code": "SD" },
+    { "ground_code": "S12", "campsite_code": "SD" },
+    { "ground_code": "S13", "campsite_code": "SD" },
+    { "ground_code": "S14", "campsite_code": "SD" },
+    { "ground_code": "S15", "campsite_code": "SD" },
+    { "ground_code": "S16", "campsite_code": "SD" }
+]

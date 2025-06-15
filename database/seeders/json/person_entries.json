@@ -1,0 +1,17 @@
+[
+  {
+    "person_entry_code": "PE01",
+    "person_type": "Dewasa",
+    "price": "10000"
+  },
+  {
+    "person_entry_code": "PE02",
+    "person_type": "Anak Anak - Remaja",
+    "price": "10000"
+  },
+  {
+    "person_entry_code": "PE03",
+    "person_type": "Balita dibawah 5 Tahun",
+    "price": "0"
+  }
+]

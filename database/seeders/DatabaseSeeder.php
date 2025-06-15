@@ -16,8 +16,18 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             UserSeeder::class,
+            CustomerSeeder::class,
             ItemSeeder::class,
-            CampsiteSeeder::class
+            CampsiteSeeder::class,
+            PersonEntrySeeder::class,
+            GroundSeeder::class,
+            PackageSeeder::class,
+            PackageDetailSeeder::class,
+            TransactionSeeder::class,
+            PackageTransactionSeeder::class,
+            CampsiteTransactionSeeder::class,
+            AddonsTransactionSeeder::class,
+            PersonEntryTransactionSeeder::class
         ]);
     }
 }

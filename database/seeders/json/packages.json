@@ -1,0 +1,30 @@
+[
+  {
+    "package_code": "PK01",
+    "package_name": "Paket Tenda Campervan",
+    "campsite_code": "SD",
+    "weekday_price": "700000",
+    "weekly_price": "500000"
+  },
+  {
+    "package_code": "PK02",
+    "package_name": "Paket Camping Anti Ribet",
+    "campsite_code": "SD",
+    "weekday_price": "420000",
+    "weekly_price": "370000"
+  },
+  {
+    "package_code": "PK03",
+    "package_name": "Paket Camping Anti Ribet Sultan",
+    "campsite_code": "SD",
+    "weekday_price": "370000",
+    "weekly_price": "420000"
+  },
+  {
+    "package_code": "PK04",
+    "package_name": "Paket Camping Anti Ribet Sultan Plus",
+    "campsite_code": "SD",
+    "weekday_price": "495000",
+    "weekly_price": "545000"
+  }
+]

@@ -1,0 +1,51 @@
+[
+  {
+    "transaction_code": "TR001",
+    "item_code": "ITM23",
+    "qty": "1",
+    "price": "325000",
+    "amount": "325000"
+  },
+  {
+    "transaction_code": "TR001",
+    "item_code": "ITM14",
+    "qty": "1",
+    "price": "100000",
+    "amount": "100000"
+  },
+  {
+    "transaction_code": "TR001",
+    "item_code": "ITM04",
+    "qty": "4",
+    "price": "20000",
+    "amount": "80000"
+  },
+  {
+    "transaction_code": "TR001",
+    "item_code": "ITM05",
+    "qty": "1",
+    "price": "30000",
+    "amount": "30000"
+  },
+  {
+    "transaction_code": "TR001",
+    "item_code": "ITM17",
+    "qty": "1",
+    "price": "30000",
+    "amount": "30000"
+  },
+  {
+    "transaction_code": "TR001",
+    "item_code": "ITM25",
+    "qty": "1",
+    "price": "50000",
+    "amount": "50000"
+  },
+  {
+    "transaction_code": "TR001",
+    "item_code": "ITM08",
+    "qty": "1",
+    "price": "10000",
+    "amount": "10000"
+  }
+]

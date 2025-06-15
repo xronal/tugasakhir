@@ -17,6 +17,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PackageAdminController;
 use App\Http\Controllers\PackageCustomerController;
 use App\Http\Controllers\PackageDetailController;
+use App\Http\Controllers\PersonDateAddonsController;
 use App\Http\Controllers\PersonEntryController;
 use App\Http\Controllers\PersonEntryTransactionController;
 use App\Http\Controllers\RegisterController;
@@ -42,6 +43,7 @@ Route::get('/', function () {
     return view('landing-page.index');
 });
 
+Route::get('/detail', [PersonDateAddonsController::class, 'index'])->name('detail');
 
 Route::get('/admin', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth');
 Route::get('/user', [DashboardController::class, 'indexuser'])->name('dashboarduser');
