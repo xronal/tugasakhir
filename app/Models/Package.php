@@ -18,4 +18,9 @@ class Package extends Model
     {
         return $this->hasMany(PackageDetail::class, 'package_code', 'package_code');
     }
+
+    public function campsite()
+    {
+        return $this->belongsTo(Campsite::class, 'campsite_code', 'campsite_code');
+    }
 }

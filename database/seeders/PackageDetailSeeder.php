@@ -28,7 +28,7 @@ class PackageDetailSeeder extends Seeder
                 $package_detail->package_code = $data->package_code;
                 $package_detail->item_code = $data->item_code;
                 $package_detail->qty = $data->qty;
-                $package_detail->price = $data->item_price;
+                $package_detail->price = $data->price;
                 $package_detail->save();
                 DB::commit();
             }

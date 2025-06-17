@@ -31,21 +31,43 @@
 
 @section('content')
     <div class="container mt-4">
-        <h5 class="card-tittle">Pilih Paket Anda</h5>
+
+        <h5 class="card-tittle">Pilih Paket atau Campsite Anda</h5>
+
+        <hr class="mb-10" style="border: 2px solid black">
         <div class="row g-4">
-            <div class="col-12 col-sm-6 col-lg-4 col-xl-4">
-                <div class="card h-100">
-                    <img src="{{ asset('landing-page/images/sakt1.webp') }}" class="card-img-top" alt="paket1">
-                    <div class="card-body">
-                        <h5 class="card-title">Paket Tenda Campervan</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                            card's content.</p>
-                        <a href="#" class="btn btn-primary">Pesan Sekarang</a>
+            @php
+                $packageImages = ['sakt1.webp', 'sak2.webp', 'sakt3.webp', 'sakt4.webp'];
+                $campsiteImages = [
+                    'deluxe.webp',
+                    'juniorcar.webp',
+                    'juniormotor.webp',
+                    'regular.webp',
+                    'standart.webp',
+                    'superdeluxe.webp',
+                ];
+            @endphp
+
+            @foreach ($package as $index => $packages)
+                <div class="col-12 col-sm-6 col-lg-4 col-xl-4">
+                    <div class="card h-100">
+                        <img src="{{ asset('landing-page/images/' . $packageImages[$index % count($packageImages)]) }}"
+                            class="card-img-top" alt="paket{{ $index + 1 }}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ $packages->package_name }}</h5>
+                            <p class="card-text">Harga Weekday : RP{{ $packages->weekday_price }}</p>
+                            <p class="card-text">Harga Weekend : RP{{ $packages->weekly_price }}</p>
+                            <a href="{{ route('packages.paket', ['package_code' => $packages->package_code]) }}"
+                                class="btn btn-primary">Pesan Sekarang</a>
+                            <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal"
+                                data-bs-target="#packagedetailModal-{{ $packages->package_code }}">Detail
+                                Paket</button>
+                        </div>
                     </div>
                 </div>
-            </div>
+            @endforeach
 
-            <div class="col-12 col-sm-6 col-lg-4 col-xl-4">
+            {{-- <div class="col-12 col-sm-6 col-lg-4 col-xl-4">
                 <div class="card h-100">
                     <img src="{{ asset('landing-page/images/sak2.webp') }}" class="card-img-top" alt="paket1">
                     <div class="card-body">
@@ -79,21 +101,28 @@
                         <a href="#" class="btn btn-primary">Pesan Sekarang</a>
                     </div>
                 </div>
-            </div>
+            </div> --}}
 
-            <div class="col-12 col-sm-6 col-lg-4 col-xl-4">
-                <div class="card h-100">
-                    <img src="{{ asset('wowdash/images/standart.webp') }}" class="card-img-top" alt="paket1">
-                    <div class="card-body">
-                        <h5 class="card-title">Standart Campsite</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                            card's content.</p>
-                        <a href="#" class="btn btn-primary">Pesan Sekarang</a>
+            @foreach ($campsite as $index => $campsites)
+                <div class="col-12 col-sm-6 col-lg-4 col-xl-4">
+                    <div class="card h-100">
+                        <img src="{{ asset('wowdash/images/' . $campsiteImages[$index % count($campsiteImages)]) }}"
+                            class="card-img-top" alt="campsite{{ $index + 1 }}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ $campsites->campsite_name }}</h5>
+                            <p class="card-text">Harga Weekday : RP{{ $campsites->weekday_price }}</p>
+                            <p class="card-text">Harga Weekend : RP{{ $campsites->weekend_price }}</p>
+                            <a href="{{ route('packages.pilihcampsite', ['campsite_code' => $campsites->campsite_code]) }}"
+                                class="btn btn-primary">Pesan Sekarang</a>
+                            <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal"
+                                data-bs-target="#campsitedetailModal-{{ $campsites->campsite_code }}">Detail
+                                Campsite</button>
+                        </div>
                     </div>
                 </div>
-            </div>
+            @endforeach
 
-            <div class="col-12 col-sm-6 col-lg-4 col-xl-4">
+            {{-- <div class="col-12 col-sm-6 col-lg-4 col-xl-4">
                 <div class="card h-100">
                     <img src="{{ asset('wowdash/images/deluxe.webp') }}" class="card-img-top" alt="paket1">
                     <div class="card-body">
@@ -139,7 +168,8 @@
                         <a href="#" class="btn btn-primary">Pesan Sekarang</a>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
+    @include('user.pages.package.modal-package')
 @endsection

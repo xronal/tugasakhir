@@ -10,6 +10,9 @@
     { "ground_code": "D09", "campsite_code": "DC" },
     { "ground_code": "D10", "campsite_code": "DC" },
     { "ground_code": "D11", "campsite_code": "DC" },
+    { "ground_code": "SD1", "campsite_code": "SDC" },
+    { "ground_code": "SD2", "campsite_code": "SDC" },
+
     {
         "ground_code": "JC01",
         "campsite_code": "JCC"

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AddonsCustomerController;
 use App\Http\Controllers\AddOnsTransactionController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CampsiteController;
@@ -21,6 +22,7 @@ use App\Http\Controllers\PersonDateAddonsController;
 use App\Http\Controllers\PersonEntryController;
 use App\Http\Controllers\PersonEntryTransactionController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\RingkasanOrderController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\UserController;
 use Illuminate\Foundation\Auth\User;
@@ -133,15 +135,40 @@ Route::controller(PersonEntryController::class)->prefix('/admin/person-entry')->
 });
 
 
-Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
+Route::get('/login', [LoginController::class, 'index'])->name('login');
 
 Route::get('/register', [RegisterController::class, 'index'])->name('register');
 
 Route::get('/forgot-password', [ForgotPasswordController::class, 'index'])->name('forgot-password');
 
-Route::get('/user/ground', [GroundController::class, 'index'])->name('ground');
+// Route::get('/user/ground/{package_code}', [GroundController::class, 'index'])->name('ground');
 
-Route::get('/user/package', [PackageCustomerController::class, 'index'])->name('packagecustomer');
+// Route::get('/user/package', [PackageCustomerController::class, 'index'])->name('packagecustomer');
+
+// Route::get('/user/addons/{item_code?}', [AddonsCustomerController::class, 'index'])->name('addonscustomer');
+
+Route::get('/user/invoice', [RingkasanOrderController::class, 'index'])->name('invoice');
+
+Route::controller(AddonsCustomerController::class)->prefix('/user/addons')->name('tambah.')->group(function () {
+    Route::post('/', 'store')->name('store');
+    Route::get('/{item_code?}', 'index')->name('index');
+});
+
+Route::controller(GroundController::class)->prefix('/user/ground')->name('ground.')->group(function () {
+    Route::get('/pilih/{ground_code}', 'pilih')->name('pilih');
+    Route::get('/{package_code}', 'index')->name('index');
+});
+
+// Route::get('/user/datadiri', [PersonDateAddonsController::class, 'index'])->name('datadiri');
+Route::controller(PersonDateAddonsController::class)->prefix('/user/datadiri')->name('diri.')->group(function () {
+    Route::get('/', 'index')->name('index');
+    Route::post('/', 'diri')->name('diri');
+});
+Route::controller(PackageCustomerController::class)->prefix('/user/packages')->name('packages.')->group(function () {
+    Route::get('/', 'index')->name('index');
+    Route::get('/{package_code}', 'pilihpaket')->name('paket');
+    Route::get('/campsite/{campsite_code}', 'pilihcampsite')->name('pilihcampsite');
+});
 
 // Route Post
 Route::post('/admin/dashboard', [DashboardController::class, 'dashboard']);

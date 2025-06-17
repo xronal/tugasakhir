@@ -18,6 +18,7 @@ use App\Models\PackageTransaction;
 use App\Models\PersonEntryTransaction;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Str;
 
 
 class TransactionController extends Controller
@@ -79,9 +80,8 @@ class TransactionController extends Controller
             if (!$customer) {
                 return redirect()->back()->with('error', 'Customer tidak ditemukan.');
             }
-
             $transaction = new Transaction();
-            $transaction->transaction_code = $request->transaction_code;
+            $transaction->transaction_code = $transaction->transaction_code;
             $transaction->transaction_date = Carbon::createFromFormat('d/m/Y H:i', $request->transaction_date)->format("Y-m-d H:i");
             $transaction->payment_date = Carbon::createFromFormat('d/m/Y H:i', $request->payment_date)->format("Y-m-d H:i");
             $transaction->payment_status = $request->payment_status;
@@ -107,7 +107,7 @@ class TransactionController extends Controller
                 foreach ($request->campsite_code as $key => $value) {
 
                     $campsite_trans = new CampsiteTransaction();
-                    $campsite_trans->transaction_code = $request->transaction_code;
+                    $campsite_trans->transaction_code = $transaction->transaction_code;
                     $campsite_trans->campsite_code = $value;
                     $campsite_trans->ground_code = $request->ground_code[$key];
                     $campsite_trans->price = $request->campsite_price[$key] ?? 0;
@@ -121,7 +121,7 @@ class TransactionController extends Controller
 
                 foreach ($request->addons_item_code as $key => $item_code) {
                     $addons_trans = new AddonsTransaction();
-                    $addons_trans->transaction_code = $request->transaction_code;
+                    $addons_trans->transaction_code = $transaction->transaction_code;
                     $addons_trans->item_code = $item_code;
                     $addons_trans->qty = $request->addons_quantity[$key] ?? 0;
                     $addons_trans->price = $request->addons_price[$key] ?? 0;
@@ -136,7 +136,7 @@ class TransactionController extends Controller
             if ($request->has('person_entry_code') && is_array($request->person_entry_code)) {
                 foreach ($request->person_entry_code as $key => $value) {
                     $personentry_trans = new PersonEntryTransaction();
-                    $personentry_trans->transaction_code = $request->transaction_code;
+                    $personentry_trans->transaction_code = $transaction->transaction_code;
                     $personentry_trans->person_entry_code = $value;
                     $personentry_trans->qty = $request->person_quantity[$key] ?? 0;
                     $personentry_trans->price = $request->person_price[$key] ?? 0;

@@ -26,7 +26,6 @@ class CustomerSeeder extends Seeder
                 $customer->customer_code = $data->customer_code;
                 $customer->customer_name = $data->customer_name;
                 $customer->phone = $data->phone;
-                $customer->user_id = 2;
                 $customer->save();
                 DB::commit();
             }

@@ -110,6 +110,8 @@ class PackageAdminController extends Controller
             $package->weekly_price = $request->filled('weekly_price') ? $request->weekly_price : 0;
             $package->save();
 
+            PackageDetail::where('package_code', $request->package_code)->delete();
+
             foreach ($request->item_code as $key => $value) {
                 $item = Item::find($value);
                 $package_detail = new PackageDetail();
@@ -121,7 +123,7 @@ class PackageAdminController extends Controller
             }
 
             DB::commit();
-            return redirect()->route('package.index')->with('success', 'Package created successfully');
+            return redirect()->route('package.index')->with('success', 'Package updated successfully');
         } catch (\Exception $ex) {
             echo $ex->getMessage();
             DB::rollBack();
@@ -140,6 +142,6 @@ class PackageAdminController extends Controller
         };
 
 
-        return redirect()->back()->with('Error', 'Package Cannot deleted successfully');
+        return redirect()->back()->with('error', 'Package cannot be deleted');
     }
 }
